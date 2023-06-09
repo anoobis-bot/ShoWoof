@@ -2,6 +2,7 @@
     --sticky_height: 50px;
     --nav_pad: 10px;
     --nav_width: 230px;
+    --content_paadding: 75px;
 }
 
 body {
@@ -51,7 +52,7 @@ body {
 
     background-color: white;
     width: var(--nav_width);
-    height: calc(100% - var(--sticky_height) - (var(--nav_pad) * 2));
+    height: 100%;
 
     position: fixed;
     top: var(--sticky_height);
@@ -71,6 +72,17 @@ body {
 #content-container {
     margin-left: calc(var(--nav_width) + (var(--nav_pad) * 2));
     margin-top: var(--sticky_height);
-    width: calc(100% - (var(--nav_width) + (var(--nav_pad) * 2)));
+    width: calc(100% - (var(--nav_width) + (var(--nav_pad) * 2) + (var(--content_paadding) * 2)));
 
+    display: flex;
+    flex-direction: column;
+
+    padding-top: 10px;
+    padding-left: var(--content_paadding);
+    padding-right: var(--content_paadding);
+
+}
+
+#top-posts-container {
+    width: 100%;
 }
