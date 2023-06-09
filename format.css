@@ -4,10 +4,6 @@
     --nav_width: 230px;
 }
 
-html, body {
-    height: 100%;
-}
-
 body {
     background-color: rgb(246, 241, 241);
     
@@ -75,9 +71,6 @@ body {
 #content-container {
     margin-left: calc(var(--nav_width) + (var(--nav_pad) * 2));
     margin-top: var(--sticky_height);
-
     width: calc(100% - (var(--nav_width) + (var(--nav_pad) * 2)));
-    height: calc(100% - var(--sticky_height));
 
-    background-color: peachpuff;
 }
