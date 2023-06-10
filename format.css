@@ -96,5 +96,40 @@ body {
 
     border-radius: 15px;
 
+    /* delete this */
+    background-color: peachpuff;
+}
+
+#feed-container {
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: row;
+
+    justify-content: space-between;
+}
+
+#login-container {
+    width: 22%;
+}
+
+#all-posts-container {
+    width: 75%;
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+.post-container {
+    width: 100%;
+}
+
+.post-container, #login-container {
+    display: flex;
+
+    border: gainsboro solid 1px;
+
     background-color: peachpuff;
 }
