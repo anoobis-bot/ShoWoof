@@ -85,4 +85,16 @@ body {
 
 #top-posts-container {
     width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.top-posts {
+    width: 24%;
+    height: 150px;
+
+    border-radius: 15px;
+
+    background-color: peachpuff;
 }
