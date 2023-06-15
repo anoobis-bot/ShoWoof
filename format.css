@@ -74,13 +74,16 @@ body {
     align-items: flex-start;
 
     width: 100%;
+
+    font-family: sans-serif;
+}
+
+#nav-buttons a {
+    margin-left: 10px;
 }
 
 #nav-buttons * {
-    padding-top: 5px;
 
-    font-family: Verdana;
-    font-weight: lighter;
 }
 
 #content-container {
@@ -143,7 +146,8 @@ body {
 
 .horizontalLine {  
     border: none; 
-    border-bottom: 1px solid;  
+    border-bottom: 1px solid; 
+    width: 100%; 
 }
 
 #all-posts-container {
