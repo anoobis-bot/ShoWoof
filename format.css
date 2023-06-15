@@ -3,6 +3,8 @@
     --container_pad: 15px;
     --nav_width: 230px;
     --content_paadding: 75px;
+
+    --border-setting: 1px solid gainsboro;
 }
 
 body {
@@ -16,10 +18,12 @@ body {
 #sticky-header {
     position: fixed;
     top: 0px;
+    z-index: 1;
 
     width: 100%;
     height: var(--sticky_height);
     background-color: white;
+    border-bottom: var(--border-setting);
 
     padding-left: 10px;
     padding-right: 10px;
@@ -52,6 +56,8 @@ body {
     align-self: flex-start;
 
     background-color: white;
+    border-top: var(--border-setting);
+    border-right: var(--border-setting);
     width: var(--nav_width);
     height: 100%;
 
@@ -68,6 +74,13 @@ body {
     align-items: flex-start;
 
     width: 100%;
+}
+
+#nav-buttons * {
+    padding-top: 5px;
+
+    font-family: Verdana;
+    font-weight: lighter;
 }
 
 #content-container {
@@ -109,10 +122,28 @@ body {
     flex-direction: row;
 
     justify-content: space-between;
+
+    font-family: Verdana;
+    font-size: 13px;
 }
 
-#login-container {
-    width: calc(22% - var(--container_pad) * 2);
+#credit-container {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: calc(var(--sticky_height) + 15px);
+
+    width: 22%;
+    height: 100px;
+
+    line-height: 15px;
+    color: rgb(184, 52, 52);
+    opacity: .5;
+}
+
+.horizontalLine {  
+    border: none; 
+    border-bottom: 1px solid;  
 }
 
 #all-posts-container {
@@ -125,29 +156,23 @@ body {
 
 .post-container {
     width: 100%;
+    background-color: rgb(250, 250, 250);
 
     display: flex;
     flex-direction: column;
-}
 
-#login-container {
-    height: 100px;
-}
-
-.post-container, #login-container {
-    display: flex;
-
-    border: gainsboro solid 1px;
-
-    background-color: rgb(250, 250, 250);
+    border: var(--border-setting);
 
     padding: calc(var(--container_pad) * 1.3) var(--container_pad) calc(var(--container_pad) * 1.3) var(--container_pad);
-
-    font-family: Verdana;
-    font-size: 13px;
 }
 
 PostTitle {
     font-weight: bold;
     font-size: 15px;
+}
+
+.post-container img {
+    object-fit: contain;
+    max-height: 500px;
+    width: auto;
 }
