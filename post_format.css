@@ -1,0 +1,95 @@
+body{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+.post, .comments{
+    width: 60%;
+    height: auto;
+    border: 1px solid black;
+    margin-left: 20%;
+    margin-right: 20%;
+    
+}
+
+.post{
+    display:flex;
+    flex-direction: row;
+}
+
+.content img{
+    max-width: 96%;
+    max-height: 98%;
+    display: block;
+    padding: 1% 2%;
+}
+
+.postHead{
+    display: flex;
+    flex-direction: column;
+}
+
+.username{
+    padding-right: 10px;
+}
+
+.firstBar{
+    font-size: smaller;
+    display: flex;
+    flex-direction: row;
+    font-weight: 100;
+    color:gray;
+}
+
+.caption{
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+.firstbar, .caption{
+    line-height: 1.4em;
+}
+
+.userComment{
+    display: flex;
+    flex-direction: column;
+}
+
+.boxCommands{
+    display:flex;
+    align-items:flex-end;
+    flex-direction: row;
+}
+
+/*---------------Comments---------------*/
+
+.commentBase{
+    display:flex;
+    flex-direction: column;
+}
+
+.commentText{
+    padding-left: 15px;
+}
+
+.commenterDetails{
+    display: flex;
+    flex-direction: row;
+}
+
+.commenterImg{
+    width: 1.4rem;
+    height: 1.4rem;
+    border-radius: 50%;
+    background-image: url(profile_pics/profileTest.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid red;
+}
+
+.commenterUser{
+
+}
+
+.commentDate{
+
+}
