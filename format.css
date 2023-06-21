@@ -2,7 +2,7 @@
     --sticky_height: 50px;
     --container_pad: 15px;
     --nav_width: 230px;
-    --content_paadding: 75px;
+    --content_padding: 75px;
 
     --border-setting: 1px solid gainsboro;
 
@@ -113,14 +113,14 @@ a {
 #content-container {
     margin-left: calc(var(--nav_width) + (var(--container_pad) * 2));
     margin-top: var(--sticky_height);
-    width: calc(100% - (var(--nav_width) + (var(--container_pad) * 2) + (var(--content_paadding) * 2)));
+    width: calc(100% - (var(--nav_width) + (var(--container_pad) * 2) + (var(--content_padding) * 2)));
 
     display: flex;
     flex-direction: column;
 
     padding-top: 10px;
-    padding-left: var(--content_paadding);
-    padding-right: var(--content_paadding);
+    padding-left: var(--content_padding);
+    padding-right: var(--content_padding);
 
 
     font-family: Verdana;

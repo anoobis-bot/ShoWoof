@@ -1,5 +1,13 @@
 :root {
     --profile-pic-size: 250px;
+
+    --profile-pic-left-pos: 80px;
+    --profile-pic-top-pos: -130px;
+}
+
+#profile-container {
+    margin-left: calc(var(--nav_width) + (var(--container_pad) * 2));
+    margin-top: var(--sticky_height);
 }
 
 #cover-photo {
@@ -10,6 +18,8 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+
+    z-index: -1;
 }
 
 #profile-picture-container {
@@ -21,14 +31,13 @@
     width: var(--profile-pic-size);
     border-radius: var(--profile-pic-size);
 
-    left: 80px;
-    top: -130px;
+    left: var(--profile-pic-left-pos);
+    top: var(--profile-pic-top-pos);
 
     display: flex;
     align-items: center;
     justify-content: center;
-    
-    z-index: 1;
+
 }
 #profile-picture-container img {
     object-fit: cover;
@@ -42,8 +51,15 @@
 }
 
 #profile-content {
-    width: 100%;
+    width: calc(100% - (var(--content_padding) * 2));
     height: 2000px;
 
     position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    padding-left: var(--content_padding);
+    padding-right: var(--content_padding);
+
 }
