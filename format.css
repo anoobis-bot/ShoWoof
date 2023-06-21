@@ -18,7 +18,6 @@ body {
     
     margin: 0;
     width: 100%;
-    height: 2000px
 }
 
 a {
@@ -210,6 +209,8 @@ a {
     flex-direction: row;
 
     border: var(--border-setting);
+
+    margin-bottom: 15px;
 }
 
 .vote-content {
@@ -251,6 +252,13 @@ PostTitle {
     margin-bottom: 15px;
 }
 
+PostDesc {
+    font-weight: normal;
+    font-size: 12px;
+
+    margin-bottom: 10px;
+}
+
 PostMeta {
     font-weight: lighter;
     font-size: 10px;
@@ -258,10 +266,10 @@ PostMeta {
     color: var(--meta-post-color);
 }
 
-.post-content img {
+.post-content img.post-image {
     object-fit: contain;
     max-height: 500px;
-    width: auto;
+    width: 100%;
 }
 
 .action-container {
