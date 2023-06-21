@@ -1,8 +1,44 @@
+:root {
+    --profile-pic-size: 250px;
+}
+
 #cover-photo {
     width: 100%;
     height: 310px;
 
-    background-color: peachpuff;
+    background-image: url(profile_pics/cover_pics/group_dogs.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#profile-picture-container {
+    background-color: white;
+    
+    position: absolute;
+
+    height: var(--profile-pic-size);
+    width: var(--profile-pic-size);
+    border-radius: var(--profile-pic-size);
+
+    left: 80px;
+    top: -130px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    z-index: 1;
+}
+#profile-picture-container img {
+    object-fit: cover;
+
+    height: calc(var(--profile-pic-size) - 20px);
+    width: calc(var(--profile-pic-size) - 20px);
+    border-radius: calc(var(--profile-pic-size) - 20px);
+
+    margin: auto;
+
 }
 
 #profile-content {
@@ -10,19 +46,4 @@
     height: 2000px;
 
     position: relative;
-}
-
-
-#profile-picture-container {
-    background-color: black;
-    
-    position: absolute;
-
-    height: 250px;
-    width: 250px;
-
-    left: 80px;
-    top: -130px;
-
-    border-radius: 250px;
 }
