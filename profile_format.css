@@ -8,6 +8,9 @@
 #profile-container {
     margin-left: calc(var(--nav_width) + (var(--container_pad) * 2));
     margin-top: var(--sticky_height);
+
+    font-family: Verdana;
+    font-size: 13px;
 }
 
 #cover-photo {
@@ -76,14 +79,33 @@
 
 #profile-content {
     width: calc(100% - (var(--content_padding) * 2));
-    height: 2000px;
 
     position: relative;
 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 
     padding-left: var(--content_padding);
     padding-right: var(--content_padding);
+}
 
+#user-posts {
+    width: calc(75% - (var(--container_pad) * 2));
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+#user-stats {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: calc(var(--sticky_height) + 15px);
+
+    width: 22%;
+    height: 100px;
+
+    background-color: white;
+    border: 1px solid gainsboro;
 }
