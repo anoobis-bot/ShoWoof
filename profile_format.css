@@ -22,6 +22,30 @@
     z-index: -1;
 }
 
+#profile-name-content {
+    width: 100%;
+    height: calc((var(--profile-pic-size) / 2));
+
+    background-color: white;
+
+    position: relative;
+
+    font-family: Verdana;
+    font-size: 50px;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    border-bottom: 1px solid gainsboro;
+}
+#profile-name-content p {
+    margin: 0;
+    padding: 0;
+    margin-left: calc(var(--profile-pic-left-pos) + var(--profile-pic-size) + 10px);
+}
+
 #profile-picture-container {
     background-color: white;
     

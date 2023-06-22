@@ -76,6 +76,8 @@ a {
     left: 0px;
 
     padding: var(--container_pad) var(--container_pad) var(--container_pad) var(--container_pad);
+
+    z-index: 1;
 }
 
 #nav-buttons {
