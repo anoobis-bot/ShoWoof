@@ -141,7 +141,7 @@ body{
     text-decoration: none;
 }
 
-.postToolBar img{
+.postToolBar img, .commentReply img{
     object-fit: contain;
     height: 17px;
 }
@@ -195,12 +195,16 @@ body{
 }
 
 .commentText{
-    
+    font-size: 0.9em;
 }
 
 .commenterDetails{
     display: flex;
     flex-direction: row;
+}
+
+.commenterDetails div{
+    padding-left: 5px;
 }
 
 .commenterImg{
@@ -214,10 +218,77 @@ body{
     border: 1px solid red;
 }
 
-.commenterUser{
+.commenterUser, .commentDate{
+    font-size: small;
+    height: 1.5rem;
+    padding-top: 5px;
 
 }
 
 .commentDate{
+    color:gray;
+}
 
+.commentCommandBar{
+    display:flex;
+    flex-direction: row;
+    font-size: 0.7em;
+    padding-top: 10px;
+}
+
+.commentVote{
+    display:flex;
+    flex-direction: row;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 2px 2px;
+}
+
+.commentReply{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 2px 2px;
+}
+
+div.commentToolText{
+    padding-top: 5px 5px;
+}
+
+.commentCommandBar div.upvote{
+    background-image:url(post_elements/upvote.png);
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.commentCommandBar div.downvote{
+    background-image:url(post_elements/downvote.png);
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.commentCommandBar div.upvote:hover{
+    background-image:url(post_elements/upvoteColored.png);
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.commentCommandBar div.downvote:hover{
+    background-image:url(post_elements/downvoteColored.png);
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
 }
