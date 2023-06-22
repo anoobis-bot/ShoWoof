@@ -1,4 +1,14 @@
+:root {
+    --container_pad: 15px;
+    --content_padding: 75px;
+    --border-setting: 1px solid gainsboro;
+    --vote-content-width: 45px;
+    --meta-post-color: rgb(177, 177, 177);
+    --post-container-top-padding: calc(var(--container_pad) - 5px);
+}
+
 body{
+    background-color: rgb(246, 241, 241);
     font-family: Verdana, Arial, Helvetica, sans-serif;
 }
 .post, .comments{
@@ -7,40 +17,77 @@ body{
     border: 1px solid black;
     margin-left: 20%;
     margin-right: 20%;
-    
+    background-color: white;
 }
 
 .post{
     display:flex;
     flex-direction: row;
+    border-bottom: none;
 }
 
-.votes{
+.votes {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: fit-content;
+    padding-top: var(--post-container-top-padding);
+    background-color: rgb(239, 239, 239);
 }
 
-.upvote{
+.votes div.upvote{
+    background-image:url(post_elements/upvote.png);
+    background-size: contain;
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.votes div.downvote{
+    background-image:url(post_elements/downvote.png);
+    background-size: contain;
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.votes div.upvote:hover{
     background-image:url(post_elements/upvoteColored.png);
-    background-size:contain;
-    width: 20px; 
-    height: 20px;
+    background-size: contain;
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
-.downvote{
+.votes div.downvote:hover{
     background-image:url(post_elements/downvoteColored.png);
     background-size: contain;
-    width: 20px; 
-    height: 20px;
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 
+.numberOfVotes{
+    align-items: center;
+    font-size:medium;
+    width: fit-content;
+    margin: 5px 0px;
+    padding: 0px 2.5px;
+}
+
+.contentWhole{
+    padding: 1% 3% 1% 3%;
+}
+
 .content img{
-    max-width: 96%;
-    max-height: 98%;
+    max-width: 100%;
+    max-height: 100%;
     display: block;
-    padding: 1% 2%;
 }
 
 .postHead{
@@ -49,11 +96,15 @@ body{
 }
 
 .username{
-    padding-right: 10px;
+    display: inline;
+}
+
+.datePosted{
+    display: inline;
 }
 
 .firstBar{
-    font-size: smaller;
+    font-size:12px;
     display: flex;
     flex-direction: row;
     font-weight: 100;
@@ -61,12 +112,45 @@ body{
 }
 
 .caption{
-    font-size: 1.5em;
-    font-weight: 500;
+    font-size: 1.75em;
+    font-weight:600;
 }
 
 .firstbar, .caption{
     line-height: 1.4em;
+}
+
+.postToolBar{
+    display: flex;
+    flex-direction: row;
+
+    padding-top: 5px;
+
+    font-weight: lighter;
+    font-size: 12px;
+    color: var(--meta-post-color);
+
+    align-items: center;
+}
+
+.postToolBar a{
+    color: var(--meta-post-color);
+    text-decoration: none;
+}
+.postToolBar a:visited{
+    text-decoration: none;
+}
+
+.postToolBar img{
+    object-fit: contain;
+    height: 17px;
+}
+
+.commentLabel{
+    font-size: small;
+    display: flex;
+    flex-direction: row;
+    line-height: 1rem;
 }
 
 .userComment{
@@ -74,21 +158,44 @@ body{
     flex-direction: column;
 }
 
-.boxCommands{
+.commentUsername{
+    color:blue;
+}
+
+.userCommentCommands{
     display:flex;
-    align-items:flex-end;
     flex-direction: row;
+    justify-content: flex-end;
+}
+
+.textarea{
+    width:auto;
+    height:8rem;
+    font-size: 0.875rem;
+    padding: 0 0.5em;
+    border-radius: 5px;
+    resize:none;
+    margin-bottom: 3px;
+}
+
+.commentButton{
+    margin: 5px 5px;
+    border-radius: 25%;
+    color: gray;
+    font-weight: 600;
 }
 
 /*---------------Comments---------------*/
 
 .commentBase{
     display:flex;
-    flex-direction: column;
+    flex-direction: row;
+    margin: 5px 5px;
+
 }
 
 .commentText{
-    padding-left: 15px;
+    
 }
 
 .commenterDetails{
@@ -97,8 +204,8 @@ body{
 }
 
 .commenterImg{
-    width: 1.4rem;
-    height: 1.4rem;
+    width: 1.5rem;
+    height: 1.5rem;
     border-radius: 50%;
     background-image: url(profile_pics/profileTest.png);
     background-size: cover;
