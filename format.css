@@ -195,6 +195,14 @@ a {
     border-bottom: 1px solid; 
     width: 100%; 
 }
+.verticalLine {
+    border: none;
+    border-left: 1px solid;
+    height: 100%;
+}
+.gray {
+    color: gainsboro;
+}
 
 #all-posts-container {
     width: calc(75% - (var(--container_pad) * 2));
