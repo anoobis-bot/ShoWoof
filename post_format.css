@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap%27');
 :root {
     --container_pad: 15px;
     --content_padding: 75px;
@@ -5,12 +6,12 @@
     --vote-content-width: 45px;
     --meta-post-color: rgb(177, 177, 177);
     --post-container-top-padding: calc(var(--container_pad) - 5px);
+    font-family: 'Raleway', sans-serif;
 }
 
 body{
     padding-top: 4%;
     background-color: #fff4d48d;
-    font-family: Verdana, Arial, Helvetica, sans-serif;
 }
 .post, .comments{
     width: 60%;
@@ -77,10 +78,12 @@ body{
 
 .numberOfVotes{
     align-items: center;
-    font-size:medium;
+    font-size:1.5em;
     width: fit-content;
     margin: 5px 0px;
     padding: 0px 2.5px;
+    padding-bottom: 3px;
+    font-weight: 500;
 }
 
 .contentWhole{
@@ -89,9 +92,11 @@ body{
 }
 
 .content img{
-    width: 100%;
+    width: 80%;
     max-height: 100%;
     display: block;
+    margin:auto;
+    padding: 10px
 }
 
 .postHead{
@@ -111,13 +116,14 @@ body{
     font-size:12px;
     display: flex;
     flex-direction: row;
-    font-weight: 100;
+    font-weight: 400;
     color:gray;
 }
 
 .caption{
     font-size: 1.75em;
-    font-weight:600;
+    font-weight: 600;
+    font-style: bold;
 }
 
 .firstbar, .caption{
@@ -130,7 +136,7 @@ body{
 
     padding-top: 5px;
 
-    font-weight: lighter;
+    font-weight: 400;
     font-size: 12px;
     color: var(--meta-post-color);
 
