@@ -9,7 +9,7 @@
 
 body{
     padding-top: 4%;
-    background-color: rgb(246, 241, 241);
+    background-color: #fff4d48d;
     font-family: Verdana, Arial, Helvetica, sans-serif;
 }
 .post, .comments{
@@ -18,7 +18,7 @@ body{
     border: 1px solid black;
     margin-left: 20%;
     margin-right: 20%;
-    background-color: white;
+    background-color: #FEFAE0;
 }
 
 .post{
@@ -33,7 +33,9 @@ body{
     align-items: center;
     width: fit-content;
     padding-top: var(--post-container-top-padding);
-    background-color: rgb(239, 239, 239);
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #E9EDC9;;
 }
 
 .votes div.upvote{
@@ -143,7 +145,7 @@ body{
     text-decoration: none;
 }
 
-.postToolBar img, .commentReply img{
+.postToolBar img, .commentReply img, .commentEdit img{
     object-fit: contain;
     height: 17px;
 }
@@ -247,7 +249,7 @@ body{
     padding: 2px 2px;
 }
 
-.commentReply{
+.commentReply, .commentEdit{
     display:flex;
     flex-direction: row;
     align-items: center;
