@@ -5,7 +5,8 @@ html,body {
     margin: 0;
     font-family: 'Raleway', sans-serif;
 }
-main{
+
+main {
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -14,7 +15,8 @@ main{
     width: 100%;
     background-color: #FEFAE0;
 }
-footer{
+
+footer {
     border-top: solid 1.25px rgb(199, 199, 180);
     height: 15%;
     background-color: #D4A373;
@@ -25,11 +27,42 @@ input {
     font-weight: thin;
 }
 
-#login{
+input[type='radio']:checked:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -3px;
+    left: -3px;
+    position: relative;
+    background-color: #D4A373;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('arrow.png');
+    background-repeat: no-repeat;
+    background-position: 90% 50%;
+    padding-right: 20px;
+    background-size: 15px 15px; 
+    padding-left: 60px;
+}
+
+a:link, a:visited, a:active {
+    text-decoration: none;
+    color:white;
+}
+
+#login {
     margin: auto;
 }
 
-#logo{
+#logo {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,7 +73,7 @@ input {
     color:#D4A373;
 }
 
-#loginbox{
+#loginbox {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -51,13 +84,13 @@ input {
     background-color:#FAEDCD;
 }
 
-#logintext{
-    background-color: ;
+#logintext {
     font-size: 18px;
-    padding-top:5px;
+    padding-top: 5px;
     padding-bottom: 10px;
 }
-#email, #pass{
+
+#email, #pass {
     font-size: 16px;
     padding: 15px;
     width: 350px;
@@ -66,7 +99,7 @@ input {
     margin: 5px;
 }
 
-#loginbutton{
+#loginbutton {
     font-size: 20px;
     padding: 15px;
     width: 382px;
@@ -78,34 +111,29 @@ input {
     font-weight: bolder;
 }
 
-#loginbutton:hover{
+#loginbutton:hover {
     background-color: #95aa50;
 }
 
-#breakline{
-    display: flex;
-    flex-direction: row;
-}
-
-#line{
+#line {
     border-top: 1px solid rgb(199, 199, 180);
     width: 163px;
     margin-top:10px;
 }
 
-#longline{
+#or {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#longline {
     border-top: 1px solid rgb(199, 199, 180);
     width: 105%;
     margin-top:5px;
     margin-bottom:10px;
 }
 
-#or{
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
-#account{
+#account {
     font-size: 16px;
     padding: 10px 15px;
     width: 200px;
@@ -118,28 +146,21 @@ input {
     text-align: center;
 }
 
-a:link, a:visited {
-    text-decoration: none;
-    color:white;
-}
-
-a:active {
-    text-decoration: none;
-}
-
-#account:hover{
+#account:hover {
     background-color: rgb(187, 144, 101)
 }
 
-.flex, .flex-2{
+.flex, .flex-2 {
     display: flex;
     flex-direction: row;
 }
-.flex-2{
+
+.flex-2 {
     padding-top: 5px;
     padding-bottom: 10px;
     align-self: flex-start;
 }
+
 .text {
     font-size: 12px;
     align-self: flex-start;
@@ -147,7 +168,7 @@ a:active {
     padding-top: 10px;
 }
 
-#fName, #lName{
+#fName, #lName {
     font-size: 16px;
     padding: 15px;
     width: 154px;
@@ -191,7 +212,7 @@ a:active {
 }
 
 #month, #day, #year{
-    padding: 10px;
+    padding: 12px 10px;
     width: 120px;
     border-radius: 5px;
     border: solid 1px rgb(199, 199, 180);
