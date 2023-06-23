@@ -52,9 +52,9 @@ $(document).ready(function() {
         var commentEdit = $('<div>').addClass('commentEdit');
         commentCommandBar.append(commentEdit);
         var editImg = $('<img>').attr('src', 'post_elements/output-onlinepngtools.png');
-        commentReply.append(editImg);
+        commentEdit.append(editImg);
         var editText = $('<div>').addClass('commentToolText').text('Edit');
-        commentReply.append(editText);
+        commentEdit.append(editText);
 
         
   

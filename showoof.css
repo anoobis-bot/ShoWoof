@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 html,body {
     height: 100%;
     margin: 0;
-    
+    font-family: 'Raleway', sans-serif;
 }
 main{
-    margin:auto;
+    margin: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,8 +16,13 @@ main{
 }
 footer{
     border-top: solid 1.25px rgb(199, 199, 180);
-    height:15%;
+    height: 15%;
     background-color: #D4A373;
+}
+
+input {
+    font-family: 'Raleway', sans-serif;
+    font-weight: thin;
 }
 
 #login{
@@ -37,7 +44,7 @@ footer{
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-weight:500;
+    font-weight: 500;
     border: solid 1px rgb(199, 199, 180);
     border-radius: 5px;
     padding: 10px;
@@ -46,7 +53,7 @@ footer{
 
 #logintext{
     background-color: ;
-    font-size: 20px;
+    font-size: 18px;
     padding-top:5px;
     padding-bottom: 10px;
 }
@@ -154,40 +161,33 @@ a:active {
 }
 
 #radm{
-    margin-left: 45px;
+    margin-left: 48px;
 }
 
 #rado{
     margin-left: 43px;
 }
 
-#female {
+#female, #male, #other {
     background-color: white;
     border-radius: 5px;
     border: solid 1px rgb(199, 199, 180);
-    width: 108px;
+    font-size: 14px;
     padding: 10px 0px 10px 10px;
+    width: 108px;
+}
+
+#female {
     margin-left: 6px;
-    align-self: flex-start;
+    
 }
 
 #male {
-    background-color: white;
-    border-radius: 5px;
-    border: solid 1px rgb(199, 199, 180);
-    width: 98px;
-    padding: 10px;
     margin-left: 10px;
 }
 
 #other {
-    background-color: white;
-    border-radius: 5px;
-    border: solid 1px rgb(199, 199, 180);
-    width: 100px;
-    padding: 10px;
     margin-left: 8px;
-
 }
 
 #month, #day, #year{
