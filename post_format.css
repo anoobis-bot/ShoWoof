@@ -15,7 +15,7 @@ body{
 .post, .comments{
     width: 60%;
     height: auto;
-    border: 1px solid black;
+    border: var(--border-setting);
     margin-left: 20%;
     margin-right: 20%;
     background-color: #FEFAE0;
@@ -220,7 +220,7 @@ body{
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    border: 1px solid red;
+    border: var(--border-setting);
 }
 
 .commenterUser, .commentDate{
