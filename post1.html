@@ -4,6 +4,8 @@
         <title>The quick brown dog</title>
         <link rel="stylesheet" type="text/css" href="post_format.css"/>
         <link rel="stylesheet" type="text/css" href="format.css"/>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="comment.js"></script>
     </head>
     <body>
         <body>
@@ -86,13 +88,13 @@
 
                     <br>
                     
-                    <div class="userComment" id="commentSection">
+                    <div class="userComment">
                         <div class="commentLabel">
                             <div>Comment as</div>&nbsp;<div class="commentUsername">user</div>
                         </div>
-                        <textarea placeholder="Bark!" class="textarea"></textarea>
+                        <textarea placeholder="Bark!" class="textarea" id="inputComment"></textarea>
                         <div class="userCommentCommands">
-                            <button class="commentButton">Comment</button>
+                            <button class="commentButton" id="postComment">Comment</button>
                         </div>
 
                     </div>
@@ -100,7 +102,7 @@
                 </div>
             </div>
             
-            <div class="comments">
+            <div class="comments" id="commentSection">
 
 
                 <div class="commentBase">
@@ -135,8 +137,50 @@
                     </div>
                 </div>
 
+
             </div>
 
         </main>
     </body>
 </html>
+
+<!--
+                <div class="commentBase">
+                    
+                    <div class="commenterImg"></div>
+
+                    <div class="commentDetails">
+                        
+                        <div class="commenterDetails">
+                            <div class="commenterUser">
+                                DoggoExpert
+                            </div>
+                            <div class="commentDate">
+                                now
+                            </div> 
+                        </div>
+                        <div class="commentText">
+                            
+                        </div>
+                        <div class="commentCommandBar">
+                            <div class="commentVote">
+                                <div class="upvote"></div>&nbsp;
+                                <div class="commentToolText">0</div>&nbsp;
+                                <div class="downvote"></div>
+                            </div>
+                            <div class="commentReply">
+                                <img src="post_elements/comment.png">
+                                <div class="commentToolText">Reply</div>
+                            </div>
+                        </div>
+                    
+                    </div>
+                </div>
+
+
+
+
+
+
+
+-->
