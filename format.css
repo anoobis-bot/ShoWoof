@@ -4,17 +4,20 @@
     --nav_width: 230px;
     --content_padding: 75px;
 
-    --border-setting: 1px solid gainsboro;
+    --border-setting: 1px solid rgb(199, 199, 180);
 
     --vote-content-width: 45px;
 
     --meta-post-color: rgb(177, 177, 177);
 
+    --panel-color: #e2c9af;
+    --content-color: #FEFAE0;
+
     --post-container-top-padding: calc(var(--container_pad) - 5px);
 }
 
 body {
-    background-color: rgb(246, 241, 241);
+    background-color: #fff4d48d;
     
     margin: 0;
     width: 100%;
@@ -32,7 +35,7 @@ a {
 
     width: 100%;
     height: var(--sticky_height);
-    background-color: white;
+    background-color: var(--panel-color);
     border-bottom: var(--border-setting);
 
     padding-left: 10px;
@@ -65,7 +68,7 @@ a {
     
     align-self: flex-start;
 
-    background-color: white;
+    background-color: #FAEDCD;
     border-top: var(--border-setting);
     border-right: var(--border-setting);
     width: var(--nav_width);
@@ -232,7 +235,7 @@ a {
     width: var(--vote-content-width);
     padding-top: var(--post-container-top-padding);
 
-    background-color: rgb(239, 239, 239);
+    background-color: #E9EDC9;
 }
 .vote-content div {
     background-size: contain;
@@ -262,7 +265,7 @@ a {
 
 .post-content {
     width: calc(100% - var(--vote-content-width));
-    background-color: rgb(250, 250, 250);
+    background-color: var(--content-color);
 
     display: flex;
     flex-direction: column;

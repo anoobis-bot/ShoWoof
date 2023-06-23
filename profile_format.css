@@ -29,7 +29,7 @@
     width: 100%;
     height: calc((var(--profile-pic-size) / 2));
 
-    background-color: white;
+    background-color: var(--panel-color);
 
     position: relative;
 
@@ -51,7 +51,7 @@
 }
 
 #profile-picture-container {
-    background-color: white;
+    background-color: var(--panel-color);
     
     position: absolute;
 
@@ -115,7 +115,7 @@
 
     padding: var(--container_pad) var(--container_pad) var(--container_pad) var(--container_pad);
 
-    background-color: white;
+    background-color: #FEFAE0;
     border: 1px solid gainsboro;
 }
 #name {
