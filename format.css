@@ -290,6 +290,14 @@ PostMeta {
     margin-bottom: 10px;
     color: var(--meta-post-color);
 }
+PostMeta a {
+    display: inline;
+    text-decoration: none;
+    color: inherit;
+}
+PostMeta a:hover {
+    text-decoration: underline;
+}
 
 .post-content img.post-image {
     object-fit: contain;
