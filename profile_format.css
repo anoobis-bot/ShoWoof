@@ -3,13 +3,15 @@
 
     --profile-pic-left-pos: 80px;
     --profile-pic-top-pos: -130px;
+
+    font-family: 'Raleway', sans-serif;;
 }
 
 #profile-container {
     margin-left: calc(var(--nav_width) + (var(--container_pad) * 2));
     margin-top: var(--sticky_height);
 
-    font-family: Verdana;
+    /* font-family: Verdana; */
     font-size: 13px;
 }
 
@@ -33,7 +35,7 @@
 
     position: relative;
 
-    font-family: Verdana;
+    /* font-family: Verdana; */
     font-size: 50px;
     font-weight: bold;
 
