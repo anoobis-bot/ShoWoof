@@ -9,4 +9,7 @@ app.get("/", (req, res) => {
     res.render("index")
 })
 
+const profilesRoutes = require('./routes/profiles');
+app.use('/profiles', profilesRoutes)
+
 app.listen(3000)
