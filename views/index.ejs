@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="css/format.css"/>
+    <link rel="stylesheet" type="text/css" href="css/format.css" />
     <title>ShoWoof</title>
 </head>
 
@@ -29,7 +29,9 @@
                 </tr>
 
                 <tr>
-                    <td><div class="horizontalLine"></div></td>
+                    <td>
+                        <div class="horizontalLine"></div>
+                    </td>
                 </tr>
 
                 <tr>
@@ -37,7 +39,9 @@
                 </tr>
 
                 <tr>
-                    <td><div class="horizontalLine"></div></td>
+                    <td>
+                        <div class="horizontalLine"></div>
+                    </td>
                 </tr>
 
                 <tr>
@@ -45,7 +49,9 @@
                 </tr>
 
                 <tr>
-                    <td><div class="horizontalLine"></div></td>
+                    <td>
+                        <div class="horizontalLine"></div>
+                    </td>
                 </tr>
 
                 <tr>
@@ -58,31 +64,19 @@
     <div id="content-container">
         <p><b>Top posts of today</b></p>
         <div id="top-posts-container">
-            <div class="top-posts" style="background-image: url(images/test_pics/top-posts/top1.jpg);">
+            <% for (let i = 0; i < 4; i++) { %>
+            <div class="top-posts" style="background-image: url(images/test_pics/top-posts/top<%= i + 1 %>.jpg);">
                 <div class="top-posts-text-container">
-                    <p>Look at our newest addition in our family!</p>
+                    <p><%= topPostsText[i] %></p>
                 </div>
             </div>
-            <div class="top-posts" style="background-image: url(images/test_pics/top-posts/top2.webp);">
-                <div class="top-posts-text-container">
-                    <p>We finaly got a professional photograph!</p>
-                </div>
-            </div>
-            <div class="top-posts" style="background-image: url(images/test_pics/top-posts/top3.webp);">
-                <div class="top-posts-text-container">
-                    <p>Quality time at the lake ^_^</p>
-                </div>
-            </div>
-            <div class="top-posts" style="background-image: url(images/test_pics/top-posts/top4.png);">
-                <div class="top-posts-text-container">
-                    <p>Majestic.</p>
-                </div>
-            </div>
+            <% } %>
         </div>
 
         <p><b>Daily Feed</b></p>
         <div id="feed-container">
             <div id="all-posts-container">
+                <% for (let i = 0; i < posts.length; i++) { %>
                 <div class="post-container">
                     <div class="vote-content">
                         <div class="upvote-btn"></div>
@@ -91,104 +85,26 @@
                     </div>
 
                     <div class="post-content">
-                        <PostMeta>Posted by <a href="profiles/Govna.html">u/Govna</a> 12 hours ago</PostMeta>
-                        <PostTitle>The quick brown dog</PostTitle>
-                        <img src="images/test_pics/posts/instadog.jpg" class="post-image">
+                        <PostMeta>Posted by <a href="<%= posts[i].profileLink %>">u/<%= posts[i].author %></a> <%= posts[i].time %></PostMeta>
+                        <PostTitle><%= posts[i].title %></PostTitle>
+                        <% if (posts[i].image) { %>
+                        <img src="<%= posts[i].image %>" class="post-image">
+                        <% } %>
+                        <% if (posts[i].description) { %>
+                        <PostDesc><%= posts[i].description %></PostDesc>
+                        <% } %>
                         <div class="action-container">
                             <img src="images/post_elements/comment.png" class="action-icon">
-                            <a href="post1.html">&nbsp;Comment</a>
+                            <a href="<%= posts[i].link %>">&nbsp;Comment</a>
                             &nbsp;&nbsp;
                             <img src="images/post_elements/share.png" class="action-icon">
-                            <a href="post1.html">&nbsp;Share</a>
+                            <a href="<%= posts[i].link %>">&nbsp;Share</a>
                         </div>
                     </div>
                 </div>
-
-                <div class="post-container">
-                    <div class="vote-content">
-                        <div class="upvote-btn"></div>
-                        <p>vote</p>
-                        <div class="downvote-btn"></div>
-                    </div>
-
-                    <div class="post-content">
-                        <PostMeta>Posted by <a href="profiles/UWotMate.html">u/UWotMate</a> 18 hours ago</PostMeta>
-                        <PostTitle>What's the best breed of dog for you?</PostTitle>
-                        <PostDesc>Mine would be the black labrador! They're so cute and very intelligent.</PostDesc>
-                        <div class="action-container">
-                            <img src="images/post_elements/comment.png" class="action-icon">
-                            <a href="post2.html">&nbsp;Comment</a>
-                            &nbsp;&nbsp;
-                            <img src="images/post_elements/share.png" class="action-icon">
-                            <a href="post2.html">&nbsp;Share</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="post-container">
-                    <div class="vote-content">
-                        <div class="upvote-btn"></div>
-                        <p>vote</p>
-                        <div class="downvote-btn"></div>
-                    </div>
-
-                    <div class="post-content">
-                        <PostMeta>Posted by <a href="profiles/Dogsmith.html">u/Dogsmith</a> 18 hours ago</PostMeta>
-                        <PostTitle>Hard work with my dog</PostTitle>
-                        <img src="images/test_pics/posts/smith-dog.jpg" class="post-image">
-                        <div class="action-container">
-                            <img src="images/post_elements/comment.png" class="action-icon">
-                            <a href="post3.html">&nbsp;Comment</a>
-                            &nbsp;&nbsp;
-                            <img src="images/post_elements/share.png" class="action-icon">
-                            <a href="post3.html">&nbsp;Share</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="post-container">
-                    <div class="vote-content">
-                        <div class="upvote-btn"></div>
-                        <p>vote</p>
-                        <div class="downvote-btn"></div>
-                    </div>
-
-                    <div class="post-content">
-                        <PostMeta>Posted by <a href="profiles/Zoominator.html">u/Zoominator</a> 1 day ago</PostMeta>
-                        <PostTitle>My dog got the zoomies!</PostTitle>
-                        <img src="images/test_pics/posts/zoomies.jpg" class="post-image">
-                        <div class="action-container">
-                            <img src="images/post_elements/comment.png" class="action-icon">
-                            <a href="post4.html">&nbsp;Comment</a>
-                            &nbsp;&nbsp;
-                            <img src="images/post_elements/share.png" class="action-icon">
-                            <a href="post4.html">&nbsp;Share</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="post-container">
-                    <div class="vote-content">
-                        <div class="upvote-btn"></div>
-                        <p>vote</p>
-                        <div class="downvote-btn"></div>
-                    </div>
-
-                    <div class="post-content">
-                        <PostMeta>Posted by <a href="profiles/DogsDBest.html">u/DogsDBest</a> 1 day ago</PostMeta>
-                        <PostTitle>Face of my pit before I feed him</PostTitle>
-                        <img src="images/test_pics/posts/smiling-pit.jpg_large" class="post-image">
-                        <div class="action-container">
-                            <img src="images/post_elements/comment.png" class="action-icon">
-                            <a href="post5.html">&nbsp;Comment</a>
-                            &nbsp;&nbsp;
-                            <img src="images/post_elements/share.png" class="action-icon">
-                            <a href="post5.html">&nbsp;Share</a>
-                        </div>
-                    </div>
-                </div>
+                <% } %>
             </div>
-            
+
             <div id="credit-container">
                 <div class="horizontalLine"></div> <br>
                 De La Salle University. <br> <br>
@@ -200,5 +116,5 @@
         </div>
 
     </div>
-    
+
 </body>
