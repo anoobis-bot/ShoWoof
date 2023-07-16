@@ -52,7 +52,7 @@ a {
 #logo-pic {
     flex-basis: 40px;
     height: 40px;
-    background-image: url(post_elements/logo.png);
+    background-image: url(images/post_elements/logo.png);
     background-size: 50px;
     background-repeat: no-repeat;
     background-position: center;
