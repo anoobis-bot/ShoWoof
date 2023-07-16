@@ -32,6 +32,30 @@ app.get("/", (req, res) => {
             description: "Mine would be the black labrador! They're so cute and very intelligent.",
             link: "post2.html"
         },
+        {
+            profileLink: "profiles/Dogsmith.html",
+            author: "u/UWotMate",
+            time: "18 hours ago",
+            title: "Hard work with my dog",
+            image: "images/test_pics/posts/smith-dog.jpg",
+            link: "post3.html"
+        },
+        {
+            profileLink: "profiles/Zoominator.html",
+            author: "u/Zoominator",
+            time: "1 day ago",
+            title: "My dog got the zoomies!",
+            image: "images/test_pics/posts/zoomies.jpg",
+            link: "post4.html"
+        },
+        {
+            profileLink: "profiles/DogsDBest.html",
+            author: "u/DogsDBest",
+            time: "1 day ago",
+            title: "Face of my pit before i feed him",
+            image: "images/test_pics/posts/smiling-pit.jpg_large",
+            link: "post5.html"
+        }
         // Add more post objects as needed
     ];
 
