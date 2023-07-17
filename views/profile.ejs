@@ -26,7 +26,7 @@
         <div id="nav-buttons">
             <table>
                 <tr>
-                    <td class="nav-link"><a href="../index.html">Home</a></td>
+                    <td class="nav-link"><a href="/">Home</a></td>
                 </tr>
 
                 <tr>
@@ -34,7 +34,7 @@
                 </tr>
                 
                 <tr>
-                    <td class="nav-link"><a href="../profiles/DogsDBest.html">Profile</a></td>
+                    <td class="nav-link"><a href="./<%=user%>">Profile</a></td>
                 </tr>
 
                 <tr>
@@ -57,7 +57,7 @@
     </div>
 
     <div id="profile-container">
-        <div id="cover-photo" style="background-image: url(images/cover_pics/<%=username%>_cover.jpg);"></div>
+        <div id="cover-photo" style="background-image: url(/images/profile_pics/cover_pics/<%=username%>_cover.jpg);"></div>
 
         <div id="profile-name-content">
             <div id="profile-picture-container">
@@ -65,10 +65,12 @@
             </div>
 
             <p>u/<%=username%></p>
-
+            
+            <% if (username === user) {%>
             <div class="edit-profile-btn">
-                <a href="EditProfile.html">Edit Profile</a>
+                <a href="<%=user%>/edit">Edit Profile</a>
             </div>
+            <% } %>
         </div>
 
         <p id="posts-header"><b>Your Posts</b></p>

@@ -1,9 +1,14 @@
 const express = require('express');
 const router = express.Router();
+require('dotenv').config()
 
 router.get('/:username', (req, res) => {
-    // TODO fix the ejs file here
-    res.render("profile", {username: req.username});
+    res.render("profile", { user: process.env.user,
+                            username: req.username });
+});
+
+router.get('/:username/edit', (req, res) => {
+    res.render("edit_profile")
 });
 
 router.param("username", (req, res, next, username) => {
