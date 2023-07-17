@@ -7,54 +7,9 @@
 </head>
 
 <body>
-    <div id="sticky-header">
-        <div id="logo-pic">
+    <%- include('partials/sticky_header.ejs'); %>
 
-        </div>
-
-        <div id="logo-name">
-            <p>ShoWoof</p>
-        </div>
-
-        <div class="search-bar-container">
-            <div class="search-icon"></div>
-            <input type="text" class="search-input" placeholder="Search...">
-        </div>
-    </div>
-
-    <div id="nav-panel">
-        <div id="nav-buttons">
-            <table>
-                <tr>
-                    <td class="nav-link"><a href="../index.html">Home</a></td>
-                </tr>
-
-                <tr>
-                    <td><div class="horizontalLine"></div></td>
-                </tr>
-                
-                <tr>
-                    <td class="nav-link"><a href="../profiles/DogsDBest.html">Profile</a></td>
-                </tr>
-
-                <tr>
-                    <td><div class="horizontalLine"></div></td>
-                </tr>
-
-                <tr>
-                    <td class="nav-link"><a href="../register.html">Sign Up</a></td>
-                </tr>
-
-                <tr>
-                    <td><div class="horizontalLine"></div></td>
-                </tr>
-
-                <tr>
-                    <td class="nav-link"><a href="../login.html">Login</a></td>
-                </tr>
-            </table>
-        </div>
-    </div>
+    <%- include('partials/nav_panel.ejs'); %>
 
     <div id="content-container">
         <div class="fill-up-container">
