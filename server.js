@@ -59,7 +59,7 @@ app.get("/", (req, res) => {
         // Add more post objects as needed
     ];
 
-    res.render("index", { topPostsText, posts });
+    res.render("index", { topPostsText, posts, user: process.env.user });
 });
 
 const profilesRoutes = require('./routes/profiles');
