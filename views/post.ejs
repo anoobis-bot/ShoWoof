@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= pageTitle %></title>
+        <link rel="stylesheet" type="text/css" href="post_format.css"/>
+        <link rel="stylesheet" type="text/css" href="format.css"/>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="comment.js"></script>
+    </head>
+    <body>
+        <div id="sticky-header">
+            <div id="logo-pic">
+                <!-- Logo image -->
+            </div>
+            <div id="logo-name">
+                <p>ShoWoof</p>
+            </div>
+            <div class="search-bar-container">
+                <div class="search-icon"></div>
+                <input type="text" class="search-input" placeholder="Search...">
+            </div>
+        </div>
+        <div id="nav-panel">
+            <div id="nav-buttons">
+                <table>
+                    <tr>
+                        <td class="nav-link"><a href="index.html">Home</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="horizontalLine"></div></td>
+                    </tr>
+                    <tr>
+                        <td class="nav-link"><a href="profiles/DogsDBest.html">Profile</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="horizontalLine"></div></td>
+                    </tr>
+                    <tr>
+                        <td class="nav-link"><a href="register.html">Sign Up</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="horizontalLine"></div></td>
+                    </tr>
+                    <tr>
+                        <td class="nav-link"><a href="login.html">Login</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <main>
+            <div class="post">
+                <div class="votes">
+                   <div class="upvote"></div>
+                   <div class="numberOfVotes"><%= numberOfVotes %></div>
+                   <div class="downvote"></div>
+                </div>
+
+                <div class="contentWhole">
+                    <div class="postHead">
+                        <div class="firstBar">
+                            <div class="username">
+                                Posted by <%= postAuthor %>
+                            </div>
+                            <div class="datePosted"> 
+                                &nbsp;<%= postDate %>
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <%= postCaption %>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <img src="<%= postImageSrc %>">
+                    </div>
+                    <div class="postToolBar">
+                        <img src="post_elements/comment.png">
+                        <a href="#commentSection">Comments<a>&nbsp;
+                        <img src="post_elements/share.png">
+                        <a>Share</a>
+                    </div>
+                    <br>
+                    <div class="userComment">
+                        <div class="commentLabel">
+                            <div>Comment as</div>&nbsp;<div class="commentUsername"><%= commentUsername %></div>
+                        </div>
+                        <textarea placeholder="Bark!" class="textarea" id="inputComment"></textarea>
+                        <div class="userCommentCommands">
+                            <button class="commentButton" id="postComment">Comment</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="comments" id="commentSection">
+                <% comments.forEach(function(comment) { %>
+                    <div class="commentBase">
+                        <div class="commenterImg"></div>
+                        <div class="commentDetails">
+                            <div class="commenterDetails">
+                                <div class="commenterUser">
+                                    <%= comment.commenter %>
+                                </div>
+                                <div class="commentDate">
+                                    <%= comment.commentDate %>
+                                </div> 
+                            </div>
+                            <div class="commentText">
+                                <%= comment.commentText %>
+                            </div>
+                            <div class="commentCommandBar">
+                                <div class="commentVote">
+                                    <div class="upvote"></div>&nbsp;
+                                    <div class="commentToolText"><%= comment.upvotes %></div>&nbsp;
+                                    <div class="downvote"></div>
+                                </div>
+                                <div class="commentReply">
+                                    <img src="post_elements/comment.png">
+                                    <div class="commentToolText">Reply</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+        </main>
+    </body>
+</html>
