@@ -26,7 +26,7 @@ app.get("/", (req, res) => {
             time: "12 hours ago",
             title: "The quick brown dog",
             image: "images/test_pics/posts/instadog.jpg",
-            link: "post1.html"
+            link: "/post/post0"
         },
         {
             profileLink: "profiles/UWotMate",
@@ -67,7 +67,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/post/:postId", (req, res) => {
-    // Assuming you have a posts array with the individual post data
+     // Assuming you have a posts array with the individual post data
     // Replace 'posts' below with your actual data source
     
     // const post = posts.find(post => post.link === req.params.postId);
@@ -76,23 +76,30 @@ app.get("/post/:postId", (req, res) => {
     //     // Handle the case when the post is not found (e.g., show a 404 page)
     //     return res.status(404).render("notfound", { user: process.env.user });
     // }
+    const comments = [
+        {
+            commenter: 'DoggoExpert',
+            commentDate: '1 hour ago',
+            commentText: "That's not brown?!1!"
+        }
+        // Add more comments here...
+    ];
 
-    res.render("post", { pageTitle: "The Quick Brown Dog", 
-                         numberOfVotes: 5,
-                         postAuthor: "u/Govna",
-                         postDate: "12 hours ago",
-                         postCaption: "The Quick Brown Dog",
-                         postImageSrc: "/images/test_pics/posts/instadog.jpg",
-                         commentUsername: "u/DogsDBest",
-                         comment: {
-                            commenter: 'DoggoExpert', // Replace this with the username of the commenter for this comment
-                            commentDate: '1 hour ago', // Replace this with the date of the comment
-                            commentText: "That's not brown?!1!"// Add more properties as needed for the comment
-                        },
-                         user: process.env.user });
+    res.render("post", {
+        pageTitle: "The Quick Brown Dog",
+        numberOfVotes: 5,
+        postAuthor: "u/Govna",
+        postDate: "12 hours ago",
+        postCaption: "The Quick Brown Dog",
+        postImageSrc: "/images/test_pics/posts/instadog.jpg",
+        commentUsername: "u/DogsDBest",
+        comments: comments, // Pass the 'comments' array to the template
+        user: process.env.user
+    });
 });
 
 const profilesRoutes = require('./routes/profiles');
 app.use('/profiles', profilesRoutes)
+
 
 app.listen(3000);

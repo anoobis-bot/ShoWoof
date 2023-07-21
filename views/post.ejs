@@ -2,8 +2,8 @@
 <html>
     <head>
         <title><%= pageTitle %></title>
-        <link rel="stylesheet" type="text/css" href="post_format.css"/>
-        <link rel="stylesheet" type="text/css" href="format.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/post_format.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/format.css"/>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="comment.js"></script>
     </head>
@@ -93,25 +93,57 @@
             </div>
             
             <div class="comments" id="commentSection">
-                <% comments.forEach(function(comment) { %>
+                <!-- Check if comment is an array -->
+                <% if (Array.isArray(comments)) { %>
+                    <% comments.forEach(function(comment) { %>
+                        <div class="commentBase">
+                            <div class="commenterImg"></div>
+                            <div class="commentDetails">
+                                <div class="commenterDetails">
+                                    <div class="commenterUser">
+                                        <%= comment.commenter %>
+                                    </div>
+                                    <div class="commentDate">
+                                        <%= comment.commentDate %>
+                                    </div> 
+                                </div>
+                                <div class="commentText">
+                                    <%= comment.commentText %>
+                                </div>
+                                <div class="commentCommandBar">
+                                    <div class="commentVote">
+                                        <div class="upvote"></div>&nbsp;
+                                        <div class="commentToolText"><%= comment.upvotes %></div>&nbsp;
+                                        <div class="downvote"></div>
+                                    </div>
+                                    <div class="commentReply">
+                                        <img src="post_elements/comment.png">
+                                        <div class="commentToolText">Reply</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% }); %>
+                <% } else { %>
+                    <!-- Render a single comment if comments is not an array -->
                     <div class="commentBase">
                         <div class="commenterImg"></div>
                         <div class="commentDetails">
                             <div class="commenterDetails">
                                 <div class="commenterUser">
-                                    <%= comment.commenter %>
+                                    <%= comments.commenter %>
                                 </div>
                                 <div class="commentDate">
-                                    <%= comment.commentDate %>
+                                    <%= comments.commentDate %>
                                 </div> 
                             </div>
                             <div class="commentText">
-                                <%= comment.commentText %>
+                                <%= comments.commentText %>
                             </div>
                             <div class="commentCommandBar">
                                 <div class="commentVote">
                                     <div class="upvote"></div>&nbsp;
-                                    <div class="commentToolText"><%= comment.upvotes %></div>&nbsp;
+                                    <div class="commentToolText"><%= comments.upvotes %></div>&nbsp;
                                     <div class="downvote"></div>
                                 </div>
                                 <div class="commentReply">
@@ -121,8 +153,9 @@
                             </div>
                         </div>
                     </div>
-                <% }); %>
+                <% } %>
             </div>
+            
         </main>
     </body>
 </html>

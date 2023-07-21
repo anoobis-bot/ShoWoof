@@ -40,7 +40,7 @@ body{
 }
 
 .votes div.upvote{
-    background-image:url(post_elements/upvote.png);
+    background-image:url(/images/post_elements/upvote.png);
     background-size: contain;
     width: 30px;
     height: 30px;
@@ -49,7 +49,7 @@ body{
 }
 
 .votes div.downvote{
-    background-image:url(post_elements/downvote.png);
+    background-image:url(/images/post_elements/downvote.png);
     background-size: contain;
     width: 30px;
     height: 30px;
@@ -58,7 +58,7 @@ body{
 }
 
 .votes div.upvote:hover{
-    background-image:url(post_elements/upvoteColored.png);
+    background-image:url(/images/post_elements/upvoteColored.png);
     background-size: contain;
     width: 30px;
     height: 30px;
@@ -67,7 +67,7 @@ body{
 }
 
 .votes div.downvote:hover{
-    background-image:url(post_elements/downvoteColored.png);
+    background-image:url(/images/post_elements/downvoteColored.png);
     background-size: contain;
     width: 30px;
     height: 30px;
@@ -222,7 +222,7 @@ body{
     width: 1.5rem;
     height: 1.5rem;
     border-radius: 50%;
-    background-image: url(profile_pics/profileTest.png);
+    background-image: url(/images/profile_pics/profileTest.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -269,7 +269,7 @@ div.commentToolText{
 }
 
 .commentCommandBar div.upvote{
-    background-image:url(post_elements/upvote.png);
+    background-image:url(/images/post_elements/upvote.png);
     background-size: contain;
     width: 20px;
     height: 20px;
@@ -278,7 +278,7 @@ div.commentToolText{
 }
 
 .commentCommandBar div.downvote{
-    background-image:url(post_elements/downvote.png);
+    background-image:url(/images/post_elements/downvote.png);
     background-size: contain;
     width: 20px;
     height: 20px;
@@ -287,7 +287,7 @@ div.commentToolText{
 }
 
 .commentCommandBar div.upvote:hover{
-    background-image:url(post_elements/upvoteColored.png);
+    background-image:url(/images/post_elements/upvoteColored.png);
     background-size: contain;
     width: 20px;
     height: 20px;
@@ -296,7 +296,7 @@ div.commentToolText{
 }
 
 .commentCommandBar div.downvote:hover{
-    background-image:url(post_elements/downvoteColored.png);
+    background-image:url(/images/post_elements/downvoteColored.png);
     background-size: contain;
     width: 20px;
     height: 20px;
