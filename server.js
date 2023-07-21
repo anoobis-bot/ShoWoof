@@ -99,7 +99,9 @@ app.get("/post/:postId", (req, res) => {
 });
 
 const profilesRoutes = require('./routes/profiles');
-app.use('/profiles', profilesRoutes)
+app.use('/profiles', profilesRoutes);
 
+const mainRoute = require('./routes/main');
+app.use('/', mainRoute);
 
 app.listen(3000);
