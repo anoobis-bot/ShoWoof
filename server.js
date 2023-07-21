@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 
-const connectDB = require("./db");
+const connectDB = require("./db/config/db");
 const { post } = require("./routes/profiles");
 const db = connectDB();
 
