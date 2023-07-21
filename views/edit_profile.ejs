@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/format.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/edit_format.css"/>
+    <title>Edit Profile</title>
+</head>
+
+<body>
+    <%- include('partials/sticky_header.ejs'); %>
+
+    <%- include('partials/nav_panel.ejs'); %>
+
+    <div id="content-container">
+        <div class="fill-up-container">
+            <Heading>Edit Profile</Heading>
+            
+            <form action="/">
+                <div class="field-container">
+                    <label for="username" class="lbl">Username:</label>
+                    <input type="text" id="username" name="username" class="txt-field">
+                </div>
+                <div class="field-container">
+                    <label for="email" class="lbl">Email:</label>
+                    <input type="text" id="email" name="email" class="txt-field">
+                </div>
+                <div class="field-container">
+                    <label for="photo" class="lbl">Profile Photo</label>
+                    <input type="button" id="photo" name="photo" value="Upload" class="btn">
+                </div>
+                
+                <input type="submit" value="Edit" id="submit-button">
+            </form>
+        </div>
+        
+    </div>
+    
+</body>

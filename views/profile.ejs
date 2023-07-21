@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/format.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/profile_format.css"/>
+    <title>u/<%=username%></title>
+</head>
+
+<body>
+    <%- include('partials/sticky_header.ejs'); %>
+    
+    <%- include('partials/nav_panel.ejs'); %>
+
+    <div id="profile-container">
+        <div id="cover-photo" style="background-image: url(/images/profile_pics/cover_pics/<%=username%>_cover.jpg);"></div>
+
+        <div id="profile-name-content">
+            <div id="profile-picture-container">
+                <img src="/images/profile_pics/profile_pic/<%=username%>.jpg">
+            </div>
+
+            <p>u/<%=username%></p>
+            
+            <% if (username === user) {%>
+            <div class="edit-profile-btn">
+                <a href="<%=user%>/edit">Edit Profile</a>
+            </div>
+            <% } %>
+        </div>
+
+        <p id="posts-header"><b>Your Posts</b></p>
+
+        <div id="profile-content">
+            <div id="user-posts">
+                <div class="post-container">
+                    <div class="vote-content">
+                        <div class="upvote-btn"></div>
+                        <p>vote</p>
+                        <div class="downvote-btn"></div>
+                    </div>
+
+                    <div class="post-content">
+                        <PostMeta>Posted by <a href="../profiles/DogsDBest.html">u/DogsDBest</a> 1 day ago</PostMeta>
+                        <PostTitle>Face of my pit before I feed him</PostTitle>
+                        <img src="../test_pics/posts/smiling-pit.jpg_large" class="post-image">
+                        <div class="action-container">
+                            <img src="../post_elements/comment.png" class="action-icon">
+                            <a href="../post5.html">&nbsp;Comment</a>
+                            &nbsp;&nbsp;
+                            <img src="../post_elements/share.png" class="action-icon">
+                            <a href="../post5.html">&nbsp;Share</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="user-stats">
+                <div id="name">u/<%=username%></div>
+                <div class="horizontalLine gray"></div>
+                <div id="number-row">
+                    <div class="stat-container">
+                        karma <br> 1000
+                    </div>
+
+                    <div class="verticalLine gray"></div>
+
+                    <div class="stat-container">
+                        comments <br> 0
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>

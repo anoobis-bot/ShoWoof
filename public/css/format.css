@@ -52,7 +52,7 @@ a {
 #logo-pic {
     flex-basis: 40px;
     height: 40px;
-    background-image: url(post_elements/logo.png);
+    background-image: url(/images/post_elements/logo.png);
     background-size: 50px;
     background-repeat: no-repeat;
     background-position: center;
@@ -87,7 +87,7 @@ a {
 }
 
 .search-icon {
-    background-image: url(picture_elements/search.png);
+    background-image: url(/images/picture_elements/search.png);
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -291,16 +291,16 @@ a {
     background-position: center;
 }
 .vote-content div.upvote-btn{
-    background-image: url(post_elements/upvote.png);
+    background-image: url(/images/post_elements/upvote.png);
 }
 .vote-content div.upvote-btn:hover {
-    background-image: url(post_elements/upvoteColored.png);
+    background-image: url(/images/post_elements/upvoteColored.png);
 }
 .vote-content div.downvote-btn:hover {
-    background-image: url(post_elements/downvoteColored.png);
+    background-image: url(/images/post_elements/downvoteColored.png);
 }
 .vote-content .downvote-btn {
-    background-image: url(post_elements/downvote.png);
+    background-image: url(/images/post_elements/downvote.png);
 }
 .vote-content p {
     margin-top: 5px;

@@ -18,7 +18,7 @@ $(document).ready(function() {
         var commenterDetails = $('<div>').addClass('commenterDetails');
         commentDetails.append(commenterDetails);
   
-        var commenterUser = $('<div>').addClass('commenterUser').text('u/DogsDBest');
+        var commenterUser = $('<div>').addClass('commenterUser').text('DogsDBest');
         commenterDetails.append(commenterUser);
   
         var commentDate = $('<div>').addClass('commentDate').text('now');
