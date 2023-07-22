@@ -11,48 +11,29 @@
     <%- include('partials/nav_panel.ejs'); %>
 
     <div id="content-container">
-        <p><b>Top posts of today</b></p>
-        <div id="top-posts-container">
-            <% for (let i = 0; i < 4; i++) { %>
-            <div class="top-posts" style="background-image: url(images/test_pics/top-posts/top<%= i + 1 %>.jpg);">
-                <div class="top-posts-text-container">
-                    <p><%= topPostsText[i] %></p>
+      
+        <% data.forEach(post => { %>
+            <div class="post-container">
+                <div class="vote-content">
+                    <div class="upvote-btn"></div>
+                    <p>vote</p>
+                    <div class="downvote-btn"></div>
                 </div>
-            </div>
-            <% } %>
-        </div>
 
-        <p><b>Daily Feed</b></p>
-        <div id="feed-container">
-            <div id="all-posts-container">
-                <% for (let i = 0; i < posts.length; i++) { %>
-                <div class="post-container">
-                    <div class="vote-content">
-                        <div class="upvote-btn"></div>
-                        <p>vote</p>
-                        <div class="downvote-btn"></div>
-                    </div>
-
-                    <div class="post-content">
-                        <PostMeta>Posted by <a href="<%= posts[i].profileLink %>">u/<%= posts[i].author %></a> <%= posts[i].time %></PostMeta>
-                        <PostTitle><%= posts[i].title %></PostTitle>
-                        <% if (posts[i].image) { %>
-                        <img src="<%= posts[i].image %>" class="post-image">
-                        <% } %>
-                        <% if (posts[i].description) { %>
-                        <PostDesc><%= posts[i].description %></PostDesc>
-                        <% } %>
-                        <div class="action-container">
-                            <img src="images/post_elements/comment.png" class="action-icon">
-                            <a href="<%= posts[i].link %>">&nbsp;Comment</a>
-                            &nbsp;&nbsp;
-                            <img src="images/post_elements/share.png" class="action-icon">
-                            <a href="<%= posts[i].link %>">&nbsp;Share</a>
-                        </div>
+                <div class="post-content">
+                    <PostMeta>Posted by <a href="https://docs.google.com/document/d/1lwspnKTddHMTM0QCOHAitKJxUZ-MV9DapjXMj4hbKZQ/edit">u/<%= post.author %></a> <%= post.datePosted.toDateString() %></PostMeta>
+                    <PostTitle><%= post.title %></PostTitle>
+                    <PostDesc><%= post.caption %></PostDesc>
+                    <div class="action-container">
+                        <img src="images/post_elements/comment.png" class="action-icon">
+                        <a href="post0">&nbsp;Comment</a>
+                        &nbsp;&nbsp;
+                        <img src="images/post_elements/share.png" class="action-icon">
+                        <a href="post0">&nbsp;Share</a>
                     </div>
                 </div>
-                <% } %>
             </div>
+        <% }) %>
 
             <div id="credit-container">
                 <div class="horizontalLine"></div> <br>
