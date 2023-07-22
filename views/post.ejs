@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title><%= pageTitle %></title>
+        <title><%= data.title %></title>
         <link rel="stylesheet" type="text/css" href="/css/post_format.css"/>
         <link rel="stylesheet" type="text/css" href="/css/format.css"/>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -52,7 +52,7 @@
             <div class="post">
                 <div class="votes">
                    <div class="upvote"></div>
-                   <div class="numberOfVotes"><%= numberOfVotes %></div>
+                   <div class="numberOfVotes"><%= data.votes %></div>
                    <div class="downvote"></div>
                 </div>
 
@@ -60,18 +60,18 @@
                     <div class="postHead">
                         <div class="firstBar">
                             <div class="username">
-                                Posted by <%= postAuthor %>
+                                Posted by <%= data.author %>
                             </div>
                             <div class="datePosted"> 
-                                &nbsp;<%= postDate %>
+                                &nbsp;<%= data.datePosted %>
                             </div>
                         </div>
                         <div class="caption">
-                            <%= postCaption %>
+                            <%= data.title %>
                         </div>
                     </div>
                     <div class="content">
-                        <img src="<%= postImageSrc %>">
+                        <img src="<%= data.caption %>">
                     </div>
                     <div class="postToolBar">
                         <img src="post_elements/comment.png">
@@ -82,7 +82,7 @@
                     <br>
                     <div class="userComment">
                         <div class="commentLabel">
-                            <div>Comment as</div>&nbsp;<div class="commentUsername"><%= commentUsername %></div>
+                            <div>Comment as</div>&nbsp;<div class="commentUsername"><%= data.comments.commentAuthor %></div>
                         </div>
                         <textarea placeholder="Bark!" class="textarea" id="inputComment"></textarea>
                         <div class="userCommentCommands">
@@ -91,7 +91,6 @@
                     </div>
                 </div>
             </div>
-            
             <div class="comments" id="commentSection">
                 <!-- Check if comment is an array -->
                 <% if (Array.isArray(comments)) { %>
@@ -101,19 +100,19 @@
                             <div class="commentDetails">
                                 <div class="commenterDetails">
                                     <div class="commenterUser">
-                                        <%= comment.commenter %>
+                                        <%= date.comments.commentAuthor %>
                                     </div>
                                     <div class="commentDate">
-                                        <%= comment.commentDate %>
+                                        <%= date.comments.commentDate %>
                                     </div> 
                                 </div>
                                 <div class="commentText">
-                                    <%= comment.commentText %>
+                                    <%= date.comments.comment %>
                                 </div>
                                 <div class="commentCommandBar">
                                     <div class="commentVote">
                                         <div class="upvote"></div>&nbsp;
-                                        <div class="commentToolText"><%= comment.upvotes %></div>&nbsp;
+                                        <div class="commentToolText"><%= date.comments.commentUpvotes %></div>&nbsp;
                                         <div class="downvote"></div>
                                     </div>
                                     <div class="commentReply">
@@ -131,19 +130,19 @@
                         <div class="commentDetails">
                             <div class="commenterDetails">
                                 <div class="commenterUser">
-                                    <%= comments.commenter %>
+                                    <%= date.comments.commentAuthor %>
                                 </div>
                                 <div class="commentDate">
-                                    <%= comments.commentDate %>
+                                    <%= date.comments.commentDate %>
                                 </div> 
                             </div>
                             <div class="commentText">
-                                <%= comments.commentText %>
+                                <%= date.comments.comment %>
                             </div>
                             <div class="commentCommandBar">
                                 <div class="commentVote">
                                     <div class="upvote"></div>&nbsp;
-                                    <div class="commentToolText"><%= comments.upvotes %></div>&nbsp;
+                                    <div class="commentToolText"><%= date.comments.commentUpvotes %></div>&nbsp;
                                     <div class="downvote"></div>
                                 </div>
                                 <div class="commentReply">
@@ -155,6 +154,7 @@
                     </div>
                 <% } %>
             </div>
+            
             
         </main>
     </body>

@@ -27,6 +27,28 @@ const PostSchema = new Schema({
     authorID: {
         type: mongoose.Schema.Types.ObjectId,
         ref: profile
+    },
+    comments: {
+        comment: {
+            type: String,
+            required: true
+            
+        },
+        commentAuthor: {
+            type: String,
+            required: true
+        },
+        commentAuthorID: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: profile
+        },
+        commentDate: {
+            type: Date
+        },
+        commentUpvotes: {
+            type: Number,
+            default: 0
+        }
     }
 });
 

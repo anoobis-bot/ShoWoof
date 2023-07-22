@@ -3,6 +3,15 @@ const router = express.Router();
 const Post = require('../../db/schema/post');
 
 router.get('/:postId', async (req, res) => {
+
+    try {
+        let slug = req.params.postId;
+        const data = await Post.findById({_id: slug});
+        res.render('post', {data, currentRoute:`/post/${slug}`});
+    } catch (error) {
+        console.log(error);
+    }
+
     // Assuming you have a posts array with the individual post data
    // Replace 'posts' below with your actual data source
 
