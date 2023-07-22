@@ -1,5 +1,6 @@
 const { Int32 } = require('mongodb');
 const mongoose = require('mongoose');
+const profile = require('./profile');
 
 const Schema = mongoose.Schema;
 const PostSchema = new Schema({
@@ -22,6 +23,10 @@ const PostSchema = new Schema({
     caption: {
         type: String,
         required: true
+    },
+    authorID: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: profile
     }
 });
 
