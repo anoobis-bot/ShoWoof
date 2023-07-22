@@ -2,9 +2,15 @@ const express = require('express');
 const router = express.Router();
 require('dotenv').config()
 
-router.get('/:username', (req, res) => {
+const Profile = require('../../db/schema/profile');
+const Post = require('../../db/schema/post');
+
+router.get('/:username', async (req, res) => {
+    const postData = await Post.find({"author": req.username});
+
     res.render("profile", { user: process.env.user,
-                            username: req.username });
+                            username: req.username,
+                            data: postData});
 });
 
 router.get('/:username/edit', (req, res) => {

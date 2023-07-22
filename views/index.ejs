@@ -21,7 +21,7 @@
                 </div>
 
                 <div class="post-content">
-                    <PostMeta>Posted by <a href="/profiles/<%=post.authorID%>">u/<%= post.author %></a> <%= post.datePosted.toDateString() %></PostMeta>
+                    <PostMeta>Posted by <a href="/profiles/<%=post.author%>">u/<%= post.author %></a> <%= post.datePosted.toDateString() %></PostMeta>
                     <PostTitle><%= post.title %></PostTitle>
                     <PostDesc><img src="/<%= post.caption %>"></PostDesc>
                     <div class="action-container">
