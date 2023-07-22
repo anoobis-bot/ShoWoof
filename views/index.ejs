@@ -21,12 +21,12 @@
                 </div>
 
                 <div class="post-content">
-                    <PostMeta>Posted by <a href="/<%=post.authorID%>">u/<%= post.author %></a> <%= post.datePosted.toDateString() %></PostMeta>
+                    <PostMeta>Posted by <a href="/profiles/<%=post.authorID%>">u/<%= post.author %></a> <%= post.datePosted.toDateString() %></PostMeta>
                     <PostTitle><%= post.title %></PostTitle>
                     <PostDesc><img src="/<%= post.caption %>"></PostDesc>
                     <div class="action-container">
                         <img src="images/post_elements/comment.png" class="action-icon">
-                        <a href="/<%=post._id%>">&nbsp;Comment</a>
+                        <a href="/posts/<%=post._id%>">&nbsp;Comment</a>
                         &nbsp;&nbsp;
                         <img src="images/post_elements/share.png" class="action-icon">
                         <a href="/<%=post._id%>">&nbsp;Share</a>
