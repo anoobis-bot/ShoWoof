@@ -11,30 +11,34 @@
     <%- include('partials/nav_panel.ejs'); %>
 
     <div id="content-container">
-      
-        <% data.forEach(post => { %>
-            <div class="post-container">
-                <div class="vote-content">
-                    <div class="upvote-btn"></div>
-                    <p>vote</p>
-                    <div class="downvote-btn"></div>
-                </div>
+        <div id="top-posts-container">
 
-                <div class="post-content">
-                    <PostMeta>Posted by <a href="/profiles/<%=post.author%>">u/<%= post.author %></a> <%= post.datePosted.toDateString() %></PostMeta>
-                    <PostTitle><%= post.title %></PostTitle>
-                    <PostDesc><img src="/<%= post.caption %>"></PostDesc>
-                    <div class="action-container">
-                        <img src="images/post_elements/comment.png" class="action-icon">
-                        <a href="/posts/<%=post._id%>">&nbsp;Comment</a>
-                        &nbsp;&nbsp;
-                        <img src="images/post_elements/share.png" class="action-icon">
-                        <a href="/<%=post._id%>">&nbsp;Share</a>
+        </div>
+        <div id="feed-container">
+            <div id="all-posts-container">
+            <% data.forEach(post => { %>
+                <div class="post-container">
+                    <div class="vote-content">
+                        <div class="upvote-btn"></div>
+                        <p>vote</p>
+                        <div class="downvote-btn"></div>
+                    </div>
+
+                    <div class="post-content">
+                        <PostMeta>Posted by <a href="/profiles/<%=post.author%>">u/<%= post.author %></a> <%= post.datePosted.toDateString() %></PostMeta>
+                        <PostTitle><%= post.title %></PostTitle>
+                        <PostDesc><img src="<%= post.caption %>"></PostDesc>
+                        <div class="action-container">
+                            <img src="images/post_elements/comment.png" class="action-icon">
+                            <a href="/posts/<%=post._id%>">&nbsp;Comment</a>
+                            &nbsp;&nbsp;
+                            <img src="images/post_elements/share.png" class="action-icon">
+                            <a href="/<%=post._id%>">&nbsp;Share</a>
+                        </div>
                     </div>
                 </div>
+            <% }) %>
             </div>
-        <% }) %>
-
             <div id="credit-container">
                 <div class="horizontalLine"></div> <br>
                 De La Salle University. <br> <br>
@@ -44,7 +48,7 @@
                 Hanz Yu <br>
             </div>
         </div>
-
     </div>
+
 
 </body>
