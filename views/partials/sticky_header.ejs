@@ -10,7 +10,9 @@
     </div>
 
     <div class="search-bar-container">
-        <div class="search-icon"></div>
-        <input type="text" class="search-input" placeholder="Search...">
+        <form action="/search" class="search__form" role="search" method="POST">
+            <div class="search-icon"></div>
+            <input type="search" aria-label="Search" class="search-input" name="searchTerm" placeholder="Search...">
+        </form>
     </div>
 </div>

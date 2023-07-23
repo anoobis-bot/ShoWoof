@@ -40,6 +40,26 @@ router.get('/newPost', async (req, res) =>{
     }
 });
 
+router.post('/search', async (req, res) => {
+    try {
+        let searchTerm = req.body.searchTerm
+        const searchNoSpecialChar = searchTerm.replace(/[^a-zA-Z0-9 ]/g, "")
+
+        const data = await Post.find({
+            $or: [
+                { title: { $regex: new RegExp(searchNoSpecialChar, 'i') }},
+                { caption: { $regex: new RegExp(searchNoSpecialChar, 'i') }},
+                { author: { $regex: new RegExp(searchNoSpecialChar, 'i') }}
+            ]
+        });
+
+    res.render("search", { data, currentRoute: '/', user: process.env.user });
+
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 module.exports = router;
 
     // // Define the data required for rendering the dynamic parts of the page
