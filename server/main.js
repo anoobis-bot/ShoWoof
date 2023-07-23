@@ -13,6 +13,25 @@ router.get('', async (req, res) =>{
     }
 });
 
+router.get('/register', async (req, res) =>{
+    console.log("user is registering");
+    try {
+        res.render('register');
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+router.get('/login', async (req, res) =>{
+    console.log("user is try to log in");
+    try {
+        res.render('login');
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+
 module.exports = router;
 
     // // Define the data required for rendering the dynamic parts of the page
