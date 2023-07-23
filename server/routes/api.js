@@ -9,16 +9,32 @@ router.use(express.urlencoded({ extended: true }))
 
 router.post('/edit-profile', async (req, res) => {
     console.log("current user" + req.body.currentUser);
-    console.log("new user" + req.body.username);
+    console.log("new user" + req.body.username_change);
 
-    if (req.body.username.length !== 0) {
-        await Profile.updateOne({"username": req.body.currentUser}, {$set:{"username": req.body.username}});
-        process.env.user = req.body.username;
+    if (req.body.password_change.length !== 0) {
+        await Profile.updateOne({"username": req.body.currentUser}, {$set:{"password": req.body.password_change}});
     }
 
-    const newUserDoc = await Profile.findOne({"username": req.body.username});
-    const newUser = newUserDoc.username;
-    res.redirect("/profiles/" + newUser);
+    if (req.body.email.length !== 0) {
+        await Profile.updateOne({"username": req.body.currentUser}, {$set:{"email": req.body.email}});
+    }
+
+    if (req.body.username_change.length !== 0) {
+        await Profile.updateOne({"username": req.body.currentUser}, {$set:{"username": req.body.username_change}});
+        process.env.user = req.body.username_change;
+
+        // TODO Update Post authors
+    }
+    
+    try {
+        const newUserDoc = await Profile.findOne({"username": req.body.username_change});
+        const newUser = newUserDoc.username;
+        res.redirect("/profiles/" + newUser);
+    } catch (err) {
+        res.redirect("/profiles/" + req.body.currentUser);
+    }
+    
+    
 
 });
 
