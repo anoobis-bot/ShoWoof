@@ -11,7 +11,9 @@ router.get('', async (req, res) =>{
     } catch (error) {
         console.log(error);
     }
-    
+});
+
+module.exports = router;
 
     // // Define the data required for rendering the dynamic parts of the page
     // const topPostsText = [
@@ -66,7 +68,7 @@ router.get('', async (req, res) =>{
     // ];
 
     // res.render("index", { topPostsText, posts, user: process.env.user });
-});
+
 
 // function insertProfileData () {
 //       Profile.insertMany([
@@ -131,5 +133,3 @@ router.get('', async (req, res) =>{
 //     }
     
 //     insertPostData();
-
-    module.exports = router;
