@@ -17,6 +17,12 @@ const ProfileSchema = new Schema({
     dateJoined: {
         type: Date,
         default: Date.now
+    },
+    profilePicture: {
+        type: String
+    },
+    backgroundPicture: {
+        type: String
     }
 });
 
