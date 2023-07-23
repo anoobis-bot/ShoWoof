@@ -5,7 +5,7 @@ $(document).ready(function() {
         let new_password = $("input#password_change").val();
         // let new_photo = $("input#photo").val();
     
-        if (!new_username && !new_email &&) {
+        if (!new_username && !new_email && !new_password) {
             alert("At least one field must be answered");
             return false;
         }
