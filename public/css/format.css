@@ -405,3 +405,8 @@ PostMeta a:hover {
     object-fit: contain;
     height: 17px;
 }
+
+.copyLink{
+    cursor: pointer;
+    display: flex;
+}

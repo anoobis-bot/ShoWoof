@@ -2,6 +2,8 @@
 
 <head>
     <link rel="stylesheet" type="text/css" href="css/format.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/index_share_function.js"></script>
     <title>ShoWoof</title>
 </head>
 
@@ -32,8 +34,10 @@
                             <img src="images/post_elements/comment.png" class="action-icon">
                             <a href="/posts/<%=post._id%>">&nbsp;Comment</a>
                             &nbsp;&nbsp;
-                            <img src="images/post_elements/share.png" class="action-icon">
-                            <a href="/<%=post._id%>">&nbsp;Share</a>
+                            <div id="copyLink:<%=post._id%>" class="copyLink">
+                                <img src="images/post_elements/share.png" class="action-icon">
+                                Share
+                            </div>
                         </div>
                     </div>
                 </div>

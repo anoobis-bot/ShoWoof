@@ -24,9 +24,6 @@ body{
     background-color: #fff4d48d;
 }
 
-main{
-
-}
 
 .post, .comments{
     width: 60%;
@@ -323,6 +320,6 @@ div.commentToolText{
 #copyLink{
     cursor: pointer;
     display: flex;
-    
+
 
 }
