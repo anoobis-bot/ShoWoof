@@ -19,9 +19,9 @@
             <% data.forEach(post => { %>
                 <div class="post-container">
                     <div class="vote-content">
-                        <div class="upvote-btn"></div>
-                        <p>vote</p>
-                        <div class="downvote-btn"></div>
+                        <button class="upvote"><img src="/images/post_elements/upvote.png"></button>
+                        <p><%= post.votes %></p>
+                        <button class="downvote"><img src="/images/post_elements/downvote.png"></button>
                     </div>
 
                     <div class="post-content">

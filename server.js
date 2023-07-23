@@ -17,5 +17,7 @@ app.use('/profiles', profilesRoutes);
 const mainRoute = require('./server/main');
 app.use('/', mainRoute);
 
+const apiRoutes = require('./server/routes/api');
+app.use('/api', apiRoutes);
 
 app.listen(3000);
