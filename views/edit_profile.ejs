@@ -3,6 +3,8 @@
 <head>
     <link rel="stylesheet" type="text/css" href="/css/format.css"/>
     <link rel="stylesheet" type="text/css" href="/css/edit_format.css"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/edit_profile.js"></script>
     <title>Edit Profile</title>
 </head>
 
@@ -15,7 +17,7 @@
         <div class="fill-up-container">
             <Heading>Edit Profile</Heading>
             
-            <form action="/">
+            <form method="post" action="/api/edit-profile">
                 <div class="field-container">
                     <label for="username" class="lbl">Username:</label>
                     <input type="text" id="username" name="username" class="txt-field">
@@ -28,6 +30,8 @@
                     <label for="photo" class="lbl">Profile Photo</label>
                     <input type="button" id="photo" name="photo" value="Upload" class="btn">
                 </div>
+
+                <input type="hidden" id="currentUser" name="currentUser" value="<%=user%>">
                 
                 <input type="submit" value="Edit" id="submit-button">
             </form>
