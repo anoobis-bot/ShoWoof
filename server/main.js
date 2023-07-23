@@ -40,6 +40,19 @@ router.get('/newPost', async (req, res) =>{
     }
 });
 
+/*
+POST
+*/
+
+router.post('/newPost', async (req, res) => {
+    try {
+        console.log(req.body);
+        res.redirect('/');
+    } catch (error) {
+        console.log(error)
+    }
+});
+
 router.post('/search', async (req, res) => {
     try {
         let searchTerm = req.body.searchTerm
