@@ -27,7 +27,7 @@
                     <div class="post-content">
                         <PostMeta>Posted by <a href="/profiles/<%=post.author%>">u/<%= post.author %></a> <%= post.datePosted.toDateString() %></PostMeta>
                         <PostTitle><%= post.title %></PostTitle>
-                        <PostDesc><img src="/<%= post.caption %>"></PostDesc>
+                        <PostDesc><img src="<%= post.caption %>"></PostDesc>
                         <div class="action-container">
                             <img src="images/post_elements/comment.png" class="action-icon">
                             <a href="/posts/<%=post._id%>">&nbsp;Comment</a>
