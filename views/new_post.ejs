@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/format.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/edit_format.css"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/newPostControls.js"></script>
+    <title>New Post</title>
+</head>
+
+<body>
+    <%- include('partials/sticky_header.ejs'); %>
+
+    <%- include('partials/nav_panel.ejs'); %>
+
+    <div id="content-container">
+        <div class="fill-up-container">
+            <Heading>Make a New Post</Heading>
+
+            <br>
+
+            <div class="caption-container">
+                <label for="caption">Caption:</label>
+                <input type="text" id="caption" name="caption" />
+            </div>
+
+            <div class="content-container">
+                <h2>Content Type:</h2>
+                <input type="radio" id="image" name="content-type" value="image" />
+                <label for="image">Image</label>
+                <input type="radio" id="text" name="content-type" value="text" />
+                <label for="text">Text</label>
+            </div>
+
+            <div id="image-container">
+                <label for="image-url">Image URL:</label>
+                <input type="text" id="image-url" name="image-url" />
+            </div>
+
+            <div id="text-container">
+                <label for="text-content">Text Content:</label>
+                <textarea id="text-content" name="text-content" rows="4" cols="50"></textarea>
+            </div>
+
+            <br>
+            
+            <button type="submit">Submit</button>
+            
+            
+        </div>
+        
+    </div>
+    
+</body>

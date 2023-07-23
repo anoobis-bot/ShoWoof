@@ -31,6 +31,14 @@ router.get('/login', async (req, res) =>{
     }
 });
 
+router.get('/newPost', async (req, res) =>{
+    console.log("user is making a new post");
+    try {
+        res.render('new_post', {user: process.env.user});
+    } catch (error) {
+        console.log(error);
+    }
+});
 
 module.exports = router;
 
