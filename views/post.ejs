@@ -6,6 +6,7 @@
         <link rel="stylesheet" type="text/css" href="/css/format.css"/>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="/js/comment.js"></script>
+        <script src="/js/share.js"></script>
     </head>
     <body>
         <%- include('partials/sticky_header.ejs'); %>
@@ -38,10 +39,16 @@
                         <img src="<%= data.caption %>">
                     </div>
                     <div class="postToolBar">
-                        <img src="post_elements/comment.png">
+                        <!-- <img src="/images/post_elements/comment.png">
                         <a href="#commentSection">Comments<a>&nbsp;
-                        <img src="post_elements/share.png">
-                        <a>Share</a>
+                        <img src="/images/post_elements/share.png">
+                        <a>Share</a> -->
+                        <img src="/images/post_elements/comment.png">
+                        <a href="#commentSection">Comments</a>&nbsp;
+                        <div id="copyLink">
+                        <img src="/images/post_elements/share.png">
+                        Share</div>
+
                     </div>
                     <br>
                     <div class="userComment">
