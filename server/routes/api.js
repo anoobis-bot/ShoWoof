@@ -23,7 +23,7 @@ router.post('/edit-profile', async (req, res) => {
         await Profile.updateOne({"username": req.body.currentUser}, {$set:{"username": req.body.username_change}});
         process.env.user = req.body.username_change;
 
-        // TODO Update Post authors
+        await Post.updateMany({"author": req.body.currentUser}, {$set: {"author": req.body.username_change}});
     }
     
     try {
