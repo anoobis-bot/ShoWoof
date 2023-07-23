@@ -69,7 +69,7 @@ router.post('/newPost', async (req, res) => {
     }
 });
 
-router.post('/search', async (req, res) => {
+router.post('', async (req, res) => {
     try {
         let searchTerm = req.body.searchTerm
         const searchNoSpecialChar = searchTerm.replace(/[^a-zA-Z0-9 ]/g, "")
@@ -82,7 +82,7 @@ router.post('/search', async (req, res) => {
             ]
         });
 
-    res.render("search", { data, currentRoute: '/', user: process.env.user });
+    res.render("index", { data, currentRoute: '/', user: process.env.user });
 
     } catch (error) {
         console.log(error)
