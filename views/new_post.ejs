@@ -19,32 +19,35 @@
 
             <br>
 
-            <div class="caption-container">
-                <label for="caption">Caption:</label>
-                <input type="text" id="caption" name="caption" />
-            </div>
+            <form action="newPost" method="POST">
 
-            <div class="content-container">
-                <h2>Content Type:</h2>
-                <input type="radio" id="image" name="content-type" value="image" />
-                <label for="image">Image</label>
-                <input type="radio" id="text" name="content-type" value="text" />
-                <label for="text">Text</label>
-            </div>
-
-            <div id="image-container">
-                <label for="image-url">Image URL:</label>
-                <input type="text" id="image-url" name="image-url" />
-            </div>
-
-            <div id="text-container">
-                <label for="text-content">Text Content:</label>
-                <textarea id="text-content" name="text-content" rows="4" cols="50"></textarea>
-            </div>
-
-            <br>
+                <div class="caption-container">
+                    <label for="caption">Caption:</label>
+                    <input type="text" id="caption" name="caption" />
+                </div>
             
-            <button type="submit">Submit</button>
+                <div class="content-container">
+                    <h2>Content Type:</h2>
+                    <input type="radio" id="image" name="content-type" value="image" />
+                    <label for="image">Image</label>
+                    <input type="radio" id="text" name="content-type" value="text" />
+                    <label for="text">Text</label>
+                </div>
+            
+                <div id="image-container">
+                    <label for="image-url">Image URL:</label>
+                    <input type="text" id="image-url" name="image-url" />
+                </div>
+            
+                <div id="text-container">
+                    <label for="text_content">Text Content:</label>
+                    <textarea id="text_content" name="text_content" rows="4" cols="50"></textarea>
+                </div>
+            
+                <br>
+            
+                <button type="submit" value="Add">Submit</button>
+            </form>
             
             
         </div>

@@ -40,6 +40,35 @@ router.get('/newPost', async (req, res) =>{
     }
 });
 
+/*
+POST
+*/
+
+router.post('/newPost', async (req, res) => {
+    try {
+
+        try {
+            const newPost = new Post({
+                title: req.body.caption,
+                caption: req.body.text_content,
+                author: process.env.user,
+                comments:{
+                    commentAuthor: "someone",
+                    comment: "nothing"
+                }
+            });
+
+            await Post.create(newPost);
+            res.redirect('/');
+            
+        } catch (error) {
+            console.log(error)
+        }
+    } catch (error) {
+        console.log(error)
+    }
+});
+
 router.post('/search', async (req, res) => {
     try {
         let searchTerm = req.body.searchTerm
