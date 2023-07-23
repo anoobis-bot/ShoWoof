@@ -46,8 +46,24 @@ POST
 
 router.post('/newPost', async (req, res) => {
     try {
-        console.log(req.body);
-        res.redirect('/');
+
+        try {
+            const newPost = new Post({
+                title: req.body.caption,
+                caption: req.body.text_content,
+                author: process.env.user,
+                comments:{
+                    commentAuthor: "someone",
+                    comment: "nothing"
+                }
+            });
+
+            await Post.create(newPost);
+            res.redirect('/');
+            
+        } catch (error) {
+            console.log(error)
+        }
     } catch (error) {
         console.log(error)
     }
