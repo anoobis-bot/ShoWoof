@@ -68,6 +68,15 @@ a {
     margin-left: 10px;
 }
 
+#logo-name a {
+    text-decoration: none; 
+    outline: none; 
+}
+
+#logo-name a:visited{
+    color: black;
+}
+
 .search-bar-container {
     display: flex;
     align-items: center;
