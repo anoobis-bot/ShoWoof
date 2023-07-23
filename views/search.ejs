@@ -1,0 +1,56 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="css/format.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/index_share_function.js"></script>
+    <script src="/js/vote.js"></script>
+    <title>ShoWoof</title>
+</head>
+<body>
+    <%- include('partials/sticky_header.ejs'); %>
+
+    <%- include('partials/nav_panel.ejs'); %>
+
+    <div id="content-container">
+        <div id="top-posts-container">
+
+        </div>
+        <div id="feed-container">
+            <div id="all-posts-container">
+            <% data.forEach(post => { %>
+                <div class="post-container">
+                    <div class="vote-content">
+                        <button class="upvote" id="upvoteID:<%=post._id%>"><img src="/images/post_elements/upvote.png"></button>
+                        <p><%= post.votes %></p>
+                        <button class="downvote" id="downvoteID:<%=post._id%>"><img src="/images/post_elements/downvote.png"></button>
+                    </div>
+
+                    <div class="post-content">
+                        <PostMeta>Posted by <a href="/profiles/<%=post.author%>">u/<%= post.author %></a> <%= post.datePosted.toDateString() %></PostMeta>
+                        <PostTitle><%= post.title %></PostTitle>
+                        <PostDesc><img src="<%= post.caption %>"></PostDesc>
+                        <div class="action-container">
+                            <img src="images/post_elements/comment.png" class="action-icon">
+                            <a href="/posts/<%=post._id%>">&nbsp;Comment</a>
+                            &nbsp;&nbsp;
+                            <div id="copyLink:<%=post._id%>" class="copyLink">
+                                <img src="images/post_elements/share.png" class="action-icon">
+                                Share
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+            </div>
+            <div id="credit-container">
+                <div class="horizontalLine"></div> <br>
+                De La Salle University. <br> <br>
+                Made possible by: <br>
+                Francis De Leon <br>
+                Mikkel Gamboa <br>
+                Hanz Yu <br>
+            </div>
+        </div>
+    </div>
+
+
+</body>
