@@ -145,8 +145,9 @@ router.post('', async (req, res) => {
 
 router.post('/posts/:id', async (req, res) => {
     try {
+        const postId = req.params.id;
         if (req.body.comTerm != "" ) {
-            const postId = req.params.id;
+            
             const newComment = {
             comment: req.body.comTerm,
             commentAuthor: process.env.user
@@ -160,10 +161,34 @@ router.post('/posts/:id', async (req, res) => {
 
         post.Comments.push(newComment);
         await post.save();
-        res.redirect(`/posts/${postId}`);
-        }
         
+        }
+        res.redirect(`/posts/${postId}`);
 
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+router.post('/posts/:postId/comments/:commentId', async (req, res) => {
+    try {
+        const postId = req.params.postId;
+        const commentId = req.params.commentId;
+        const updatedComment = {
+            comment: req.body.editTerm,
+        };
+
+        const post = await Post.findById(postId);
+
+        // Find the comment with the specified commentId in the post's comments array
+        const comment = post.Comments.id(commentId);
+
+        // Update the comment properties with the new values from updatedComment
+        comment.comment = updatedComment.comment;
+        // Update other properties as needed
+
+        await post.save();
+        res.redirect(`/posts/${postId}`);
     } catch (error) {
         console.log(error);
     }

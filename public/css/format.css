@@ -427,6 +427,16 @@ PostMeta a:hover {
     display: flex;
 }
 
-.com__form textarea {
+#inputComment {
     width: 95%;
+}
+
+#editInputComment {
+    margin-left: 12.5px;
+    width: 95%;
+    height: 90%;
+}
+
+#editPostComment {
+    margin-right: 12.5px;
 }

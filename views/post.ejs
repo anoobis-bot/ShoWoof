@@ -80,6 +80,7 @@
             <!------------------->
             <div class="comments" id="commentSection">
                 <% data.Comments.forEach(comments => { %>
+                    <div class="editComment">
                     <div class="commentBase" id="comment-1">
                         <div class="commenterImg"></div>
                         <div class="commentDetails">
@@ -106,6 +107,13 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <form action="/posts/<%=data._id%>/Comments/<%= comments._id %>" class="com__form"method="POST">
+                        <textarea placeholder="Bark!" class="textarea" id="editInputComment" name="editTerm"></textarea>
+                        <div class="userCommentCommands">
+                            <button type="submit" class="commentButton" id="editPostComment">Comment</button>
+                        </div>
+                    </form>
                     </div> 
                <% }); %>
             </div>

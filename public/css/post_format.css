@@ -218,6 +218,11 @@ body{
 
 /*---------------Comments---------------*/
 
+.editComment {
+    display: flex;
+    flex-direction: column;
+}
+
 .commentBase{
     display:flex;
     flex-direction: row;
