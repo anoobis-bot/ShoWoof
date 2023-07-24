@@ -7,6 +7,7 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="/js/comment.js"></script>
         <script src="/js/share.js"></script>
+        <script src="/js/edit.js"></script>
     </head>
     <body>
         <%- include('partials/sticky_header.ejs'); %>
@@ -98,24 +99,31 @@
                                     <div class="downvote"></div>
                                 </div>
                                 <div class="commentReply">
-                                    <img src="/images/post_elements/comment.png">
-                                    <div class="commentToolText">Reply</div>
+                                    <!-- <img src="/images/post_elements/comment.png">
+                                    <div class="commentToolText">Reply</div> -->
+                                    <button class="commentToolText" id="replyComment">
+                                        <img src="/images/post_elements/comment.png"> Reply
+                                        <!-- <div class="commentToolText">Edit</div> -->
+                                    </button>
                                 </div>
                                 <% if (comments.commentAuthor==user){%>
                                 <div class="commentEdit">
-                                    <img src="/images/post_elements/output-onlinepngtools.png">
-                                    <div class="commentToolText">Edit</div>
+                                    <button class="commentToolText" id="editComment:<%= comments._id %>" data-postid="<%= comments._id %>">
+                                        <img src="/images/post_elements/output-onlinepngtools.png"> Edit
+                                    </button>
                                 </div>
                                 <% } %>
                             </div>
                         </div>
                     </div>
-                    <form action="/posts/<%=data._id%>/Comments/<%= comments._id %>" class="com__form"method="POST">
-                        <textarea placeholder="Bark!" class="textarea" id="editInputComment" name="editTerm"></textarea>
-                        <div class="userCommentCommands">
-                            <button type="submit" class="commentButton" id="editPostComment">Comment</button>
-                        </div>
-                    </form>
+                    <div id="visibility-<%= comments._id %>">
+                        <form action="/posts/<%= data._id %>/Comments/<%= comments._id %>" class="com__form" method="POST">
+                            <textarea placeholder="Bark!" class="textarea" id="editInputComment" name="editTerm"></textarea>
+                            <div class="userCommentCommands">
+                                <button type="submit" class="commentButton" id="editPostComment">Comment</button>
+                            </div>
+                        </form>
+                    </div>
                     </div> 
                <% }); %>
             </div>
