@@ -50,6 +50,11 @@ const PostSchema = new Schema({
             type: Number,
             default: 0
         }
+        parentComment: {
+            type: Schema.Types.ObjectId,
+            ref: 'Comment',
+            required: false,
+          }
     }]
 });
 
