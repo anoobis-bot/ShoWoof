@@ -426,3 +426,7 @@ PostMeta a:hover {
     cursor: pointer;
     display: flex;
 }
+
+.com__form textarea {
+    width: 95%;
+}

@@ -68,10 +68,12 @@
                         <div class="commentLabel">
                             <div>Comment as</div>&nbsp;<div class="commentUsername">u/<%= user %></div>
                         </div>
-                        <textarea placeholder="Bark!" class="textarea" id="inputComment"></textarea>
-                        <div class="userCommentCommands">
-                            <button class="commentButton" id="postComment">Comment</button>
-                        </div>
+                        <form action="/posts/<%=data._id%>" class="com__form"method="POST">
+                            <textarea placeholder="Bark!" class="textarea" id="inputComment" name="comTerm"></textarea>
+                            <div class="userCommentCommands">
+                                <button type="submit" class="commentButton" id="postComment">Comment</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

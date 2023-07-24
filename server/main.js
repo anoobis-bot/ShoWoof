@@ -143,6 +143,32 @@ router.post('', async (req, res) => {
     }
 })
 
+router.post('/posts/:id', async (req, res) => {
+    try {
+        if (req.body.comTerm != "" ) {
+            const postId = req.params.id;
+            const newComment = {
+            comment: req.body.comTerm,
+            commentAuthor: process.env.user
+        };
+
+        const post = await Post.findById(postId);
+
+        if (!post.Comments || !Array.isArray(post.Comments)) {
+            post.Comments = [];
+        }
+
+        post.Comments.push(newComment);
+        await post.save();
+        res.redirect(`/posts/${postId}`);
+        }
+        
+
+    } catch (error) {
+        console.log(error);
+    }
+});
+
 module.exports = router;
 
     // // Define the data required for rendering the dynamic parts of the page
@@ -263,27 +289,27 @@ module.exports = router;
 //     }
     
 //     insertPostData();
-function insertPost() {
-    Post.insertMany({
-        title: "Who died",
-        author: "Govna",
-        image_url: "",
-        text_content: "Hi there",
-        Comments: [
-            {
-                comment: "This is a comment",
-                commentAuthor: "Govna"
-            },
-            {
-                comment: "This is a comment",
-                commentAuthor: "Govna"
-            },
-            {
-                comment: "This is a comment",
-                commentAuthor: "Govna"
-            }
-        ]
-    });
-}
+// function insertPost() {
+//     Post.insertMany({
+//         title: "Who died",
+//         author: "Govna",
+//         image_url: "",
+//         text_content: "Hi there",
+//         Comments: [
+//             {
+//                 comment: "This is a comment",
+//                 commentAuthor: "Govna"
+//             },
+//             {
+//                 comment: "This is a comment",
+//                 commentAuthor: "Govna"
+//             },
+//             {
+//                 comment: "This is a comment",
+//                 commentAuthor: "Govna"
+//             }
+//         ]
+//     });
+// }
 
 // insertPost();
