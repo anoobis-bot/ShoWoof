@@ -40,7 +40,31 @@ router.get('/newPost', async (req, res) =>{
     }
 });
 
+/*
+POST
+*/
 
+router.post('/newPost', async (req, res) => {
+    try {
+
+        try {
+            const newPost = new Post({
+                title: req.body.caption,
+                text_content: req.body.text_content,
+                image_url: req.body.image_url,
+                author: process.env.user,
+            });
+
+            await Post.create(newPost);
+            res.redirect('/');
+            
+        } catch (error) {
+            console.log(error)
+        }
+    } catch (error) {
+        console.log(error)
+    }
+});
 
 /*
 GET
@@ -82,30 +106,21 @@ router.put('/editPost/:id', async (req, res) => {
 });
 
 /*
-POST
+DELETE
+
 */
 
-router.post('/newPost', async (req, res) => {
+router.delete('/deletePost/:id', async (req, res) => {
     try {
 
-        try {
-            const newPost = new Post({
-                title: req.body.caption,
-                text_content: req.body.text_content,
-                image_url: req.body.image_url,
-                author: process.env.user,
-            });
+        await Post.deleteOne( { _id: req.params.id } );
+        res.redirect('/');
 
-            await Post.create(newPost);
-            res.redirect('/');
-            
-        } catch (error) {
-            console.log(error)
-        }
     } catch (error) {
         console.log(error)
     }
 });
+
 
 
 router.post('', async (req, res) => {
