@@ -172,7 +172,7 @@ body{
     text-decoration: none;
 }
 
-.postToolBar img, .commentReply img, .commentEdit img{
+.postToolBar img, .commentReply img, button.commentToolText img{
     object-fit: contain;
     height: 17px;
 }
@@ -287,11 +287,18 @@ body{
     align-items: center;
     border: 1px solid black;
     border-radius: 20px;
-    padding: 2px 2px;
+    height: 24px;
 }
 
-div.commentToolText{
-    padding-top: 5px 5px;
+button.commentToolText{
+    border: none;
+    background-color: transparent;
+    font-size: 1em;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    font-family: 'Raleway', sans-serif;
+    cursor: pointer;
 }
 
 .commentCommandBar div.upvote{
@@ -333,6 +340,4 @@ div.commentToolText{
 #copyLink{
     cursor: pointer;
     display: flex;
-    
-
 }
