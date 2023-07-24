@@ -12,6 +12,14 @@ const PostSchema = new Schema({
         type: Number,
         default: 0
     },
+    upvotes: {
+        type: [Schema.Types.ObjectId],
+        required: false
+    },
+    downvotes: {
+        type: [Schema.Types.ObjectId],
+        required: false
+    },
     author: {
         type: String,
         required: true
