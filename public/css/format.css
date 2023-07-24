@@ -210,6 +210,7 @@ a {
     border-radius: 15px;
 
     box-shadow: inset 0px -70px 5em black;
+    background-color: var(--panel-color);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

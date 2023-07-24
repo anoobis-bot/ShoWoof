@@ -7,9 +7,14 @@ router.get('', async (req, res) =>{
     console.log("Server is running");
     try {
         const data = await Post.find();
+        
         const userDoc = await Profile.findOne({"username": process.env.user});
         const userId = userDoc._id;
-        res.render('index', {data, user: process.env.user, userID: userId});
+
+        const topPosts = await Post.find().sort({"votes": -1}).limit(4);
+
+        res.render('index', {data, user: process.env.user, userID: userId,
+                    topPosts});
     } catch (error) {
         console.log(error);
     }

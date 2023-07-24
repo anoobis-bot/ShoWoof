@@ -14,9 +14,18 @@
     <%- include('partials/nav_panel.ejs'); %>
 
     <div id="content-container">
+        <p><b>Top posts of all time</b></p>
         <div id="top-posts-container">
-
+            <% topPosts.forEach(post => { %>
+                <div class="top-posts" style="background-image: url(<%= post.image_url %>);">
+                    <div class="top-posts-text-container">
+                        <p><%= post.title %></p>
+                    </div>
+                </div>
+            <% }); %>
         </div>
+
+        <p><b>Recent posts</b></p>
         <div id="feed-container">
             <div id="all-posts-container">
             <% data.forEach(post => { %>
