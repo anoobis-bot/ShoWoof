@@ -101,10 +101,12 @@
                                     <img src="/images/post_elements/comment.png">
                                     <div class="commentToolText">Reply</div>
                                 </div>
+                                <% if (comments.commentAuthor==user){%>
                                 <div class="commentEdit">
                                     <img src="/images/post_elements/output-onlinepngtools.png">
                                     <div class="commentToolText">Edit</div>
                                 </div>
+                                <% } %>
                             </div>
                         </div>
                     </div>
