@@ -104,7 +104,7 @@
                                     <div class="commentText"><%= comments.comment %></div>
                                     <div class="commentCommandBar">
                                         <div class="commentReply">
-                                            <button class="commentToolText" id="replyComment">
+                                            <button class="commentToolText" id="replyComment:<%= comments._id %>" data-postid="<%= comments._id %>">
                                                 <img src="/images/post_elements/comment.png"> Reply
                                             </button>
                                         </div>&nbsp;&nbsp;
@@ -118,6 +118,17 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="replyForm-<%= comments._id %>" id="replyForm">
+                                <form action="/posts/<%= data._id %>/Comments/<%= comments._id %>/reply" class="com__form" method="POST">
+                                    <textarea placeholder="Bark!" class="textarea" id="replyInputComment" name="replyTerm">@u/<%= comments.commentAuthor%></textarea>
+                                    <div class="userCommentCommands">
+                                        <button type="submit" class="commentButton" id="replyPostComment">Comment</button>
+                                    </div>
+                                </form>
+                            </div>
+
+
                             <div id="visibility-<%= comments._id %>">
                                 <form action="/posts/<%= data._id %>/Comments/<%= comments._id %>/edit" class="com__form" method="POST">
                                     <textarea placeholder="Bark!" class="textarea" id="editInputComment" name="editTerm"></textarea>

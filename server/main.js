@@ -215,6 +215,31 @@ router.post('/posts/:postId/comments/:commentId/delete', async (req, res) => {
     }
   });
 
+  router.post('/posts/:postId/comments/:commentId/reply', async (req, res) => {
+    try {
+        const postId = req.params.postId;
+        if (req.body.replyTerm != "" ) {
+            
+            const newComment = {
+            comment: req.body.replyTerm,
+            commentAuthor: process.env.user
+        };
+
+        const post = await Post.findById(postId);
+
+        post.Comments.push(newComment);
+        await post.save();
+        
+        }
+        res.redirect(`/posts/${postId}`);
+        
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Error adding reply comment.');
+    }
+});
+
+
 //   router.post('/posts/:postId/comments', async (req, res) => {
 //     try {
 //       const postId = req.params.postId;
