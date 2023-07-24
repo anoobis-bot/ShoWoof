@@ -172,7 +172,7 @@ router.post('/posts/:id', async (req, res) => {
     }
 });
 
-router.post('/posts/:postId/comments/:commentId', async (req, res) => {
+router.post('/posts/:postId/comments/:commentId/edit', async (req, res) => {
     try {
         const postId = req.params.postId;
         const commentId = req.params.commentId;
@@ -195,6 +195,20 @@ router.post('/posts/:postId/comments/:commentId', async (req, res) => {
         console.log(error);
     }
 });
+
+router.post('/posts/:postId/comments/:commentId/delete', async (req, res) => {
+    try {
+      const postId = req.params.postId;
+      const commentIdToDelete = req.params.commentId;
+      const post = await Post.findById(postId);
+      post.Comments = post.Comments.filter(comment => comment._id.toString() !== commentIdToDelete);
+      await post.save();
+  
+      res.redirect(`/posts/${postId}`);
+    } catch (error) {
+      console.log('Error deleting comment:', error);
+    }
+  });
 
 module.exports = router;
 

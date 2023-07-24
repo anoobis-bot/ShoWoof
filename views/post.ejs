@@ -96,6 +96,7 @@
             <!------------------->
             <div class="comments" id="commentSection">
                 <% data.Comments.forEach(comments => { %>
+                    <% if (comments.comment != "") {%>
                     <div class="editComment">
                     <div class="commentBase" id="comment-1">
                         <div class="commenterImg"></div>
@@ -132,14 +133,19 @@
                         </div>
                     </div>
                     <div id="visibility-<%= comments._id %>">
-                        <form action="/posts/<%= data._id %>/Comments/<%= comments._id %>" class="com__form" method="POST">
+                        <form action="/posts/<%= data._id %>/Comments/<%= comments._id %>/edit" class="com__form" method="POST">
                             <textarea placeholder="Bark!" class="textarea" id="editInputComment" name="editTerm"></textarea>
                             <div class="userCommentCommands">
                                 <button type="submit" class="commentButton" id="editPostComment">Comment</button>
                             </div>
                         </form>
+                        <form action="/posts/<%= data._id %>/comments/<%= comments._id %>/delete" method="POST">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit">Delete Comment</button>
+                        </form>
                     </div>
                     </div> 
+                    <% } %>
                <% }); %>
             </div>
         </main>
