@@ -51,11 +51,11 @@
                                 Share
                             </div>
                             &nbsp;&nbsp;
-                            <div class="copyLink">
+                            <% if(post.author == user){ %>
                                 <img src="images/post_elements/output-onlinepngtools.png" class="action-icon">
                                 &nbsp;
                                 <a href="/editPost/<%=post._id%>">Edit</a>
-                            </div>
+                            <%  } %>
                         </div>
                     </div>
                 </div>
