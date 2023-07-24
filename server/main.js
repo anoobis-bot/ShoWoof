@@ -210,6 +210,52 @@ router.post('/posts/:postId/comments/:commentId/delete', async (req, res) => {
     }
   });
 
+//   router.post('/posts/:postId/comments', async (req, res) => {
+//     try {
+//       const postId = req.params.postId;
+//       const { comment, parentCommentId } = req.body; // Assuming you have a field named 'parentCommentId' in the request body.
+  
+//       if (!parentCommentId) {
+//         // This is a top-level comment
+//         const newComment = new Comment({
+//           comment: comment,
+//           commentAuthor: process.env.user,
+//         });
+  
+//         const post = await Post.findById(postId);
+  
+//         if (!post.Comments || !Array.isArray(post.Comments)) {
+//           post.Comments = [];
+//         }
+  
+//         post.Comments.push(newComment);
+//         await post.save();
+//       } else {
+//         // This is a reply to an existing comment
+//         const parentComment = await Comment.findById(parentCommentId);
+  
+//         if (!parentComment) {
+//           return res.status(404).json({ message: 'Parent comment not found.' });
+//         }
+  
+//         const newReply = new Comment({
+//           comment: comment,
+//           commentAuthor: process.env.user,
+//           parentComment: parentCommentId,
+//         });
+  
+//         await newReply.save();
+//         parentComment.Comments.push(newReply);
+//         await parentComment.save();
+//       }
+  
+//       res.redirect(`/posts/${postId}`);
+//     } catch (error) {
+//       console.log(error);
+//       res.status(500).json({ message: 'Error adding comment.' });
+//     }
+//   });
+
 module.exports = router;
 
     // // Define the data required for rendering the dynamic parts of the page

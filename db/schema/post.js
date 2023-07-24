@@ -49,7 +49,7 @@ const PostSchema = new Schema({
         commentUpvotes: {
             type: Number,
             default: 0
-        }
+        },
         parentComment: {
             type: Schema.Types.ObjectId,
             ref: 'Comment',
