@@ -93,57 +93,46 @@
             <div class="comments" id="commentSection">
                 <% data.Comments.forEach(comments => { %>
                     <% if (comments.comment != "") {%>
-                    <div class="editComment">
-                    <div class="commentBase" id="comment-1">
-                        <div class="commenterImg"></div>
-                        <div class="commentDetails">
-                            <div class="commenterDetails">
-                                <div class="commenterUser"><%= comments.commentAuthor %></div>
-                                <div class="commentDate"><%= comments.commentDate.toDateString() %></div>
+                        <div class="editComment">
+                            <div class="commentBase" id="comment-1">
+                                <div class="commenterImg"></div>
+                                <div class="commentDetails">
+                                    <div class="commenterDetails">
+                                        <div class="commenterUser"><%= comments.commentAuthor %></div>
+                                        <div class="commentDate"><%= comments.commentDate.toDateString() %></div>
+                                    </div>
+                                    <div class="commentText"><%= comments.comment %></div>
+                                    <div class="commentCommandBar">
+                                        <div class="commentReply">
+                                            <button class="commentToolText" id="replyComment">
+                                                <img src="/images/post_elements/comment.png"> Reply
+                                            </button>
+                                        </div>&nbsp;&nbsp;
+                                        <% if (comments.commentAuthor == user){%>
+                                            <div class="commentEdit">
+                                                <button class="commentToolText" id="editComment:<%= comments._id %>" data-postid="<%= comments._id %>">
+                                                    <img src="/images/post_elements/output-onlinepngtools.png"> Edit
+                                                </button>
+                                            </div>
+                                        <% } %>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="commentText"><%= comments.comment %></div>
-                            <div class="commentCommandBar">
-                                <div class="commentVote">
-                                    <div class="upvote"></div>
-                                    &nbsp;
-                                    <div class="commentToolText"><%= comments.commentUpvotes %></div>
-                                    &nbsp;
-                                    <div class="downvote"></div>
-                                </div>
-                                <div class="commentReply">
-                                    <!-- <img src="/images/post_elements/comment.png">
-                                    <div class="commentToolText">Reply</div> -->
-                                    <button class="commentToolText" id="replyComment">
-                                        <img src="/images/post_elements/comment.png"> Reply
-                                        <!-- <div class="commentToolText">Edit</div> -->
-                                    </button>
-                                </div>
-                                <% if (comments.commentAuthor==user){%>
-                                <div class="commentEdit">
-                                    <button class="commentToolText" id="editComment:<%= comments._id %>" data-postid="<%= comments._id %>">
-                                        <img src="/images/post_elements/output-onlinepngtools.png"> Edit
-                                    </button>
-                                </div>
-                                <% } %>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="visibility-<%= comments._id %>">
-                        <form action="/posts/<%= data._id %>/Comments/<%= comments._id %>/edit" class="com__form" method="POST">
-                            <textarea placeholder="Bark!" class="textarea" id="editInputComment" name="editTerm"></textarea>
-                            <div class="userCommentCommands">
-                                <form action="/posts/<%= data._id %>/comments/<%= comments._id %>/delete" method="POST">
+                            <div id="visibility-<%= comments._id %>">
+                                <form action="/posts/<%= data._id %>/Comments/<%= comments._id %>/edit" class="com__form" method="POST">
+                                    <textarea placeholder="Bark!" class="textarea" id="editInputComment" name="editTerm"></textarea>
                                     <div class="userCommentCommands">
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <button type="submit" class="commentButton">Delete Comment</button>
+                                        <form action="/posts/<%= data._id %>/comments/<%= comments._id %>/delete" method="POST">
+                                            <div class="userCommentCommands">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <button type="submit" class="commentButton">Delete Comment</button>
+                                            </div>
+                                        </form>
+                                        <button type="submit" class="commentButton" id="editPostComment">Comment</button>
                                     </div>
                                 </form>
-                                <button type="submit" class="commentButton" id="editPostComment">Comment</button>
                             </div>
-                        </form>
-                        
-                    </div>
-                    </div> 
+                        </div> 
                     <% } %>
                <% }); %>
             </div>

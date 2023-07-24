@@ -142,10 +142,17 @@
 }
 #name {
     height: 70%;
-
+    width: 50%;
     display: flex;
     align-items: center;
 }
+
+#desc {
+    height: 70%;
+    width: 50%;
+    font-size: .7em;
+}
+
 #number-row {
     display: flex;
     flex-direction: row;
@@ -156,6 +163,16 @@
 
     justify-content: space-around;
 }
+
+#nameDesc-row {
+    display: flex;
+    flex-direction: row;
+
+    margin-top: 10px;
+
+    height: 30%;
+}
+
 #number-row .stat-container {
     width: 50%;
     padding-left: 10px;
