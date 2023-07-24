@@ -5,6 +5,9 @@ const connectDB = require("./db/config/db");
 const { post } = require("./server/routes/profiles");
 const db = connectDB();
 
+const methodOverride = require('method-override');
+app.use(methodOverride('_method'));
+
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 

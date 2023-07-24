@@ -121,6 +121,14 @@ body{
     display: inline;
 }
 
+.username a{
+    display: inline
+}
+
+.username a:visited{
+    color: black
+}
+
 .datePosted{
     display: inline;
 }
@@ -320,6 +328,6 @@ div.commentToolText{
 #copyLink{
     cursor: pointer;
     display: flex;
-
+    
 
 }

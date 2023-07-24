@@ -44,14 +44,14 @@ $(document).ready(function() {
   
         var commentReply = $('<div>').addClass('commentReply');
         commentCommandBar.append(commentReply);
-        var replyImg = $('<img>').attr('src', 'post_elements/comment.png');
+        var replyImg = $('<img>').attr('src', '/images/post_elements/comment.png');
         commentReply.append(replyImg);
         var replyText = $('<div>').addClass('commentToolText').text('Reply');
         commentReply.append(replyText);
 
         var commentEdit = $('<div>').addClass('commentEdit');
         commentCommandBar.append(commentEdit);
-        var editImg = $('<img>').attr('src', 'post_elements/output-onlinepngtools.png');
+        var editImg = $('<img>').attr('src', '/images/post_elements/output-onlinepngtools.png');
         commentEdit.append(editImg);
         var editText = $('<div>').addClass('commentToolText').text('Edit');
         commentEdit.append(editText);

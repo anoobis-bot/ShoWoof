@@ -25,7 +25,7 @@
                     <div class="postHead">
                         <div class="firstBar">
                             <div class="username">
-                                Posted by <%= data.author %>
+                                Posted by <a href="/profiles/<%=data.author%>">u/<%= data.author %></a>
                             </div>
                             <div class="datePosted"> 
                                 &nbsp;<%= data.datePosted.toDateString() %>
@@ -42,10 +42,8 @@
                         <% } else if (data.text_content != '') { %>
                             <!-- Show only text content -->
                             <p><%= data.text_content %></p>
-                        <% } else { %>
-                            <!-- Show a message if both image and text are empty -->
-                            <p>No content available</p>
                         <% } %>
+                        
                     </div>
                     <div class="postToolBar">
                         <!-- <img src="/images/post_elements/comment.png">
@@ -57,6 +55,12 @@
                         <div id="copyLink">
                         <img src="/images/post_elements/share.png">
                         Share</div>
+                        &nbsp;
+                        <% if(data.author == user){ %>
+                            <img src="/images/post_elements/output-onlinepngtools.png" class="action-icon">
+                            &nbsp;
+                            <a href="/editPost/<%=data._id%>">Edit</a>
+                        <%  } %>
 
                     </div>
                     <br>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/format.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/edit_format.css"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/editPostControls.js"></script>
+    <title>Edit Post</title>
+</head>
+
+<body>
+    <%- include('partials/sticky_header.ejs'); %>
+
+    <%- include('partials/nav_panel.ejs'); %>
+
+    <div id="content-container">
+        <div class="fill-up-container">
+            <Heading>Edit/Delete a Post</Heading>
+
+            <br>
+            <form action="/deletePost/<%=  data._id %>?_method=DELETE" method="POST">
+                <input type="submit" value="Delete">
+            </form>
+
+            <form action="/editPost/<%= data._id %>?_method=PUT" method="POST" >
+            
+                <div class="caption-container">
+                    <label for="caption">Caption:</label>
+                    <input type="text" id="caption" name="caption" value="<%= data.title %>"/>
+                </div>
+            
+                <div class="content-container">
+                    <h2>Content Type:</h2>
+                    <input type="radio" id="image" name="content-type" value="image" />
+                    <label for="image">Image</label>
+                    <input type="radio" id="text" name="content-type" value="text" />
+                    <label for="text">Text</label>
+                </div>
+            
+                <div id="image-container">
+                    <label for="image_url">Image URL:</label>
+                    <input type="text" id="image_url" name="image_url" value="<%= data.image_url%>"/>
+                </div>
+            
+                <div id="text-container">
+                    <label for="text_content">Text Content:</label>
+                    <textarea id="text_content" name="text_content" rows="4" cols="50"><%= data.text_content%></textarea>
+                </div>
+            
+                <br>
+            
+                <button type="submit" value="Add">Submit</button>
+            </form>
+            
+            
+        </div>
+        
+    </div>
+    
+</body>
