@@ -9,6 +9,7 @@
         <script src="/js/share.js"></script>
         <script src="/js/edit.js"></script>
         <script src="/js/vote.js"></script>
+        <script src="/js/reply.js"></script>
     </head>
     <body>
         <%- include('partials/sticky-no-search.ejs'); %>
@@ -119,7 +120,7 @@
                                 </div>
                             </div>
 
-                            <div class="replyForm-<%= comments._id %>" id="replyForm">
+                            <div id="replyForm-<%= comments._id %>">
                                 <form action="/posts/<%= data._id %>/Comments/<%= comments._id %>/reply" class="com__form" method="POST">
                                     <textarea placeholder="Bark!" class="textarea" id="replyInputComment" name="replyTerm">@u/<%= comments.commentAuthor%></textarea>
                                     <div class="userCommentCommands">
