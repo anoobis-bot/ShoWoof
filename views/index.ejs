@@ -52,30 +52,40 @@
 
                     <div class="post-content">
                         <PostMeta>Posted by <a href="/profiles/<%=post.author%>">u/<%= post.author %></a> <%= post.datePosted.toDateString() %></PostMeta>
-                        <PostTitle><%= post.title %></PostTitle>
-                        <PostDesc>
-                            <% if (post.image_url != '') { %>
-                                <!-- Show only image content -->
-                                <img src="<%= post.image_url %>">
-                            <% } else if (post.text_content != '') { %>
-                                <!-- Show only text content -->
-                                <p><%= post.text_content %></p>
-                            <% } %>
-
-                        </PostDesc>
+                        <div class="colorA">
+                            <a href="/posts/<%=post._id%>">
+                                <PostTitle><%= post.title %></PostTitle>
+                                <PostDesc>
+                                    <% if (post.image_url != '') { %>
+                                        <!-- Show only image content -->
+                                        <img src="<%= post.image_url %>">
+                                    <% } else if (post.text_content != '') { %>
+                                        <!-- Show only text content -->
+                                        <p><%= post.text_content %></p>
+                                    <% } %>
+                                </PostDesc>
+                            </a>
+                        </div>
                         <div class="action-container">
-                            <img src="images/post_elements/comment.png" class="action-icon">
-                            <a href="/posts/<%=post._id%>">&nbsp;Comment</a>
+                            <a href="/posts/<%=post._id%>">
+                                <div class="flex-action-container">
+                                    <img src="images/post_elements/comment.png" class="action-icon">
+                                    &nbsp;Comment
+                                </div>
+                            </a>
                             &nbsp;&nbsp;
                             <div id="copyLink:<%=post._id%>" class="copyLink">
                                 <img src="images/post_elements/share.png" class="action-icon">
-                                Share
+                                &nbsp;Share
                             </div>
                             &nbsp;&nbsp;
                             <% if(post.author == user){ %>
-                                <img src="images/post_elements/output-onlinepngtools.png" class="action-icon">
-                                &nbsp;
-                                <a href="/editPost/<%=post._id%>">Edit</a>
+                                <a href="/editPost/<%=post._id%>">
+                                    <div class="flex-action-container">
+                                        <img src="images/post_elements/output-onlinepngtools.png" class="action-icon">
+                                        &nbsp;Edit
+                                    </div>
+                                </a>
                             <%  } %>
                         </div>
                     </div>

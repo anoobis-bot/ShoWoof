@@ -177,7 +177,7 @@ router.post('/posts/:id', async (req, res) => {
     }
 });
 
-router.post('/posts/:postId/comments/:commentId', async (req, res) => {
+router.post('/posts/:postId/comments/:commentId/edit', async (req, res) => {
     try {
         const postId = req.params.postId;
         const commentId = req.params.commentId;
@@ -200,6 +200,66 @@ router.post('/posts/:postId/comments/:commentId', async (req, res) => {
         console.log(error);
     }
 });
+
+router.post('/posts/:postId/comments/:commentId/delete', async (req, res) => {
+    try {
+      const postId = req.params.postId;
+      const commentIdToDelete = req.params.commentId;
+      const post = await Post.findById(postId);
+      post.Comments = post.Comments.filter(comment => comment._id.toString() !== commentIdToDelete);
+      await post.save();
+  
+      res.redirect(`/posts/${postId}`);
+    } catch (error) {
+      console.log('Error deleting comment:', error);
+    }
+  });
+
+//   router.post('/posts/:postId/comments', async (req, res) => {
+//     try {
+//       const postId = req.params.postId;
+//       const { comment, parentCommentId } = req.body; // Assuming you have a field named 'parentCommentId' in the request body.
+  
+//       if (!parentCommentId) {
+//         // This is a top-level comment
+//         const newComment = new Comment({
+//           comment: comment,
+//           commentAuthor: process.env.user,
+//         });
+  
+//         const post = await Post.findById(postId);
+  
+//         if (!post.Comments || !Array.isArray(post.Comments)) {
+//           post.Comments = [];
+//         }
+  
+//         post.Comments.push(newComment);
+//         await post.save();
+//       } else {
+//         // This is a reply to an existing comment
+//         const parentComment = await Comment.findById(parentCommentId);
+  
+//         if (!parentComment) {
+//           return res.status(404).json({ message: 'Parent comment not found.' });
+//         }
+  
+//         const newReply = new Comment({
+//           comment: comment,
+//           commentAuthor: process.env.user,
+//           parentComment: parentCommentId,
+//         });
+  
+//         await newReply.save();
+//         parentComment.Comments.push(newReply);
+//         await parentComment.save();
+//       }
+  
+//       res.redirect(`/posts/${postId}`);
+//     } catch (error) {
+//       console.log(error);
+//       res.status(500).json({ message: 'Error adding comment.' });
+//     }
+//   });
 
 module.exports = router;
 
@@ -293,55 +353,41 @@ module.exports = router;
 // function insertPostData () {
 //       Post.insertMany([
 //         {
-//             "title": "The Enchanted Forest",
-//             "author": "Emily Johnson",
-//             "caption": "Exploring the magical woods on a misty morning. #naturelovers"
+//             "title": "The quick brown dog",
+//             "author": "Govna",
+//             "image_url": "https://i.imgur.com/gusOP6M.jpg",
+//             "text_content": ""
 //         },
 //         {
-//             "title": "Beyond the Stars",
-//             "author": "Alex Turner",
-//             "caption": "Lost in the beauty of the night sky. #stargazing"
+//             "title": "What's the best breed of dog for you?",
+//             "author": "UWotMate",
+//             "image_url": "",
+//             "text_content": "Mine would be the black labrador! They're so cute and very intelligent."
 //         },        
 //         {
-//             "title": "A Journey Through Time",
-//             "author": "Sarah Thompson",
-//             "caption": "Uncovering the mysteries of history, one artifact at a time. #archaeology"
+//             "title": "Hard work with my dog",
+//             "author": "Dogsmith",
+//             "image_url": "https://i.imgur.com/viIDKGL.jpg",
+//             "text_content": ""
 //         },        
 //         {
-//             "title": "The Culinary Adventures",
-//             "author": "Michael Lee",
-//             "caption": "Savoring the flavors from around the world. #foodie"
+//             "title": "My dog got the zoomies!",
+//             "author": "Zoomies",
+//             "image_url": "https://i.imgur.com/ozuu9QT.jpg",
+//             "text_content": ""
 //         },        
 //         {
-//             "title": "Infinite Imagination",
-//             "author": "Jessica Williams",
-//             "caption": "Diving into the world of fantasy with every book. #booklover"
-//         }        
+//             "title": "Face of my pit before I feed him",
+//             "author": "dogAREthebest",
+//             "image_url": "https://worldofdogz.com/wp-content/uploads/2022/04/Why-Wont-My-Pitbull-Eat.jpg.webp",
+//             "text_content": ""
+//         },
+//         {
+//             "title": "Look at this cutie <3",
+//             "author": "dogAREthebest",
+//             "image_url": "https://img.rawpixel.com/private/static/images/website/2022-05/ns8230-image.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=b3961e17298745c0868eeef46211c3d0",
+//             "text_content": ""
+//         }  
 //       ])
 //     }
-    
-//     insertPostData();
-// function insertPost() {
-//     Post.insertMany({
-//         title: "Who died",
-//         author: "Govna",
-//         image_url: "",
-//         text_content: "Hi there",
-//         Comments: [
-//             {
-//                 comment: "This is a comment",
-//                 commentAuthor: "Govna"
-//             },
-//             {
-//                 comment: "This is a comment",
-//                 commentAuthor: "Govna"
-//             },
-//             {
-//                 comment: "This is a comment",
-//                 commentAuthor: "Govna"
-//             }
-//         ]
-//     });
-// }
-
-// insertPost();
+// insertPostData();

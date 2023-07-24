@@ -17,7 +17,7 @@
 
         <main>
             <div class="post">
-                <div class="votes">
+                <div class="vote-content">
                     <% let uvote = "upvote-not" %>
                     <% let dvote = "downvote-not"; %>
 
@@ -37,47 +37,43 @@
                    <button class="<%= dvote %>" id="downvoteID:<%=data._id%>"><img></button>
                 </div>
 
-                <div class="contentWhole">
-                    <div class="postHead">
-                        <div class="firstBar">
-                            <div class="username">
-                                Posted by <a href="/profiles/<%=data.author%>">u/<%= data.author %></a>
-                            </div>
-                            <div class="datePosted"> 
-                                &nbsp;<%= data.datePosted.toDateString() %>
-                            </div>
-                        </div>
-                        <div class="caption">
-                            <%= data.title %>
-                        </div>
+                <div class="post-content">
+                    <PostMeta>Posted by <a href="/profiles/<%=data.author%>">u/<%= data.author %></a> <%= data.datePosted.toDateString() %></PostMeta>
+                    <div class="colorA">
+                        <a href="/posts/<%=data._id%>">
+                            <PostTitle><%= data.title %></PostTitle>
+                            <PostDesc>
+                                <% if (data.image_url != '') { %>
+                                    <!-- Show only image content -->
+                                    <img src="<%= data.image_url %>">
+                                <% } else if (data.text_content != '') { %>
+                                    <!-- Show only text content -->
+                                    <p><%= data.text_content %></p>
+                                <% } %>
+                            </PostDesc>
+                        </a>
                     </div>
-                    <div class="content">
-                        <% if (data.image_url != '') { %>
-                            <!-- Show only image content -->
-                            <img src="<%= data.image_url %>">
-                        <% } else if (data.text_content != '') { %>
-                            <!-- Show only text content -->
-                            <p><%= data.text_content %></p>
-                        <% } %>
-                        
-                    </div>
-                    <div class="postToolBar">
-                        <!-- <img src="/images/post_elements/comment.png">
-                        <a href="#commentSection">Comments<a>&nbsp;
-                        <img src="/images/post_elements/share.png">
-                        <a>Share</a> -->
-                        <img src="/images/post_elements/comment.png">
-                        <a href="#commentSection">Comments</a>&nbsp;
-                        <div id="copyLink">
-                        <img src="/images/post_elements/share.png">
-                        Share</div>
-                        &nbsp;
+                    <div class="action-container">
+                        <a href="/posts/<%=data._id%>">
+                            <div class="flex-action-container">
+                                <img src="/images/post_elements/comment.png" class="action-icon">
+                                &nbsp;Comment
+                            </div>
+                        </a>
+                        &nbsp;&nbsp;
+                        <div id="copyLink:<%=data._id%>" class="copyLink">
+                            <img src="/images/post_elements/share.png" class="action-icon">
+                            &nbsp;Share
+                        </div>
+                        &nbsp;&nbsp;
                         <% if(data.author == user){ %>
-                            <img src="/images/post_elements/output-onlinepngtools.png" class="action-icon">
-                            &nbsp;
-                            <a href="/editPost/<%=data._id%>">Edit</a>
+                            <a href="/editPost/<%=data._id%>">
+                                <div class="flex-action-container">
+                                    <img src="/images/post_elements/output-onlinepngtools.png" class="action-icon">
+                                    &nbsp;Edit
+                                </div>
+                            </a>
                         <%  } %>
-
                     </div>
                     <br>
                     <div class="userComment">
@@ -96,6 +92,7 @@
             <!------------------->
             <div class="comments" id="commentSection">
                 <% data.Comments.forEach(comments => { %>
+                    <% if (comments.comment != "") {%>
                     <div class="editComment">
                     <div class="commentBase" id="comment-1">
                         <div class="commenterImg"></div>
@@ -132,14 +129,22 @@
                         </div>
                     </div>
                     <div id="visibility-<%= comments._id %>">
-                        <form action="/posts/<%= data._id %>/Comments/<%= comments._id %>" class="com__form" method="POST">
+                        <form action="/posts/<%= data._id %>/Comments/<%= comments._id %>/edit" class="com__form" method="POST">
                             <textarea placeholder="Bark!" class="textarea" id="editInputComment" name="editTerm"></textarea>
                             <div class="userCommentCommands">
+                                <form action="/posts/<%= data._id %>/comments/<%= comments._id %>/delete" method="POST">
+                                    <div class="userCommentCommands">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button type="submit" class="commentButton">Delete Comment</button>
+                                    </div>
+                                </form>
                                 <button type="submit" class="commentButton" id="editPostComment">Comment</button>
                             </div>
                         </form>
+                        
                     </div>
                     </div> 
+                    <% } %>
                <% }); %>
             </div>
         </main>
