@@ -145,6 +145,57 @@ router.post('', async (req, res) => {
     }
 })
 
+router.post('/posts/:id', async (req, res) => {
+    try {
+        const postId = req.params.id;
+        if (req.body.comTerm != "" ) {
+            
+            const newComment = {
+            comment: req.body.comTerm,
+            commentAuthor: process.env.user
+        };
+
+        const post = await Post.findById(postId);
+
+        if (!post.Comments || !Array.isArray(post.Comments)) {
+            post.Comments = [];
+        }
+
+        post.Comments.push(newComment);
+        await post.save();
+        
+        }
+        res.redirect(`/posts/${postId}`);
+
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+router.post('/posts/:postId/comments/:commentId', async (req, res) => {
+    try {
+        const postId = req.params.postId;
+        const commentId = req.params.commentId;
+        const updatedComment = {
+            comment: req.body.editTerm,
+        };
+
+        const post = await Post.findById(postId);
+
+        // Find the comment with the specified commentId in the post's comments array
+        const comment = post.Comments.id(commentId);
+
+        // Update the comment properties with the new values from updatedComment
+        comment.comment = updatedComment.comment;
+        // Update other properties as needed
+
+        await post.save();
+        res.redirect(`/posts/${postId}`);
+    } catch (error) {
+        console.log(error);
+    }
+});
+
 module.exports = router;
 
     // // Define the data required for rendering the dynamic parts of the page
@@ -265,27 +316,27 @@ module.exports = router;
 //     }
     
 //     insertPostData();
-function insertPost() {
-    Post.insertMany({
-        title: "Who died",
-        author: "Govna",
-        image_url: "",
-        text_content: "Hi there",
-        Comments: [
-            {
-                comment: "This is a comment",
-                commentAuthor: "Govna"
-            },
-            {
-                comment: "This is a comment",
-                commentAuthor: "Govna"
-            },
-            {
-                comment: "This is a comment",
-                commentAuthor: "Govna"
-            }
-        ]
-    });
-}
+// function insertPost() {
+//     Post.insertMany({
+//         title: "Who died",
+//         author: "Govna",
+//         image_url: "",
+//         text_content: "Hi there",
+//         Comments: [
+//             {
+//                 comment: "This is a comment",
+//                 commentAuthor: "Govna"
+//             },
+//             {
+//                 comment: "This is a comment",
+//                 commentAuthor: "Govna"
+//             },
+//             {
+//                 comment: "This is a comment",
+//                 commentAuthor: "Govna"
+//             }
+//         ]
+//     });
+// }
 
 // insertPost();
