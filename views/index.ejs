@@ -22,37 +22,9 @@
             <% data.forEach(post => { %>
                 <div class="post-container">
                     <div class="vote-content">
-                        <% 
-                            let uvote = "upvote-not";
-                            let dvote = "downvote-not";
+                        <% let uvote = "upvote-not"; %>
+                        <% let dvote = "downvote-not"; %>
 
-                            let foundUvote = false;
-                            let foundDVote = false;
-
-                            try {
-                                post.upvotes.forEach(elem => {
-                                    if (elem.equals(userID)) {
-                                        foundUvote = true;
-                                        return;
-                                    }
-                                })
-                                post.downvotes.forEach(elem => {
-                                    if (elem.equals(userID)) {
-                                        foundDvote = true;
-                                        return;
-                                    }
-                                })
-
-                                if (foundUvote) {
-                                    uvote = "upvote"
-                                }
-                                else if (foundDvote) {
-                                    dvote = "downvote"
-                                }
-                            } catch (err) {
-                                console.log(err);
-                            }
-                         %>
                         <button class="<%= uvote %>" id="upvoteID:<%=post._id%>"><img></button>
                         <p id="statusID<%=post._id%>"><%= post.votes %></p>
                         <button class="<%= dvote %>" id="downvoteID:<%=post._id%>"><img></button>

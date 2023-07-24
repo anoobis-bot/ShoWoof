@@ -75,7 +75,8 @@ router.post("/upvote", async (req, res) => {
         
 
         // compute for votes
-        res.send({numVotes: post.upvotes.length - post.downvotes.length});
+        res.send({numVotes: post.upvotes.length - post.downvotes.length,
+                    userAction: action});
 
         console.log(post);
     } catch (err) {
@@ -118,7 +119,8 @@ router.post("/downvote", async (req, res) => {
             await post.save();
         }
 
-        res.send({numVotes: post.upvotes.length - post.downvotes.length});
+        res.send({numVotes: post.upvotes.length - post.downvotes.length,
+            userAction: action});
 
         console.log(post)
     } catch (err) {
