@@ -12,11 +12,11 @@
     <%- include('partials/nav_panel.ejs'); %>
 
     <div id="profile-container">
-        <div id="cover-photo" style="background-image: url(/images/profile_pics/cover_pics/<%=username%>_cover.jpg);"></div>
+        <div id="cover-photo" style="background-image: url(<%=bgPicPath%>);"></div>
 
         <div id="profile-name-content">
             <div id="profile-picture-container">
-                <img src="/images/profile_pics/profile_pic/<%=username%>.jpg">
+                <img src="<%=pPicPath%>">
             </div>
 
             <p>u/<%=username%></p>
@@ -31,28 +31,6 @@
         <p id="posts-header"><b>Your Posts</b></p>
 
         <div id="profile-content">
-            <!-- <div id="user-posts">
-                <div class="post-container">
-                    <div class="vote-content">
-                        <div class="upvote-btn"></div>
-                        <p>vote</p>
-                        <div class="downvote-btn"></div>
-                    </div>
-
-                    <div class="post-content">
-                        <PostMeta>Posted by <a href="../profiles/DogsDBest.html">u/DogsDBest</a> 1 day ago</PostMeta>
-                        <PostTitle>Face of my pit before I feed him</PostTitle>
-                        <img src="../test_pics/posts/smiling-pit.jpg_large" class="post-image">
-                        <div class="action-container">
-                            <img src="../post_elements/comment.png" class="action-icon">
-                            <a href="../post5.html">&nbsp;Comment</a>
-                            &nbsp;&nbsp;
-                            <img src="../post_elements/share.png" class="action-icon">
-                            <a href="../post5.html">&nbsp;Share</a>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
             <div id="user-posts">
                 <% data.forEach(post => { %>
                     <div class="post-container">

@@ -34,13 +34,7 @@ router.post('/edit-profile', async (req, res) => {
         res.redirect("/profiles/" + req.body.currentUser);
     }
     
-    
 
 });
-
-// router.param("username", (req, res, next, username) => {
-//     req.username = username;
-//     next();
-// });
 
 module.exports = router;

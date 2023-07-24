@@ -7,10 +7,20 @@ const Post = require('../../db/schema/post');
 
 router.get('/:username', async (req, res) => {
     const postData = await Post.find({"author": req.username});
+    const profileData = await Profile.findOne({"username": req.username});
 
-    res.render("profile", { user: process.env.user,
-                            username: req.username,
-                            data: postData});
+    try {
+        const profilePic = profileData.profilePicture;
+        const backgroundPic = profileData.backgroundPicture;
+
+        res.render("profile", { user: process.env.user,
+            username: req.username,
+            data: postData,
+            pPicPath: profilePic,
+            bgPicPath: backgroundPic});
+    } catch (err) {
+        console.log(err);
+    }
 });
 
 router.get('/:username/edit', (req, res) => {
