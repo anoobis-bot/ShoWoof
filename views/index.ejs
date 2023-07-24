@@ -22,9 +22,40 @@
             <% data.forEach(post => { %>
                 <div class="post-container">
                     <div class="vote-content">
-                        <button class="upvote" id="upvoteID:<%=post._id%>"><img src="/images/post_elements/upvote.png"></button>
+                        <% 
+                            let uvote = "upvote-not";
+                            let dvote = "downvote-not";
+
+                            let foundUvote = false;
+                            let foundDVote = false;
+
+                            try {
+                                post.upvotes.forEach(elem => {
+                                    if (elem.equals(userID)) {
+                                        foundUvote = true;
+                                        return;
+                                    }
+                                })
+                                post.downvotes.forEach(elem => {
+                                    if (elem.equals(userID)) {
+                                        foundDvote = true;
+                                        return;
+                                    }
+                                })
+
+                                if (foundUvote) {
+                                    uvote = "upvote"
+                                }
+                                else if (foundDvote) {
+                                    dvote = "downvote"
+                                }
+                            } catch (err) {
+                                console.log(err);
+                            }
+                         %>
+                        <button class="<%= uvote %>" id="upvoteID:<%=post._id%>"><img></button>
                         <p id="statusID<%=post._id%>"><%= post.votes %></p>
-                        <button class="downvote" id="downvoteID:<%=post._id%>"><img src="/images/post_elements/downvote.png"></button>
+                        <button class="<%= dvote %>" id="downvoteID:<%=post._id%>"><img></button>
                     </div>
 
                     <div class="post-content">

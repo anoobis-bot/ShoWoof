@@ -327,23 +327,39 @@ a {
     font-weight: bold;
 }
 
-button.upvote, button.downvote {
+button.upvote, button.upvote-not, button.downvote, button.downvote-not {
     border: none;
     background-color: transparent;
     cursor: pointer;
     height: 25px;
 }
 
-button.upvote img, button.downvote img {
+button.upvote img, button.downvote img, button.upvote-not img, button.downvote-not img {
     width: 25px;
     height: 25px;
 }
 
-button.upvote:hover img {
+button.upvote-not img {
+    content: url(/images/post_elements/upvote.png);
+}
+
+button.downvote-not img {
+    content: url(/images/post_elements/downvote.png);
+}
+
+button.upvote img {
     content: url(/images/post_elements/upvoteColored.png);
 }
 
-button.downvote:hover img {
+button.downvote img {
+    content: url(/images/post_elements/downvoteColored.png);
+}
+
+button.upvote-not:hover img {
+    content: url(/images/post_elements/upvoteColored.png);
+}
+
+button.downvote-not:hover img {
     content: url(/images/post_elements/downvoteColored.png);
 }
 

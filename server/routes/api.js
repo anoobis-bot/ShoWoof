@@ -39,10 +39,45 @@ router.post('/edit-profile', async (req, res) => {
 
 router.post("/upvote", async (req, res) => {
     try {
+        var action = "DISENGAGE";
+
+        const userDoc = await Profile.findOne({"username": process.env.user});
+        const userID = userDoc._id;
+
         const post = await Post.findById(req.body.postID);
-        post.votes = post.votes + 1;
-        await post.save();
-        res.send({numVotes: post.votes});
+
+        var found = false;
+
+        post.upvotes.forEach(elem => {
+            if (elem.equals(userID)) {
+                found = true;
+                return;
+            }
+        })
+
+        if (!found){
+            post.votes = post.votes + 1;
+            await post.save();
+
+            post.upvotes.push(userID);
+            post.downvotes.pull(userID);
+            await post.save();
+
+            action = "ENGAGE";
+        } else {
+            post.votes = post.votes - 1;
+            await post.save();
+
+            post.upvotes.pull(userID);
+            await post.save();
+        }
+
+        
+
+        // compute for votes
+        res.send({numVotes: post.upvotes.length - post.downvotes.length});
+
+        console.log(post);
     } catch (err) {
         console.log(err);
     }
@@ -50,10 +85,42 @@ router.post("/upvote", async (req, res) => {
 
 router.post("/downvote", async (req, res) => {
     try {
+        var action = "DISENGAGE";
+
+        const userDoc = await Profile.findOne({"username": process.env.user});
+        const userID = userDoc._id;
+
         const post = await Post.findById(req.body.postID);
-        post.votes = post.votes - 1;
-        await post.save();
-        res.send({numVotes: post.votes});
+
+        var found = false;
+
+        post.downvotes.forEach(elem => {
+            if (elem.equals(userID)) {
+                found = true;
+                return;
+            }
+        })
+
+        if (!found){
+            post.votes = post.votes - 1;
+            await post.save();
+
+            post.downvotes.push(userID);
+            post.upvotes.pull(userID);
+            await post.save();
+
+            action = "ENGAGE";
+        } else {
+            post.votes = post.votes + 1;
+            await post.save();
+
+            post.downvotes.pull(userID);
+            await post.save();
+        }
+
+        res.send({numVotes: post.upvotes.length - post.downvotes.length});
+
+        console.log(post)
     } catch (err) {
         console.log(err);
     }
