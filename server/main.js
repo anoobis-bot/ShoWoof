@@ -348,55 +348,41 @@ module.exports = router;
 // function insertPostData () {
 //       Post.insertMany([
 //         {
-//             "title": "The Enchanted Forest",
-//             "author": "Emily Johnson",
-//             "caption": "Exploring the magical woods on a misty morning. #naturelovers"
+//             "title": "The quick brown dog",
+//             "author": "Govna",
+//             "image_url": "https://i.imgur.com/gusOP6M.jpg",
+//             "text_content": ""
 //         },
 //         {
-//             "title": "Beyond the Stars",
-//             "author": "Alex Turner",
-//             "caption": "Lost in the beauty of the night sky. #stargazing"
+//             "title": "What's the best breed of dog for you?",
+//             "author": "UWotMate",
+//             "image_url": "",
+//             "text_content": "Mine would be the black labrador! They're so cute and very intelligent."
 //         },        
 //         {
-//             "title": "A Journey Through Time",
-//             "author": "Sarah Thompson",
-//             "caption": "Uncovering the mysteries of history, one artifact at a time. #archaeology"
+//             "title": "Hard work with my dog",
+//             "author": "Dogsmith",
+//             "image_url": "https://i.imgur.com/viIDKGL.jpg",
+//             "text_content": ""
 //         },        
 //         {
-//             "title": "The Culinary Adventures",
-//             "author": "Michael Lee",
-//             "caption": "Savoring the flavors from around the world. #foodie"
+//             "title": "My dog got the zoomies!",
+//             "author": "Zoomies",
+//             "image_url": "https://i.imgur.com/ozuu9QT.jpg",
+//             "text_content": ""
 //         },        
 //         {
-//             "title": "Infinite Imagination",
-//             "author": "Jessica Williams",
-//             "caption": "Diving into the world of fantasy with every book. #booklover"
-//         }        
+//             "title": "Face of my pit before I feed him",
+//             "author": "dogAREthebest",
+//             "image_url": "https://worldofdogz.com/wp-content/uploads/2022/04/Why-Wont-My-Pitbull-Eat.jpg.webp",
+//             "text_content": ""
+//         },
+//         {
+//             "title": "Look at this cutie <3",
+//             "author": "dogAREthebest",
+//             "image_url": "https://img.rawpixel.com/private/static/images/website/2022-05/ns8230-image.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=b3961e17298745c0868eeef46211c3d0",
+//             "text_content": ""
+//         }  
 //       ])
 //     }
-    
-//     insertPostData();
-// function insertPost() {
-//     Post.insertMany({
-//         title: "Who died",
-//         author: "Govna",
-//         image_url: "",
-//         text_content: "Hi there",
-//         Comments: [
-//             {
-//                 comment: "This is a comment",
-//                 commentAuthor: "Govna"
-//             },
-//             {
-//                 comment: "This is a comment",
-//                 commentAuthor: "Govna"
-//             },
-//             {
-//                 comment: "This is a comment",
-//                 commentAuthor: "Govna"
-//             }
-//         ]
-//     });
-// }
-
-// insertPost();
+// insertPostData();
