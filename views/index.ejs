@@ -17,11 +17,13 @@
         <p><b>Top posts of all time</b></p>
         <div id="top-posts-container">
             <% topPosts.forEach(post => { %>
-                <div class="top-posts" style="background-image: url(<%= post.image_url %>);">
-                    <div class="top-posts-text-container">
-                        <p><%= post.title %></p>
+                <a href="/posts/<%= post._id %>">
+                    <div class="top-posts" style="background-image: url(<%= post.image_url %>);">
+                        <div class="top-posts-text-container">
+                            <p><%= post.title %></p>
+                        </div>
                     </div>
-                </div>
+                </a>
             <% }); %>
         </div>
 
