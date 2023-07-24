@@ -40,6 +40,47 @@ router.get('/newPost', async (req, res) =>{
     }
 });
 
+
+
+/*
+GET
+*/
+
+router.get('/editPost/:id', async (req, res) => {
+    try {
+
+        const data = await Post.findOne({ _id: req.params.id });
+
+        res.render('edit_post', {data, user: process.env.user})
+        
+
+    } catch (error) {
+        console.log(error)
+    }
+});
+
+/*
+PUT
+*/
+
+router.put('/editPost/:id', async (req, res) => {
+    try {
+
+        await Post.findByIdAndUpdate(req.params.id, {
+            title: req.body.caption,
+            text_content: req.body.text_content,
+            image_url: req.body.image_url,
+            author: process.env.user,
+        });
+        
+        res.redirect(`/posts/${req.params.id}`);
+
+
+    } catch (error) {
+        console.log(error)
+    }
+});
+
 /*
 POST
 */
@@ -53,10 +94,6 @@ router.post('/newPost', async (req, res) => {
                 text_content: req.body.text_content,
                 image_url: req.body.image_url,
                 author: process.env.user,
-                comments:{
-                    commentAuthor: process.env.user,
-                    comment: "nothing"
-                }
             });
 
             await Post.create(newPost);
@@ -69,6 +106,7 @@ router.post('/newPost', async (req, res) => {
         console.log(error)
     }
 });
+
 
 router.post('', async (req, res) => {
     try {
