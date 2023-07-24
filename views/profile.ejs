@@ -3,6 +3,8 @@
 <head>
     <link rel="stylesheet" type="text/css" href="/css/format.css"/>
     <link rel="stylesheet" type="text/css" href="/css/profile_format.css"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/vote.js"></script>
     <title>u/<%=username%></title>
 </head>
 
@@ -35,9 +37,23 @@
                 <% data.forEach(post => { %>
                     <div class="post-container">
                         <div class="vote-content">
-                            <div class="upvote-btn"></div>
-                            <p>vote</p>
-                            <div class="downvote-btn"></div>
+                            <% let uvote = "upvote-not" %>
+                            <% let dvote = "downvote-not"; %>
+
+                            <% post.upvotes.forEach(user => { %>
+                                <% if (user.equals(userID)) {%>
+                                    <% uvote = "upvote" %>
+                                <% } %>
+                            <% }) %>
+                            <% post.downvotes.forEach(user => { %>
+                                <% if (user.equals(userID)) {%>
+                                    <% dvote = "downvote" %>
+                                <% } %>
+                            <% }) %>
+
+                            <button class="<%= uvote %>" id="upvoteID:<%=post._id%>"><img></button>
+                            <p id="statusID<%=post._id%>"><%= post.upvotes.length - post.downvotes.length %></p>
+                            <button class="<%= dvote %>" id="downvoteID:<%=post._id%>"><img></button>
                         </div>
         
                         <div class="post-content">
