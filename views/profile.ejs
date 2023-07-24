@@ -43,7 +43,16 @@
                         <div class="post-content">
                             <PostMeta>Posted by <a href="/profiles/<%=post.author%>">u/<%= post.author %></a> <%= post.datePosted.toDateString() %></PostMeta>
                             <PostTitle><%= post.title %></PostTitle>
-                            <PostDesc><img src="<%= post.caption %>"></PostDesc>
+                            <PostDesc>
+                                <% if (post.image_url != '') { %>
+                                    <!-- Show only image content -->
+                                    <img src="<%= post.image_url %>">
+                                <% } else if (post.text_content != '') { %>
+                                    <!-- Show only text content -->
+                                    <p><%= post.text_content %></p>
+                                <% } %>
+    
+                            </PostDesc>
                             <div class="action-container">
                                 <img src="/images/post_elements/comment.png" class="action-icon">
                                 <a href="/posts/<%=post._id%>">&nbsp;Comment</a>
