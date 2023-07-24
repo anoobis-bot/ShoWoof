@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Post = require('../../db/schema/post');
+const Profile = require("../../db/schema/profile")
 require('dotenv').config()
 
 router.get('/:postId', async (req, res) => {
@@ -8,7 +9,11 @@ router.get('/:postId', async (req, res) => {
     try {
         let slug = req.params.postId;
         const data = await Post.findById({_id: slug});
-        res.render('post', {data, currentRoute:`/post/${slug}`, user: process.env.user});
+
+        const userDoc = await Profile.findOne({"username": process.env.user});
+        const userId = userDoc._id;
+
+        res.render('post', {data, currentRoute:`/post/${slug}`, user: process.env.user, userID: userId});
     } catch (error) {
         console.log(error);
     }

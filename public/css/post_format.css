@@ -52,40 +52,33 @@ body{
     background-color: #E9EDC9;;
 }
 
-.votes div.upvote{
-    background-image:url(/images/post_elements/upvote.png);
-    background-size: contain;
+button.upvote-not img, button.downvote-not img, button.upvote img, button.downvote img {
     width: 30px;
     height: 30px;
-    background-repeat: no-repeat;
-    background-position: center;
 }
 
-.votes div.downvote{
-    background-image:url(/images/post_elements/downvote.png);
-    background-size: contain;
-    width: 30px;
-    height: 30px;
-    background-repeat: no-repeat;
-    background-position: center;
+.votes button.upvote-not img{
+    content: url(/images/post_elements/upvote.png);
 }
 
-.votes div.upvote:hover{
-    background-image:url(/images/post_elements/upvoteColored.png);
-    background-size: contain;
-    width: 30px;
-    height: 30px;
-    background-repeat: no-repeat;
-    background-position: center;
+.votes button.downvote-not img{
+    content: url(/images/post_elements/downvote.png);
 }
 
-.votes div.downvote:hover{
-    background-image:url(/images/post_elements/downvoteColored.png);
-    background-size: contain;
-    width: 30px;
-    height: 30px;
-    background-repeat: no-repeat;
-    background-position: center;
+.votes button.upvote img{
+    content: url(/images/post_elements/upvoteColored.png);
+}
+
+.votes button.downvote img{
+    content: url(/images/post_elements/downvoteColored.png);
+}
+
+.votes button.upvote-not img:hover{
+    content: url(/images/post_elements/upvoteColored.png);
+}
+
+.votes button.downvote-not img:hover{
+    content: url(/images/post_elements/downvoteColored.png);
 }
 
 

@@ -8,6 +8,7 @@
         <script src="/js/comment.js"></script>
         <script src="/js/share.js"></script>
         <script src="/js/edit.js"></script>
+        <script src="/js/vote.js"></script>
     </head>
     <body>
         <%- include('partials/sticky-no-search.ejs'); %>
@@ -17,9 +18,23 @@
         <main>
             <div class="post">
                 <div class="votes">
-                   <div class="upvote"></div>
-                   <div class="numberOfVotes"><%= data.votes %></div>
-                   <div class="downvote"></div>
+                    <% let uvote = "upvote-not" %>
+                    <% let dvote = "downvote-not"; %>
+
+                    <% data.upvotes.forEach(user => { %>
+                        <% if (user.equals(userID)) {%>
+                            <% uvote = "upvote" %>
+                        <% } %>
+                    <% }) %>
+                    <% data.downvotes.forEach(user => { %>
+                        <% if (user.equals(userID)) {%>
+                            <% dvote = "downvote" %>
+                        <% } %>
+                    <% }) %>
+
+                   <button class="<%= uvote %>" id="upvoteID:<%=data._id%>"><img></button>
+                   <div class="numberOfVotes" id="statusID<%=data._id%>"> <%= data.upvotes.length - data.downvotes.length %> </div>
+                   <button class="<%= dvote %>" id="downvoteID:<%=data._id%>"><img></button>
                 </div>
 
                 <div class="contentWhole">
