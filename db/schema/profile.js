@@ -23,6 +23,9 @@ const ProfileSchema = new Schema({
     },
     backgroundPicture: {
         type: String
+    },
+    profileDescription: {
+        type: String
     }
 });
 

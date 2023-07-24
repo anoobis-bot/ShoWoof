@@ -248,14 +248,14 @@ button.upvote-not img, button.downvote-not img, button.upvote img, button.downvo
     border: var(--border-setting);
 }
 
-.commenterUser, .commentDate{
+.commenterUser, .commenterEdit, .commentDate{
     font-size: small;
     height: 1.5rem;
     padding-top: 5px;
 
 }
 
-.commentDate{
+.commenterEdit, .commentDate{
     color:gray;
 }
 

@@ -102,6 +102,8 @@ router.put('/editPost/:id', async (req, res) => {
             text_content: req.body.text_content,
             image_url: req.body.image_url,
             author: process.env.user,
+            postEdit: true,
+            datePosted: new Date()
         });
         
         res.redirect(`/posts/${req.params.id}`);
@@ -183,6 +185,8 @@ router.post('/posts/:postId/comments/:commentId/edit', async (req, res) => {
         const commentId = req.params.commentId;
         const updatedComment = {
             comment: req.body.editTerm,
+            commentEdit: true,
+            commentDate: new Date()
         };
 
         const post = await Post.findById(postId);
@@ -192,6 +196,8 @@ router.post('/posts/:postId/comments/:commentId/edit', async (req, res) => {
 
         // Update the comment properties with the new values from updatedComment
         comment.comment = updatedComment.comment;
+        comment.commentEdit = updatedComment.commentEdit;
+        comment.commentDate = updatedComment.commentDate;
         // Update other properties as needed
 
         await post.save();
@@ -346,34 +352,40 @@ module.exports = router;
 // function insertProfileData () {
 //       Profile.insertMany([
 //         {
-//             username: "CrazyCat23",
+//             username: "Govna",
 //             password: "P@ssw0rd!1",
-//             email: "crazycat23@example.com"
+//             email: "crazycat23@example.com",
+//             profilePicture: "/images/profile_pics/profile_pic/Govna.jpg"
 //         },
 //         {
-//             username: "AdventureSeeker",
+//             username: "UWotMate",
 //             password: "Mountain@Hiker42",
-//             email: "seektheadventure@example.com"
+//             email: "seektheadventure@example.com",
+//             profilePicture: "/images/profile_pics/profile_pic/UWotMate.jpg"
+            
 //         },        
 //         {
-//             username: "TechGuru789",
+//             username: "Dogsmith",
 //             password: "Innovate&Learn",
-//             email: "techguru789@example.com"
+//             email: "techguru789@example.com",
+//             profilePicture: "/images/profile_pics/profile_pic/Dogsmith.jpg"
 //         },        
 //         {
-//             username: "GardenEnthusiast",
+//             username: "Zoominator",
 //             password: "GreenThumb2023",
-//             email: "gardenlover@example.com"
+//             email: "gardenlover@example.com",
+//             profilePicture: "/images/profile_pics/profile_pic/Zoominator.jpg"
 //         },        
 //         {
-//             username: "MusicLover22",
-//             password: "Melody&Harmony",
-//             email: "musiclover22@example.com"
-//         },        
+//             username: "dogAREthebest",
+//             password: "password123",
+//             email: "musichater@example.com",
+//             profilePicture: "/images/profile_pics/profile_pic/DogsDBest.jpg",
+//             backgroundPicture: "/images/profile_pics/cover_pics/DogsDBest_cover.jpg"
+//         }        
 //       ])
 //     }
-    
-    // insertProfileData();
+// insertProfileData();
 
 // function insertPostData () {
 //       Post.insertMany([

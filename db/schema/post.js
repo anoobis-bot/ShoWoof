@@ -34,6 +34,10 @@ const PostSchema = new Schema({
     image_url: {
         type: String
     },
+    postEdit: {
+        type: Boolean,
+        default: false
+    },
     Comments: [{
         comment: {
             type: String,
