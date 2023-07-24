@@ -31,12 +31,12 @@
                         <PostMeta>Posted by <a href="/profiles/<%=post.author%>">u/<%= post.author %></a> <%= post.datePosted.toDateString() %></PostMeta>
                         <PostTitle><%= post.title %></PostTitle>
                         <PostDesc>
-                            <% if (data.image_url != '') { %>
+                            <% if (post.image_url != '') { %>
                                 <!-- Show only image content -->
-                                <img src="<%= data.image_url %>">
-                            <% } else if (data.text_content != '') { %>
+                                <img src="<%= post.image_url %>">
+                            <% } else if (post.text_content != '') { %>
                                 <!-- Show only text content -->
-                                <p><%= data.text_content %></p>
+                                <p><%= post.text_content %></p>
                             <% } else { %>
                                 <!-- Show a message if both image and text are empty -->
                                 <p>No content available</p>
