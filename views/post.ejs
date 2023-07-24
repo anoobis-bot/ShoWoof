@@ -77,9 +77,36 @@
             </div>
             <!------------------->
             <div class="comments" id="commentSection">
-                
+                <% data.Comments.forEach(comments => { %>
+                    <div class="commentBase" id="comment-1">
+                        <div class="commenterImg"></div>
+                        <div class="commentDetails">
+                            <div class="commenterDetails">
+                                <div class="commenterUser"><%= comments.commentAuthor %></div>
+                                <div class="commentDate"><%= comments.commentDate.toDateString() %></div>
+                            </div>
+                            <div class="commentText"><%= comments.comment %></div>
+                            <div class="commentCommandBar">
+                                <div class="commentVote">
+                                    <div class="upvote"></div>
+                                    &nbsp;
+                                    <div class="commentToolText"><%= comments.commentUpvotes %></div>
+                                    &nbsp;
+                                    <div class="downvote"></div>
+                                </div>
+                                <div class="commentReply">
+                                    <img src="/images/post_elements/comment.png">
+                                    <div class="commentToolText">Reply</div>
+                                </div>
+                                <div class="commentEdit">
+                                    <img src="/images/post_elements/output-onlinepngtools.png">
+                                    <div class="commentToolText">Edit</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+               <% }); %>
             </div>
-
         </main>
     </body>
 </html>

@@ -263,3 +263,27 @@ module.exports = router;
 //     }
     
 //     insertPostData();
+function insertPost() {
+    Post.insertMany({
+        title: "Who died",
+        author: "Govna",
+        image_url: "",
+        text_content: "Hi there",
+        Comments: [
+            {
+                comment: "This is a comment",
+                commentAuthor: "Govna"
+            },
+            {
+                comment: "This is a comment",
+                commentAuthor: "Govna"
+            },
+            {
+                comment: "This is a comment",
+                commentAuthor: "Govna"
+            }
+        ]
+    });
+}
+
+// insertPost();

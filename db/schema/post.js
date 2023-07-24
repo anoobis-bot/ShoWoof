@@ -26,7 +26,7 @@ const PostSchema = new Schema({
     image_url: {
         type: String
     },
-    comments: {
+    Comments: [{
         comment: {
             type: String,
             
@@ -42,7 +42,7 @@ const PostSchema = new Schema({
             type: Number,
             default: 0
         }
-    }
+    }]
 });
 
 module.exports = mongoose.model('Post', PostSchema);
