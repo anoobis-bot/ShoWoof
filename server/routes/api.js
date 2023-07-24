@@ -37,4 +37,26 @@ router.post('/edit-profile', async (req, res) => {
 
 });
 
+router.post("/upvote", async (req, res) => {
+    try {
+        const post = await Post.findById(req.body.postID);
+        post.votes = post.votes + 1;
+        await post.save();
+        res.send({numVotes: post.votes});
+    } catch (err) {
+        console.log(err);
+    }
+});
+
+router.post("/downvote", async (req, res) => {
+    try {
+        const post = await Post.findById(req.body.postID);
+        post.votes = post.votes - 1;
+        await post.save();
+        res.send({numVotes: post.votes});
+    } catch (err) {
+        console.log(err);
+    }
+});
+
 module.exports = router;
