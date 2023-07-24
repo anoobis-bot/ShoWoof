@@ -50,11 +50,15 @@ const PostSchema = new Schema({
             type: Number,
             default: 0
         },
+        commentEdit: {
+            type: Boolean,
+            default: false
+        },
         parentComment: {
             type: Schema.Types.ObjectId,
             ref: 'Comment',
             required: false,
-          }
+        }
     }]
 });
 
