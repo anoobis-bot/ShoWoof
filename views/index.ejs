@@ -22,11 +22,22 @@
             <% data.forEach(post => { %>
                 <div class="post-container">
                     <div class="vote-content">
-                        <% let uvote = "upvote-not"; %>
+                        <% let uvote = "upvote-not" %>
                         <% let dvote = "downvote-not"; %>
 
+                        <% post.upvotes.forEach(user => { %>
+                            <% if (user.equals(userID)) {%>
+                                <% uvote = "upvote" %>
+                            <% } %>
+                        <% }) %>
+                        <% post.downvotes.forEach(user => { %>
+                            <% if (user.equals(userID)) {%>
+                                <% dvote = "downvote" %>
+                            <% } %>
+                        <% }) %>
+
                         <button class="<%= uvote %>" id="upvoteID:<%=post._id%>"><img></button>
-                        <p id="statusID<%=post._id%>"><%= post.votes %></p>
+                        <p id="statusID<%=post._id%>"><%= post.upvotes.length - post.downvotes.length %></p>
                         <button class="<%= dvote %>" id="downvoteID:<%=post._id%>"><img></button>
                     </div>
 

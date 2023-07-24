@@ -7,7 +7,7 @@ router.get('', async (req, res) =>{
     console.log("Server is running");
     try {
         const data = await Post.find();
-        const userDoc = await Profile.find({"username": process.env.user});
+        const userDoc = await Profile.findOne({"username": process.env.user});
         const userId = userDoc._id;
         res.render('index', {data, user: process.env.user, userID: userId});
     } catch (error) {
