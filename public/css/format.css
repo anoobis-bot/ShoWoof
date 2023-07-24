@@ -458,7 +458,7 @@ PostMeta a:hover {
     width: 95%;
 }
 
-#editInputComment {
+#editInputComment, #replyInputComment {
     margin-left: 22.5px;
     margin-right: 22.5px;
     width: 90%;
