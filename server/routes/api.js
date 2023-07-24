@@ -25,7 +25,15 @@ router.post('/edit-profile', async (req, res) => {
 
         await Post.updateMany({"author": req.body.currentUser}, {$set: {"author": req.body.username_change}});
     }
+
+    if (req.body.profile.length !== 0) {
+        await Profile.updateOne({"username": req.body.currentUser}, {$set:{"profilePicture": req.body.profile}});
+    }
     
+    if (req.body.background.length !== 0) {
+        await Profile.updateOne({"username": req.body.currentUser}, {$set:{"backgroundPicture": req.body.background}});
+    }
+
     try {
         const newUserDoc = await Profile.findOne({"username": req.body.username_change});
         const newUser = newUserDoc.username;

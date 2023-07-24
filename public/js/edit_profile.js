@@ -3,9 +3,10 @@ $(document).ready(function() {
         let new_username = $("input#username_change").val();
         let new_email = $("input#email").val();
         let new_password = $("input#password_change").val();
-        // let new_photo = $("input#photo").val();
+        let new_profile = $("input#profile").val();
+        let new_background = $("input#background").val();
     
-        if (!new_username && !new_email && !new_password) {
+        if (!new_username && !new_email && !new_password && !new_profile && !new_background) {
             alert("At least one field must be answered");
             return false;
         }
