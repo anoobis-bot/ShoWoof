@@ -20,30 +20,23 @@ const PostSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    caption: {
-        type: String,
-        required: true
+    text_content: {
+        type: String
     },
-    authorID: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: profile
+    image_url: {
+        type: String
     },
     comments: {
         comment: {
             type: String,
-            required: true
             
         },
         commentAuthor: {
             type: String,
-            required: true
-        },
-        commentAuthorID: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: profile
         },
         commentDate: {
-            type: Date
+            type: Date,
+            default: Date.now
         },
         commentUpvotes: {
             type: Number,

@@ -371,6 +371,14 @@ PostDesc {
     margin-bottom: 10px;
 }
 
+PostDesc img {
+    width: 80%;
+    max-height: 100%;
+    display: block;
+    margin:auto;
+    padding: 10px
+}
+
 PostMeta {
     font-weight: normal;
     font-size: 10px;

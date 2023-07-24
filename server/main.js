@@ -50,10 +50,11 @@ router.post('/newPost', async (req, res) => {
         try {
             const newPost = new Post({
                 title: req.body.caption,
-                caption: req.body.text_content,
+                text_content: req.body.text_content,
+                image_url: req.body.image_url,
                 author: process.env.user,
                 comments:{
-                    commentAuthor: "someone",
+                    commentAuthor: process.env.user,
                     comment: "nothing"
                 }
             });
