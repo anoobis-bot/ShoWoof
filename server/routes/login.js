@@ -22,10 +22,18 @@ router.get('/login', auth.checkAlreadyAuthenticated, async (req, res) =>{
 });
 
 router.post('/login', auth.checkAlreadyAuthenticated, passport.authenticate('local', {
-    successRedirect: '/',
     failureRedirect: '/login',
     failureFlash: true,
-}))
+}),
+    (req, res) => {
+        if (req.body.remember) {
+            const days = 21
+            req.session.cookie.maxAge = 1000 * 60 * 60 * 24 * days
+        }
+
+        res.redirect('/');
+    }
+);
 
 router.delete('/logout', function(req, res, next) {
     req.logout(function(err) {

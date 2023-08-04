@@ -228,3 +228,16 @@ a:link, a:visited, a:active {
     text-align: center;
     color: red;
 }
+
+#remember-container {
+    display: flex;
+    align-items: center;
+}
+
+#remember-container input {
+    margin-left: 10px;
+}
+
+#remember-container label {
+    font-size: 15px;
+}
