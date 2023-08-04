@@ -8,13 +8,10 @@ router.get('', auth.checkAuthenticated, async (req, res) =>{
     console.log("Server is running");
     try {
         const data = await Post.find();
-        
-        const userDoc = await Profile.findOne({"username": process.env.user});
-        const userId = userDoc._id;
 
         const topPosts = await Post.find().sort({"votes": -1}).limit(4);
 
-        res.render('index', {data, user: process.env.user, userID: userId,
+        res.render('index', {data, user: req.user.username, userID: req.user._id,
                     topPosts});
     } catch (error) {
         console.log(error);
@@ -24,7 +21,7 @@ router.get('', auth.checkAuthenticated, async (req, res) =>{
 router.get('/newPost', auth.checkAuthenticated, async (req, res) =>{
     console.log("user is making a new post");
     try {
-        res.render('new_post', {user: process.env.user});
+        res.render('new_post', {user: req.user.username});
     } catch (error) {
         console.log(error);
     }
@@ -42,7 +39,7 @@ router.post('/newPost', async (req, res) => {
                 title: req.body.caption,
                 text_content: req.body.text_content,
                 image_url: req.body.image_url,
-                author: process.env.user,
+                author: req.user.username,
             });
 
             await Post.create(newPost);
@@ -65,7 +62,7 @@ router.get('/editPost/:id', auth.checkAuthenticated, async (req, res) => {
 
         const data = await Post.findOne({ _id: req.params.id });
 
-        res.render('edit_post', {data, user: process.env.user})
+        res.render('edit_post', {data, user: req.user.username})
         
 
     } catch (error) {
@@ -84,7 +81,7 @@ router.put('/editPost/:id', async (req, res) => {
             title: req.body.caption,
             text_content: req.body.text_content,
             image_url: req.body.image_url,
-            author: process.env.user,
+            author: req.user.username,
             postEdit: true,
             datePosted: new Date()
         });
@@ -128,7 +125,7 @@ router.post('', async (req, res) => {
             ]
         });
 
-    res.render("index", { data, currentRoute: '/', user: process.env.user });
+    res.render("index", { data, currentRoute: '/', user: req.user.username });
 
     } catch (error) {
         console.log(error)
@@ -142,7 +139,7 @@ router.post('/posts/:id', async (req, res) => {
             
             const newComment = {
             comment: req.body.comTerm,
-            commentAuthor: process.env.user
+            commentAuthor: req.user.username
         };
 
         const post = await Post.findById(postId);
@@ -211,7 +208,7 @@ router.post('/posts/:postId/comments/:commentId/delete', async (req, res) => {
             
             const newComment = {
             comment: req.body.replyTerm,
-            commentAuthor: process.env.user
+            commentAuthor: req.user.username
         };
 
         const post = await Post.findById(postId);

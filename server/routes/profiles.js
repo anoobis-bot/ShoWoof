@@ -9,7 +9,7 @@ router.get('/:username', async (req, res) => {
 });
 
 router.get('/:username/edit', (req, res) => {
-    res.render("edit_profile", { user: process.env.user })
+    res.render("edit_profile", { user: req.user.username })
 });
 
 router.param("username", (req, res, next, username) => {

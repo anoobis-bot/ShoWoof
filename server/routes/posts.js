@@ -10,10 +10,7 @@ router.get('/:postId', async (req, res) => {
         let slug = req.params.postId;
         const data = await Post.findById({_id: slug});
 
-        const userDoc = await Profile.findOne({"username": process.env.user});
-        const userId = userDoc._id;
-
-        res.render('post', {data, currentRoute:`/post/${slug}`, user: process.env.user, userID: userId});
+        res.render('post', {data, currentRoute:`/post/${slug}`, user: req.user.username, userID: req.user._id});
     } catch (error) {
         console.log(error);
     }
