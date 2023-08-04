@@ -12,7 +12,7 @@ const passport = require('passport')
 const initializePassport = require('./controller/passport_config')
 initializePassport(
   passport,
-  profile_ctrl.getProfile_username,
+  profile_ctrl.getProfile_email,
   profile_ctrl.getProfile_id
 )
 

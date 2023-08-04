@@ -9,6 +9,10 @@ async function getProfile_id(id) {
     return await Profile.findById(id);
 }
 
+async function getProfile_email(email) {
+    return await Profile.findOne({"email": email});
+}
+
 async function renderProfile(req, res) {
     const postData = await Post.find({"author": req.username});
     const profileData = await getProfile_username(req.username);
@@ -31,4 +35,4 @@ async function renderProfile(req, res) {
     }
 }
 
-module.exports = { renderProfile, getProfile_username, getProfile_id }
+module.exports = { renderProfile, getProfile_username, getProfile_id, getProfile_email }
