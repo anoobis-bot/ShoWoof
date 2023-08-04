@@ -5,14 +5,36 @@ const connectDB = require("./db/config/db");
 const { post } = require("./server/routes/profiles");
 const db = connectDB();
 
+const profile_ctrl = require("./controller/profiles_controller.js")
+
+var session = require('express-session');
+const passport = require('passport')
+const initializePassport = require('./controller/passport_config')
+initializePassport(
+  passport,
+  profile_ctrl.getProfile_username,
+  profile_ctrl.getProfile_id
+)
+
 const methodOverride = require('method-override');
 app.use(methodOverride('_method'));
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
+app.use(session({
+    secret: process.env.SESSION_PW,
+    resave: false,
+    saveUninitialized: false,
+}));
+app.use(passport.initialize())
+app.use(passport.session())
+
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public'));
+
+const loginRoutes = require('./server/routes/login');
+app.use('/', loginRoutes);
 
 const postsRoutes = require('./server/routes/posts');
 app.use('/posts', postsRoutes);

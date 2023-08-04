@@ -2,8 +2,9 @@ const express = require('express');
 const router = express.Router();
 const Profile = require('../db/schema/profile');
 const Post = require('../db/schema/post');
+const auth = require('../controller/authenticator.js');
 
-router.get('', async (req, res) =>{
+router.get('', auth.checkAuthenticated, async (req, res) =>{
     console.log("Server is running");
     try {
         const data = await Post.find();
@@ -20,25 +21,7 @@ router.get('', async (req, res) =>{
     }
 });
 
-router.get('/register', async (req, res) =>{
-    console.log("user is registering");
-    try {
-        res.render('register');
-    } catch (error) {
-        console.log(error);
-    }
-});
-
-router.get('/login', async (req, res) =>{
-    console.log("user is try to log in");
-    try {
-        res.render('login');
-    } catch (error) {
-        console.log(error);
-    }
-});
-
-router.get('/newPost', async (req, res) =>{
+router.get('/newPost', auth.checkAuthenticated, async (req, res) =>{
     console.log("user is making a new post");
     try {
         res.render('new_post', {user: process.env.user});
@@ -77,7 +60,7 @@ router.post('/newPost', async (req, res) => {
 GET
 */
 
-router.get('/editPost/:id', async (req, res) => {
+router.get('/editPost/:id', auth.checkAuthenticated, async (req, res) => {
     try {
 
         const data = await Post.findOne({ _id: req.params.id });
@@ -243,8 +226,7 @@ router.post('/posts/:postId/comments/:commentId/delete', async (req, res) => {
         console.log(error);
         res.status(500).send('Error adding reply comment.');
     }
-});
-
+}); 
 
 //   router.post('/posts/:postId/comments', async (req, res) => {
 //     try {

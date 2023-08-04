@@ -1,11 +1,19 @@
 const Profile = require('../db/schema/profile');
 const Post = require('../db/schema/post');
 
+async function getProfile_username(username) {
+    return await Profile.findOne({"username": username});
+}
+
+async function getProfile_id(id) {
+    return await Profile.findById(id);
+}
+
 async function renderProfile(req, res) {
     const postData = await Post.find({"author": req.username});
-    const profileData = await Profile.findOne({"username": req.username});
+    const profileData = await getProfile_username(req.username);
 
-    const userDoc = await Profile.findOne({"username": process.env.user});
+    const userDoc = await getProfile_username(process.env.user);
     const userId = userDoc._id;
 
     try {
@@ -23,4 +31,4 @@ async function renderProfile(req, res) {
     }
 }
 
-module.exports = { renderProfile }
+module.exports = { renderProfile, getProfile_username, getProfile_id }
