@@ -17,21 +17,19 @@ async function renderProfile(req, res) {
     const postData = await Post.find({"author": req.username});
     const profileData = await getProfile_username(req.username);
 
-    const userDoc = await getProfile_username(process.env.user);
-    const userId = userDoc._id;
-
     try {
         const profilePic = profileData.profilePicture;
         const backgroundPic = profileData.backgroundPicture;
 
-        res.render("profile", { user: process.env.user,
+        res.render("profile", { user: req.user.username,
             username: req.username,
             data: postData,
             pPicPath: profilePic,
             bgPicPath: backgroundPic,
-            userID: userId});
+            userID: req.user._id});
     } catch (err) {
         console.log(err);
+        res.redirect('/');
     }
 }
 

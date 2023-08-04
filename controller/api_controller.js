@@ -12,7 +12,6 @@ async function updateUser(req_body) {
 
     if (req_body.username_change.length !== 0) {
         await Profile.updateOne({"username": req_body.currentUser}, {$set:{"username": req_body.username_change}});
-        process.env.user = req_body.username_change;
 
         await Post.updateMany({"author": req_body.currentUser}, {$set: {"author": req_body.username_change}});
     }
@@ -30,15 +29,12 @@ async function upvoteFunction(req, res) {
     try {
         var action = "DISENGAGE";
 
-        const userDoc = await Profile.findOne({"username": process.env.user});
-        const userID = userDoc._id;
-
         const post = await Post.findById(req.body.postID);
 
         var found = false;
 
         post.upvotes.forEach(elem => {
-            if (elem.equals(userID)) {
+            if (elem.equals(req.user._id)) {
                 found = true;
                 return;
             }
@@ -48,8 +44,8 @@ async function upvoteFunction(req, res) {
             post.votes = post.votes + 1;
             await post.save();
 
-            post.upvotes.push(userID);
-            post.downvotes.pull(userID);
+            post.upvotes.push(req.user._id);
+            post.downvotes.pull(req.user._id);
             await post.save();
 
             action = "ENGAGE";
@@ -57,7 +53,7 @@ async function upvoteFunction(req, res) {
             post.votes = post.votes - 1;
             await post.save();
 
-            post.upvotes.pull(userID);
+            post.upvotes.pull(req.user._id);
             await post.save();
         }
 
@@ -77,15 +73,12 @@ async function downvoteFunction(req, res) {
     try {
         var action = "DISENGAGE";
 
-        const userDoc = await Profile.findOne({"username": process.env.user});
-        const userID = userDoc._id;
-
         const post = await Post.findById(req.body.postID);
 
         var found = false;
 
         post.downvotes.forEach(elem => {
-            if (elem.equals(userID)) {
+            if (elem.equals(req.user._id)) {
                 found = true;
                 return;
             }
@@ -95,8 +88,8 @@ async function downvoteFunction(req, res) {
             post.votes = post.votes - 1;
             await post.save();
 
-            post.downvotes.push(userID);
-            post.upvotes.pull(userID);
+            post.downvotes.push(req.user._id);
+            post.upvotes.pull(req.user._id);
             await post.save();
 
             action = "ENGAGE";
@@ -104,7 +97,7 @@ async function downvoteFunction(req, res) {
             post.votes = post.votes + 1;
             await post.save();
 
-            post.downvotes.pull(userID);
+            post.downvotes.pull(req.user._id);
             await post.save();
         }
 
