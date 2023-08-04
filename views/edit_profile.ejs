@@ -31,12 +31,12 @@
                     <input type="text" id="email" name="email" class="txt-field" value="<%= user.email %>">
                 </div>
                 <div class="field-container">
-                    <label for="profile" class="lbl">Profile Photo URL</label>
-                    <input type="text" id="profile" name="profile" class="txt-field">
+                    <label for="profile" class="lbl">Profile Photo</label>
+                    <input type="file" id="profile" name="profile" accept=".jpg, .jpeg,.png">
                 </div>
                 <div class="field-container">
-                    <label for="background" class="lbl">Background Photo URL</label>
-                    <input type="text" id="background" name="background" class="txt-field">
+                    <label for="background" class="lbl">Background Photo</label>
+                    <input type="file" id="background" name="background" accept=".jpg, .jpeg,.png">
                 </div>
 
                 <input type="hidden" id="currentUser" name="currentUser" value="<%=user.username%>">
