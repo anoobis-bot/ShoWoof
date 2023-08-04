@@ -34,7 +34,7 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public'));
 
 const loginRoutes = require('./server/routes/login');
-app.use('/', loginRoutes);
+app.use('', loginRoutes);
 
 const postsRoutes = require('./server/routes/posts');
 app.use('/posts', postsRoutes);
