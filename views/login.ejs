@@ -10,13 +10,14 @@
                 <div id="logo">Showoof</div>
                 <div id="loginbox">
                     <div id="logintext">Log into Showoof</div>
-
+                    
                     <form action="/login" method="POST">
                         <div><input type="email" id="email" name="email" placeholder="Email" required></div>
                         <div><input type="password" id="pass" name="password" placeholder="Password" required></div>
+                        <div id="error-msg"><%= messages.error %></div>
                         <div><button type="submit" id="loginbutton" value="1">Log In</button></div>
                     </form>
-                    
+
                     <div class="flex">
                         <div id="line"></div>
                         <div id="or">or</div>

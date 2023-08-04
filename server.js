@@ -16,6 +16,8 @@ initializePassport(
   profile_ctrl.getProfile_id
 )
 
+const flash = require('express-flash')
+
 const methodOverride = require('method-override');
 app.use(methodOverride('_method'));
 
@@ -29,6 +31,8 @@ app.use(session({
 }));
 app.use(passport.initialize())
 app.use(passport.session())
+
+app.use(flash())
 
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public'));

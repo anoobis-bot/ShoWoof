@@ -24,6 +24,7 @@ router.get('/login', auth.checkAlreadyAuthenticated, async (req, res) =>{
 router.post('/login', auth.checkAlreadyAuthenticated, passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/login',
+    failureFlash: true,
 }))
 
 module.exports = router;
