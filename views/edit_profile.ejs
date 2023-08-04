@@ -17,10 +17,10 @@
         <div class="fill-up-container">
             <Heading>Edit Profile</Heading>
             
-            <form method="post" action="/api/edit-profile">
+            <form method="post" action="/api/edit-profile" enctype="multipart/form-data">
                 <div class="field-container">
                     <label for="username_change" class="lbl">Username:</label>
-                    <input type="text" id="username_change" name="username_change" class="txt-field">
+                    <input type="text" id="username_change" name="username_change" class="txt-field" value="<%= user.username %>">
                 </div>
                 <div class="field-container">
                     <label for="password" class="lbl">Password:</label>
@@ -28,7 +28,7 @@
                 </div>
                 <div class="field-container">
                     <label for="email" class="lbl">Email:</label>
-                    <input type="text" id="email" name="email" class="txt-field">
+                    <input type="text" id="email" name="email" class="txt-field" value="<%= user.email %>">
                 </div>
                 <div class="field-container">
                     <label for="profile" class="lbl">Profile Photo URL</label>
@@ -39,7 +39,7 @@
                     <input type="text" id="background" name="background" class="txt-field">
                 </div>
 
-                <input type="hidden" id="currentUser" name="currentUser" value="<%=user%>">
+                <input type="hidden" id="currentUser" name="currentUser" value="<%=user.username%>">
                 
                 <input type="submit" value="Edit" id="submit-button">
             </form>
