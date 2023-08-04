@@ -26,15 +26,11 @@
             </tr>
 
             <tr>
-                <td class="nav-link"><a href="/register">Sign Up</a></td>
-            </tr>
-
-            <tr>
-                <td><div class="horizontalLine"></div></td>
-            </tr>
-
-            <tr>
-                <td class="nav-link"><a href="/login">Login</a></td>
+                <td class="nav-link">
+                    <form action="/logout?_method=DELETE" method="POST">
+                        <a href="#" onclick="this.parentNode.submit()">Logout</a>
+                    </form>
+                </td>
             </tr>
         </table>
     </div>
