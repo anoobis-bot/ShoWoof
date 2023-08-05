@@ -62,7 +62,6 @@ a {
 }
 
 #logo-name p{
-    /* font-family: Verdana; */
     font-weight: bold;
     font-size: 20px;
 
@@ -154,7 +153,6 @@ a {
 
     width: 100%;
 
-    /* font-family: sans-serif; */
     font-weight: normal;
 }
 
@@ -192,7 +190,6 @@ a {
     padding-right: var(--content_padding);
 
 
-    /* font-family: Verdana; */
     font-size: 13px;
 }
 
@@ -307,25 +304,7 @@ a {
 
     background-color: #E9EDC9;
 }
-/* .vote-content div {
-    background-size: contain;
-    width: 20px;
-    height: 20px;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-.vote-content div.upvote-btn{
-    background-image: url(/images/post_elements/upvote.png);
-}
-.vote-content div.upvote-btn:hover {
-    background-image: url(/images/post_elements/upvoteColored.png);
-}
-.vote-content div.downvote-btn:hover {
-    background-image: url(/images/post_elements/downvoteColored.png);
-}
-.vote-content .downvote-btn {
-    background-image: url(/images/post_elements/downvote.png);
-} */
+
 .vote-content p {
     margin-top: 5px;
     margin-bottom: 5px;

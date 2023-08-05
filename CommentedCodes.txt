@@ -1,0 +1,369 @@
+public/css/format.css
+    #logo-name p {font-family: Verdana;}
+    #nav-buttons {font-family: sans-serif;}
+    #content-container {font-family: Verdana;}
+
+    .vote-content div {
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    }
+    .vote-content div.upvote-btn{
+    background-image: url(/images/post_elements/upvote.png);
+    }
+    .vote-content div.upvote-btn:hover {
+    background-image: url(/images/post_elements/upvoteColored.png);
+    }
+    .vote-content div.downvote-btn:hover {
+    background-image: url(/images/post_elements/downvoteColored.png);
+    }
+    .vote-content .downvote-btn {
+    background-image: url(/images/post_elements/downvote.png);
+    }
+
+
+public/css/profile_format.css
+    #profile-container {font-family: Verdana;}
+    #profile-name-content {font-family: Verdana;}
+
+
+public/js/comment.js
+    $(document).ready(function() {
+        var commentCounter = 1;
+  
+        $('#postComment').click(function() {
+            var commentText = $('#inputComment').val();
+    
+            if (commentText !== '') {
+                var commentId = 'comment-' + commentCounter;
+    
+                var commentContainer = $('<div>').addClass('commentBase').attr('id', commentId);
+    
+                var commenterImg = $('<div>').addClass('commenterImg');
+                commentContainer.append(commenterImg);
+    
+                var commentDetails = $('<div>').addClass('commentDetails');
+                commentContainer.append(commentDetails);
+    
+                var commenterDetails = $('<div>').addClass('commenterDetails');
+                commentDetails.append(commenterDetails);
+    
+                var commenterUser = $('<div>').addClass('commenterUser').text('DogsDBest');
+                commenterDetails.append(commenterUser);
+    
+                var commentDate = $('<div>').addClass('commentDate').text('now');
+                commenterDetails.append(commentDate);
+    
+                var commentTextElement = $('<div>').addClass('commentText').text(commentText);
+                commentDetails.append(commentTextElement);
+    
+                var commentCommandBar = $('<div>').addClass('commentCommandBar');
+                commentDetails.append(commentCommandBar);
+    
+                var commentVote = $('<div>').addClass('commentVote');
+                commentCommandBar.append(commentVote);
+    
+                var upvote = $('<div>').addClass('upvote');
+                commentVote.append(upvote);
+                commentVote.append('&nbsp;');
+                var commentToolText = $('<div>').addClass('commentToolText').text('0');
+                commentVote.append(commentToolText);
+                commentVote.append('&nbsp;');
+                var downvote = $('<div>').addClass('downvote');
+                commentVote.append(downvote);
+    
+                var commentReply = $('<div>').addClass('commentReply');
+                commentCommandBar.append(commentReply);
+                var replyImg = $('<img>').attr('src', '/images/post_elements/comment.png');
+                commentReply.append(replyImg);
+                var replyText = $('<div>').addClass('commentToolText').text('Reply');
+                commentReply.append(replyText);
+
+                var commentEdit = $('<div>').addClass('commentEdit');
+                commentCommandBar.append(commentEdit);
+                var editImg = $('<img>').attr('src', '/images/post_elements/output-onlinepngtools.png');
+                commentEdit.append(editImg);
+                var editText = $('<div>').addClass('commentToolText').text('Edit');
+                commentEdit.append(editText);
+
+                $('#commentSection').append(commentContainer);
+                commentCounter++;
+    
+                $('#inputComment').val('');
+            }
+        });
+    });
+
+
+server/routes/posts.js
+    Assuming you have a posts array with the individual post data
+    Replace 'posts' below with your actual data source
+
+    try {
+        let slug = req.params.id;
+        const data = await Post.findById({_id: slug});
+        res.render('post', {data, currentRoute:`/post/${slug}` /* user: process.env.user*/});
+    } catch (error) {
+        console.log(error);
+    }
+
+   const post = posts.find(post => post.link === req.params.postId);
+
+    if (!post) {
+        // Handle the case when the post is not found (e.g., show a 404 page)
+        return res.status(404).render("notfound", { user: process.env.user });
+    }
+    const comments = [
+        {
+            commenter: 'DoggoExpert',
+            commentDate: '1 hour ago',
+            commentText: "That's not brown?!1!"
+        }
+        // Add more comments here...
+    ];
+
+    res.render("post", {
+        pageTitle: "The Quick Brown Dog",
+        numberOfVotes: 5,
+        postAuthor: "u/Govna",
+        postDate: "12 hours ago",
+        postCaption: "The Quick Brown Dog",
+        postImageSrc: "/images/test_pics/posts/instadog.jpg",
+        commentUsername: "u/DogsDBest",
+        comments: comments, // Pass the 'comments' array to the template
+        user: process.env.user
+    });
+
+
+server/main.js
+    router.post('/posts/:postId/comments', async (req, res) => {
+        try {
+            const postId = req.params.postId;
+            const { comment, parentCommentId } = req.body; // Assuming you have a field named 'parentCommentId' in the request body.
+    
+            if (!parentCommentId) {
+                // This is a top-level comment
+                const newComment = new Comment({
+                    comment: comment,
+                    commentAuthor: process.env.user,
+                });
+    
+                const post = await Post.findById(postId);
+    
+                if (!post.Comments || !Array.isArray(post.Comments)) {
+                    post.Comments = [];
+                }
+    
+                post.Comments.push(newComment);
+                await post.save();
+            } else {
+                // This is a reply to an existing comment
+                const parentComment = await Comment.findById(parentCommentId);
+    
+                if (!parentComment) {
+                    return res.status(404).json({ message: 'Parent comment not found.' });
+                }
+    
+                const newReply = new Comment({
+                    comment: comment,
+                    commentAuthor: process.env.user,
+                    parentComment: parentCommentId,
+                });
+    
+                await newReply.save();
+                parentComment.Comments.push(newReply);
+                await parentComment.save();
+            }
+    
+            res.redirect(`/posts/${postId}`);
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({ message: 'Error adding comment.' });
+        }
+    });
+
+    // Define the data required for rendering the dynamic parts of the page
+    const topPostsText = [
+        "Look at our newest addition in our family!",
+        "We finally got a professional photograph!",
+        "Quality time at the lake ^_^",
+        "Majestic."
+    ];
+
+    const posts = [
+        {
+            profileLink: "profiles/Govna",
+            author: "Govna",
+            time: "12 hours ago",
+            title: "The quick brown dog",
+            image: "images/test_pics/posts/instadog.jpg",
+            link: "/post/post0"
+        },
+        {
+            profileLink: "profiles/UWotMate",
+            author: "UWotMate",
+            time: "18 hours ago",
+            title: "What's the best breed of dog for you?",
+            description: "Mine would be the black labrador! They're so cute and very intelligent.",
+            link: "post2.html"
+        },
+        {
+            profileLink: "profiles/Dogsmith",
+            author: "Dogsmith",
+            time: "18 hours ago",
+            title: "Hard work with my dog",
+            image: "images/test_pics/posts/smith-dog.jpg",
+            link: "post3.html"
+        },
+        {
+            profileLink: "profiles/Zoominator",
+            author: "Zoominator",
+            time: "1 day ago",
+            title: "My dog got the zoomies!",
+            image: "images/test_pics/posts/zoomies.jpg",
+            link: "post4.html"
+        },
+        {
+            profileLink: "profiles/DogsDBest",
+            author: "DogsDBest",
+            time: "1 day ago",
+            title: "Face of my pit before i feed him",
+            image: "images/test_pics/posts/smiling-pit.jpg_large",
+            link: "post5.html"
+        }
+        // Add more post objects as needed
+    ];
+
+    res.render("index", { topPostsText, posts, user: process.env.user });
+
+
+    function insertProfileData () {
+        Profile.insertMany([
+            {
+                username: "Govna",
+                password: "P@ssw0rd!1",
+                email: "crazycat23@example.com",
+                profilePicture: "/images/profile_pics/profile_pic/Govna.jpg"
+            },
+            {
+                username: "UWotMate",
+                password: "Mountain@Hiker42",
+                email: "seektheadventure@example.com",
+                profilePicture: "/images/profile_pics/profile_pic/UWotMate.jpg"
+                
+            },        
+            {
+                username: "Dogsmith",
+                password: "Innovate&Learn",
+                email: "techguru789@example.com",
+                profilePicture: "/images/profile_pics/profile_pic/Dogsmith.jpg"
+            },        
+            {
+                username: "Zoominator",
+                password: "GreenThumb2023",
+                email: "gardenlover@example.com",
+                profilePicture: "/images/profile_pics/profile_pic/Zoominator.jpg"
+            },        
+            {
+                username: "dogAREthebest",
+                password: "password123",
+                email: "musichater@example.com",
+                profilePicture: "/images/profile_pics/profile_pic/DogsDBest.jpg",
+                backgroundPicture: "/images/profile_pics/cover_pics/DogsDBest_cover.jpg"
+            }        
+        ])
+        }
+    insertProfileData();
+
+    function insertPostData () {
+        Post.insertMany([
+            {
+                "title": "The quick brown dog",
+                "author": "Govna",
+                "image_url": "https://i.imgur.com/gusOP6M.jpg",
+                "text_content": ""
+            },
+            {
+                "title": "What's the best breed of dog for you?",
+                "author": "UWotMate",
+                "image_url": "",
+                "text_content": "Mine would be the black labrador! They're so cute and very intelligent."
+            },        
+            {
+                "title": "Hard work with my dog",
+                "author": "Dogsmith",
+                "image_url": "https://i.imgur.com/viIDKGL.jpg",
+                "text_content": ""
+            },        
+            {
+                "title": "My dog got the zoomies!",
+                "author": "Zoomies",
+                "image_url": "https://i.imgur.com/ozuu9QT.jpg",
+                "text_content": ""
+            },        
+            {
+                "title": "Face of my pit before I feed him",
+                "author": "dogAREthebest",
+                "image_url": "https://worldofdogz.com/wp-content/uploads/2022/04/Why-Wont-My-Pitbull-Eat.jpg.webp",
+                "text_content": ""
+            },
+            {
+                "title": "Look at this cutie <3",
+                "author": "dogAREthebest",
+                "image_url": "https://img.rawpixel.com/private/static/images/website/2022-05/ns8230-image.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=b3961e17298745c0868eeef46211c3d0",
+                "text_content": ""
+            }  
+        ])
+        }
+    insertPostData();
+
+
+codeForNewP.js
+    const express = require('express');
+    const router = express.Router();
+    const Profile = require('../db/schema/profile');
+    const Post = require('../db/schema/post');
+
+
+    // all the "/" and the "/<index.html" are just routing stuff
+    //      that need to be fixed. index.html is where the form 
+    //      is located for the post creation
+    // format for inputs is req.body.<name>
+    //      name is the name of the input in the html
+    // res.redirect sends it to the same page so that it wont
+    //      infinitely load
+    router.get("/", function(req, res) {
+        res.sendFile(__dirname + "/<index.html>")
+    })
+
+    router.post("/", function(req, res) {
+        let newProfile = new Profile ({
+            username: req.body.profileUsername,
+            password: req.body.profilePassword,
+            email: req.body.profileEmail
+        });
+        newProfile.save();
+        res.redirect("/");
+    })
+
+
+    //probably should split into two files
+
+    router.get("/", function(req, res) {
+        res.sendFile(__dirname + "/<index.html>")
+    })
+
+    Profile.findByID(req.user.id, (err, user) => {
+        if (err) throw new Error(err);
+
+        let newPost = new Post ({
+            title: req.body.postTitle,
+            author: req.profile.username,
+            caption: req.body.postCaption,
+            authorID: req.profile._id
+        });
+        newPost.save();
+        res.redirect("/");
+    });
