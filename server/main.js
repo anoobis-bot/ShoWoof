@@ -7,7 +7,7 @@ const auth = require('../controller/authenticator.js');
 router.get('', auth.checkAuthenticated, async (req, res) =>{
     console.log("Server is running");
     try {
-        const data = await Post.find();
+        const data = await Post.find().sort({"datePosted": -1});
 
         const topPosts = await Post.find().sort({"votes": -1}).limit(4);
 

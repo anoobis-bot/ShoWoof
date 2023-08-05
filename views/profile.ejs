@@ -30,7 +30,11 @@
             <% } %>
         </div>
 
+        <% if (username === user) {%>
         <p id="posts-header"><b>Your Posts</b></p>
+        <% } else { %>
+            <p id="posts-header"><b>u/<%= username %>'s Posts</b></p>
+        <% } %>
 
         <div id="profile-content">
             <div id="user-posts">
@@ -57,18 +61,27 @@
                         </div>
         
                         <div class="post-content">
-                            <PostMeta>Posted by <a href="/profiles/<%=post.author%>">u/<%= post.author %></a> <%= post.datePosted.toDateString() %></PostMeta>
-                            <PostTitle><%= post.title %></PostTitle>
-                            <PostDesc>
-                                <% if (post.image_url != '') { %>
-                                    <!-- Show only image content -->
-                                    <img src="<%= post.image_url %>">
-                                <% } else if (post.text_content != '') { %>
-                                    <!-- Show only text content -->
-                                    <p><%= post.text_content %></p>
+                            <PostMeta>
+                                Posted by <a href="/profiles/<%=post.author%>">u/<%= post.author %></a>
+                                <% if (post.postEdit) { %>
+                                    Edited: 
                                 <% } %>
-    
-                            </PostDesc>
+                                <%= post.datePosted.toDateString() %>
+                            </PostMeta>
+                            <div class="colorA">
+                                <a href="/posts/<%=post._id%>">
+                                    <PostTitle><%= post.title %></PostTitle>
+                                    <PostDesc>
+                                        <% if (post.image_url != '') { %>
+                                            <!-- Show only image content -->
+                                            <img src="<%= post.image_url %>">
+                                        <% } else if (post.text_content != '') { %>
+                                            <!-- Show only text content -->
+                                            <p><%= post.text_content %></p>
+                                        <% } %>
+                                    </PostDesc>
+                                </a>
+                            </div>
                             <div class="action-container">
                                 <img src="/images/post_elements/comment.png" class="action-icon">
                                 <a href="/posts/<%=post._id%>">&nbsp;Comment</a>
@@ -92,12 +105,11 @@
             <div id="user-stats">
                 <div id="nameDesc-row">
                     <div id="name">u/<%=username%></div>
-                    <div id="desc">I used to rule the world</div>
                 </div>
                 <div class="horizontalLine gray"></div>
                 <div id="number-row">
                     <div class="stat-container">
-                        Posts <br> 
+                        posts <br> <%= data.length %><br> 
                     </div>
 
                     <div class="verticalLine gray"></div>

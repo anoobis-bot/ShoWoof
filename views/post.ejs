@@ -96,10 +96,10 @@
                     <% if (comments.comment != "") {%>
                         <div class="editComment">
                             <div class="commentBase" id="comment-1">
-                                <div class="commenterImg"></div>
+                                <a href="/profiles/<%=comments.commentAuthor%>"><div class="commenterImg"></div></a>
                                 <div class="commentDetails">
                                     <div class="commenterDetails">
-                                        <div class="commenterUser"><%= comments.commentAuthor %></div>
+                                        <div class="commenterUser"><a href="/profiles/<%=comments.commentAuthor%>"><%= comments.commentAuthor %></a></div>
                                         <div class="commentDate"><%= comments.commentDate.toDateString() %></div>
                                     </div>
                                     <div class="commentText"><%= comments.comment %></div>
@@ -122,7 +122,7 @@
 
                             <div id="replyForm-<%= comments._id %>">
                                 <form action="/posts/<%= data._id %>/Comments/<%= comments._id %>/reply" class="com__form" method="POST">
-                                    <textarea placeholder="Bark!" class="textarea" id="replyInputComment" name="replyTerm">@u/<%= comments.commentAuthor%></textarea>
+                                    <textarea placeholder="Bark!" class="textarea" id="replyInputComment" name="replyTerm">@u/<%= comments.commentAuthor%> </textarea>
                                     <div class="userCommentCommands">
                                         <button type="submit" class="commentButton" id="replyPostComment">Comment</button>
                                     </div>
