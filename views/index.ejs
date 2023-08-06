@@ -64,12 +64,12 @@
                             <a href="/posts/<%=post._id%>">
                                 <PostTitle><%= post.title %></PostTitle>
                                 <PostDesc>
-                                    <% if (post.image_url != '') { %>
-                                        <!-- Show only image content -->
-                                        <img src="<%= post.image_url %>">
-                                    <% } else if (post.text_content != '') { %>
-                                        <!-- Show only text content -->
+                                    <% if (post.text_content != '') { %>
+
                                         <p><%= post.text_content %></p>
+                                    <% } else if (post.image_url != '') { %>
+                                        
+                                        <img src="<%= post.image_url %>">
                                     <% } %>
                                 </PostDesc>
                             </a>
