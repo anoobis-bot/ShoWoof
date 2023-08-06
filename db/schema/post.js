@@ -1,6 +1,5 @@
-const { Int32 } = require('mongodb');
 const mongoose = require('mongoose');
-const profile = require('./profile');
+const commentSchema = require('./comment')
 
 const Schema = mongoose.Schema;
 const PostSchema = new Schema({
@@ -38,32 +37,6 @@ const PostSchema = new Schema({
         type: Boolean,
         default: false
     },
-    Comments: [{
-        comment: {
-            type: String,
-            
-        },
-        commentAuthor: {
-            type: String,
-        },
-        commentDate: {
-            type: Date,
-            default: Date.now
-        },
-        commentUpvotes: {
-            type: Number,
-            default: 0
-        },
-        commentEdit: {
-            type: Boolean,
-            default: false
-        },
-        parentComment: {
-            type: Schema.Types.ObjectId,
-            ref: 'Comment',
-            required: false,
-        }
-    }]
 });
 
 module.exports = mongoose.model('Post', PostSchema);

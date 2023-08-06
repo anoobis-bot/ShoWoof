@@ -92,7 +92,7 @@
             </div>
             <!------------------->
             <div class="comments" id="commentSection">
-                <% data.Comments.forEach(comments => { %>
+                <% cmt.forEach(comments => { %>
                     <% if (comments.comment != "") {%>
                         <div class="editComment">
                             <div class="commentBase" id="comment-1">
@@ -100,6 +100,9 @@
                                 <div class="commentDetails">
                                     <div class="commenterDetails">
                                         <div class="commenterUser"><a href="/profiles/<%=comments.commentAuthor%>"><%= comments.commentAuthor %></a></div>
+                                        <% if (comments.commentEdit) { %>
+                                            <div class="commenterEdit">Edited: </div>
+                                        <% } %>
                                         <div class="commentDate"><%= comments.commentDate.toDateString() %></div>
                                     </div>
                                     <div class="commentText"><%= comments.comment %></div>
@@ -132,15 +135,15 @@
 
                             <div id="visibility-<%= comments._id %>">
                                 <form action="/posts/<%= data._id %>/Comments/<%= comments._id %>/edit" class="com__form" method="POST">
-                                    <textarea placeholder="Bark!" class="textarea" id="editInputComment" name="editTerm"></textarea>
+                                    <textarea placeholder="Bark!" class="textarea" id="editInputComment" name="editTerm"><%= comments.comment %></textarea>
                                     <div class="userCommentCommands">
-                                        <form action="/posts/<%= data._id %>/comments/<%= comments._id %>/delete" method="POST">
-                                            <div class="userCommentCommands">
-                                                <input type="hidden" name="_method" value="DELETE">
-                                                <button type="submit" class="commentButton">Delete Comment</button>
-                                            </div>
-                                        </form>
                                         <button type="submit" class="commentButton" id="editPostComment">Comment</button>
+                                    </div>
+                                </form>
+                                <form action="/posts/<%= data._id %>/comments/<%= comments._id %>/delete" method="POST">
+                                    <div class="userCommentCommands">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button type="submit" class="commentButton">Delete Comment</button>
                                     </div>
                                 </form>
                             </div>

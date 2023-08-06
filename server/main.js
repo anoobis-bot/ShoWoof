@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Profile = require('../db/schema/profile');
 const Post = require('../db/schema/post');
+const Comment = require('../db/schema/comment');
 const auth = require('../controller/authenticator.js');
 
 router.get('', auth.checkAuthenticated, async (req, res) =>{
@@ -138,18 +139,18 @@ router.post('/posts/:id', async (req, res) => {
         if (req.body.comTerm != "" ) {
             
             const newComment = {
+            commentPostId: postId,
             comment: req.body.comTerm,
             commentAuthor: req.user.username
         };
 
-        const post = await Post.findById(postId);
+        // const post = await Post.findById(postId);
 
-        if (!post.Comments || !Array.isArray(post.Comments)) {
-            post.Comments = [];
-        }
+        // if (!post.Comments || !Array.isArray(post.Comments)) {
+        //     post.Comments = [];
+        // }
 
-        post.Comments.push(newComment);
-        await post.save();
+        await Comment.create(newComment);
         
         }
         res.redirect(`/posts/${postId}`);
@@ -170,17 +171,13 @@ router.post('/posts/:postId/comments/:commentId/edit', async (req, res) => {
         };
 
         const post = await Post.findById(postId);
+        const comment = await Comment.findById(commentId);
 
-        // Find the comment with the specified commentId in the post's comments array
-        const comment = post.Comments.id(commentId);
-
-        // Update the comment properties with the new values from updatedComment
         comment.comment = updatedComment.comment;
         comment.commentEdit = updatedComment.commentEdit;
         comment.commentDate = updatedComment.commentDate;
-        // Update other properties as needed
 
-        await post.save();
+        await comment.save();
         res.redirect(`/posts/${postId}`);
     } catch (error) {
         console.log(error);
@@ -189,15 +186,10 @@ router.post('/posts/:postId/comments/:commentId/edit', async (req, res) => {
 
 router.post('/posts/:postId/comments/:commentId/delete', async (req, res) => {
     try {
-      const postId = req.params.postId;
-      const commentIdToDelete = req.params.commentId;
-      const post = await Post.findById(postId);
-      post.Comments = post.Comments.filter(comment => comment._id.toString() !== commentIdToDelete);
-      await post.save();
-  
-      res.redirect(`/posts/${postId}`);
+      await Comment.deleteOne( { _id: req.params.commentId } );
+      res.redirect(`/posts/${req.params.postId}`);
     } catch (error) {
-      console.log('Error deleting comment:', error);
+      console.log(error);
     }
   });
 
@@ -205,20 +197,14 @@ router.post('/posts/:postId/comments/:commentId/delete', async (req, res) => {
     try {
         const postId = req.params.postId;
         if (req.body.replyTerm != "" ) {
-            
             const newComment = {
+            commentPostId: postId,
             comment: req.body.replyTerm,
             commentAuthor: req.user.username
-        };
-
-        const post = await Post.findById(postId);
-
-        post.Comments.push(newComment);
-        await post.save();
-        
+            };
+            await Comment.create(newComment);
         }
         res.redirect(`/posts/${postId}`);
-        
     } catch (error) {
         console.log(error);
         res.status(500).send('Error adding reply comment.');
