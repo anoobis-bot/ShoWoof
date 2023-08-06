@@ -19,7 +19,7 @@
 
             <br>
 
-            <form action="newPost" method="POST">
+            <form action="newPost" method="POST" enctype="multipart/form-data">
 
                 <div class="caption-container">
                     <label for="caption">Caption:</label>
@@ -36,9 +36,9 @@
                 <br>
                 <div id="image-container">
                     <label for="image_url">Image URL:</label><br>
-                    <input type="text" id="image_url" name="image_url" />
+                    <input type="file" id="image_url" name="image_url" accept=".jpg, .jpeg,.png"/>
                 </div>
-            
+
                 <div id="text-container">
                     <label for="text_content">Text Content:</label><br>
                     <textarea id="text_content" name="text_content" rows="4" cols="50"></textarea>

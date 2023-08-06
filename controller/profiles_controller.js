@@ -16,12 +16,19 @@ const storage = multer.diskStorage({
         else if (file.fieldname === 'background') {
             cb(null, './public/images/profile_pics/cover_pics')
         }
+        else if(file.fieldname === 'image_url') {
+            cb(null, './public/images/post_pics')
+        }
     },
     filename: function (req, file, cb) {
-      cb(null, req.user._id + path.extname(file.originalname))
+        if(file.fieldname === 'image_url'){
+            cb(null, req.user.id + req.body.caption + path.extname(file.originalname))
+        }
+        else{
+            cb(null, req.user._id + path.extname(file.originalname))
+        }
     }
 });
-
 function fileFilter (req, file, cb) {
   
     if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
@@ -55,11 +62,11 @@ async function updateUser(req_body, req_files) {
 
     if (req_files['profile']) {
         console.log("The path to picture is: " + req_files['profile'][0].path);
-        await Profile.updateOne({"username": req_body.currentUser}, {$set:{"profilePicture": '/' + req_files['profile'][0].path.split('\\').slice(1).join('/')}});
+        await Profile.updateOne({"username": req_body.currentUser}, {$set:{"profilePicture": '/' + req_files['profile'][0].path.split('/').slice(1).join('/')}});
     }
     
     if (req_files['background']) {
-        await Profile.updateOne({"username": req_body.currentUser}, {$set:{"backgroundPicture": '/' + req_files['background'][0].path.split('\\').slice(1).join('/')}});
+        await Profile.updateOne({"username": req_body.currentUser}, {$set:{"backgroundPicture": '/' + req_files['background'][0].path.split('/').slice(1).join('/')}});
     }
 }
 

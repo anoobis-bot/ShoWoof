@@ -4,6 +4,8 @@ const Profile = require('../db/schema/profile');
 const Post = require('../db/schema/post');
 const Comment = require('../db/schema/comment');
 const auth = require('../controller/authenticator.js');
+const api = require('../controller/profiles_controller.js');
+const { ReadConcern } = require('mongodb');
 
 router.get('', auth.checkAuthenticated, async (req, res) =>{
     console.log("Server is running");
@@ -32,14 +34,17 @@ router.get('/newPost', auth.checkAuthenticated, async (req, res) =>{
 POST
 */
 
-router.post('/newPost', async (req, res) => {
+router.post('/newPost', api.upload.single('image_url'), async (req, res) => {
     try {
 
         try {
+            
+            console.log(req.file.path);
+
             const newPost = new Post({
                 title: req.body.caption,
                 text_content: req.body.text_content,
-                image_url: req.body.image_url,
+                image_url: '/' + req.file.path.split('/').slice(1).join('/'),
                 author: req.user.username,
             });
 

@@ -44,12 +44,12 @@
                         <a href="/posts/<%=data._id%>">
                             <PostTitle><%= data.title %></PostTitle>
                             <PostDesc>
-                                <% if (data.image_url != '') { %>
-                                    <!-- Show only image content -->
-                                    <img src="<%= data.image_url %>">
-                                <% } else if (data.text_content != '') { %>
-                                    <!-- Show only text content -->
+                                <% if (data.text_content != '') { %>
+
                                     <p><%= data.text_content %></p>
+                                <% } else if (data.image_url != '') { %>
+                                    
+                                    <img src="<%= data.image_url %>">
                                 <% } %>
                             </PostDesc>
                         </a>
