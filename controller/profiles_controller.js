@@ -47,6 +47,8 @@ async function updateUser(req_body, req_files) {
         await Profile.updateOne({"username": req_body.currentUser}, {$set:{"username": req_body.username_change}});
 
         await Post.updateMany({"author": req_body.currentUser}, {$set: {"author": req_body.username_change}});
+
+        await Post.updateMany({"Comments.commentAuthor": req_body.currentUser}, {$set: {"Comments.$[].commentAuthor": req_body.username_change}});
     }
 
     if (req_files['profile']) {
