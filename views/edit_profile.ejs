@@ -20,7 +20,8 @@
             <form method="post" action="/profiles/edit-profile" enctype="multipart/form-data">
                 <div class="field-container">
                     <label for="username_change" class="lbl">Username:</label>
-                    <input type="text" id="username_change" name="username_change" class="txt-field" value="<%= user.username %>">
+                    <input type="text" id="username_change" name="username_change" class="txt-field" value="<%= user.username %>" required>
+                    <div id="error-msg"></div>
                 </div>
                 <div class="field-container">
                     <label for="password" class="lbl">Password:</label>
@@ -28,7 +29,8 @@
                 </div>
                 <div class="field-container">
                     <label for="email" class="lbl">Email:</label>
-                    <input type="text" id="email" name="email" class="txt-field" value="<%= user.email %>">
+                    <input type="text" id="email" name="email" class="txt-field" value="<%= user.email %>" required>
+                    <div id="error-msg"></div>
                 </div>
                 <div class="field-container">
                     <label for="profile" class="lbl">Profile Photo</label>
@@ -40,6 +42,7 @@
                 </div>
 
                 <input type="hidden" id="currentUser" name="currentUser" value="<%=user.username%>">
+                <input type="hidden" id="currentEmail" name="currenEmail" value="<%=user.email%>">
                 
                 <input type="submit" value="Edit" id="submit-button">
             </form>
