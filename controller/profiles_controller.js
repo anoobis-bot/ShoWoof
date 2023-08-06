@@ -55,11 +55,11 @@ async function updateUser(req_body, req_files) {
 
     if (req_files['profile']) {
         console.log("The path to picture is: " + req_files['profile'][0].path);
-        await Profile.updateOne({"username": req_body.currentUser}, {$set:{"profilePicture": '/' + req_files['profile'][0].path.split('\\').slice(1).join('/')}});
+        await Profile.updateOne({"username": req_body.currentUser}, {$set:{"profilePicture": '/' + req_files['profile'][0].path.split('/').slice(1).join('/')}});
     }
     
     if (req_files['background']) {
-        await Profile.updateOne({"username": req_body.currentUser}, {$set:{"backgroundPicture": '/' + req_files['background'][0].path.split('\\').slice(1).join('/')}});
+        await Profile.updateOne({"username": req_body.currentUser}, {$set:{"backgroundPicture": '/' + req_files['background'][0].path.split('/').slice(1).join('/')}});
     }
 }
 
