@@ -1,10 +1,12 @@
 const Profile = require('../db/schema/profile');
 const Post = require('../db/schema/post');
+const Comment = require('../db/schema/comment');
 
 const multer = require('multer');
 const path = require('path');
 
 const bcrypt = require('bcrypt');
+const comment = require('../db/schema/comment');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -48,7 +50,7 @@ async function updateUser(req_body, req_files) {
 
         await Post.updateMany({"author": req_body.currentUser}, {$set: {"author": req_body.username_change}});
 
-        await Post.updateMany({"Comments.commentAuthor": req_body.currentUser}, {$set: {"Comments.$[].commentAuthor": req_body.username_change}});
+        await Comment.updateMany({"commentAuthor": req_body.currentUser}, {$set: {"commentAuthor": req_body.username_change}});
     }
 
     if (req_files['profile']) {
@@ -91,6 +93,7 @@ async function getProfile_email(email) {
 async function renderProfile(req, res) {
     const postData = await Post.find({"author": req.username});
     const profileData = await getProfile_username(req.username);
+    const commentData = await Comment.find({"commentAuthor": req.username});
 
     try {
         const profilePic = profileData.profilePicture;
@@ -101,7 +104,8 @@ async function renderProfile(req, res) {
             data: postData,
             pPicPath: profilePic,
             bgPicPath: backgroundPic,
-            userID: req.user._id});
+            userID: req.user._id,
+            commentD: commentData});
     } catch (err) {
         console.log(err);
         res.redirect('/');
