@@ -31,6 +31,30 @@ router.post('/edit-profile', api.upload.fields([{name: 'profile', maxCount: 1}, 
 
 });
 
+router.get('/checkUsernameExist/:username', async (req, res) => {
+    const username = req.params.username;
+    const exist = await Profile.findOne({username : username});
+
+    if (exist) {
+        res.send({valid: false});
+    }
+    else {
+        res.send({valid: true});
+    }
+});
+
+router.get('/checkEmailExist/:email', async (req, res) => {
+    const email = req.params.email;
+    const exist = await Profile.findOne({email : email});
+
+    if (exist) {
+        res.send({valid: false});
+    }
+    else {
+        res.send({valid: true});
+    }
+});
+
 router.param("username", (req, res, next, username) => {
     req.username = username;
     next();

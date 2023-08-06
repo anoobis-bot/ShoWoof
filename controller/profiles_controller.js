@@ -59,12 +59,19 @@ async function updateUser(req_body, req_files) {
 }
 
 async function registerUser(req_body) {
+    let result = true
     const hashedPW = await bcrypt.hash(req_body.password, 10)
-    await Profile.create({
-        username: req_body.username,
-        password: hashedPW,
-        email: req_body.email,
-    });
+    try {
+        await Profile.create({
+            username: req_body.username,
+            password: hashedPW,
+            email: req_body.email,
+        });
+    } catch (error) {
+        result = false;
+    }
+    
+    return result;
 }
 
 async function getProfile_username(username) {

@@ -15,7 +15,7 @@ router.get('/register', auth.checkAlreadyAuthenticated, async (req, res) =>{
 });
 
 router.post('/register', async (req, res) => {
-    api.registerUser(req.body);
+    const result = await api.registerUser(req.body);
 
     res.redirect('/')
 });
