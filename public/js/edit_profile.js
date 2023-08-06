@@ -4,7 +4,7 @@ $(document).ready(function() {
     const errorMessage = document.querySelector("#error-msg");
 
     const currentUser = document.querySelector("#currentUser").value;
-    const currentEmail = document.querySelector("currentEmail").value;
+    const currentEmail = document.querySelector("#currentEmail").value;
 
     const emailInput = document.querySelector("#email");
 
