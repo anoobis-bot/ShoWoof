@@ -3,7 +3,7 @@ Machine Project in CCAPDEV
 
 This is a project made by DLSU students as a requirement for CCAPDEV
 
-## Website Title: ShoWoof
+Website Title: ShoWoof
 
 Description: An interest forum website that caters to anything dog related. People may post anything about them like showing them off, asking for advice, and even putting up adoptions. ShoWoof aims to provide a community of dog owners with an outlet to express and share their passion for taking care of our four-legged furry friends.
 
