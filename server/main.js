@@ -122,6 +122,7 @@ router.post('', async (req, res) => {
     try {
         let searchTerm = req.body.searchTerm
         const searchNoSpecialChar = searchTerm.replace(/[^a-zA-Z0-9 ]/g, "")
+        const topPosts = await Post.find().sort({"votes": -1}).limit(4);
 
         const data = await Post.find({
             $or: [
@@ -131,7 +132,8 @@ router.post('', async (req, res) => {
             ]
         });
 
-    res.render("index", { data, currentRoute: '/', user: req.user.username });
+    res.render("index", { data, currentRoute: '/', user: req.user.username ,userID: req.user._id,
+    topPosts});
 
     } catch (error) {
         console.log(error)
