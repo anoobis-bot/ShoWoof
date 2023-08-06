@@ -25,3 +25,5 @@ techguru789@example.com - Innovate&Learn
 gardenlover@example.com - GreenThumb2023
 
 musichater@example.com - password123
+
+Kindly contact us for accessing our database or you may use your own local database
