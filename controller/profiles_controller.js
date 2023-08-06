@@ -99,4 +99,5 @@ async function renderProfile(req, res) {
     }
 }
 
-module.exports = { renderProfile, getProfile_username, getProfile_id, getProfile_email, updateUser, upload }
+module.exports = { renderProfile, getProfile_username, getProfile_id, getProfile_email, updateUser, registerUser, 
+                    upload }

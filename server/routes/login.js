@@ -3,6 +3,8 @@ const router = express.Router();
 const passport = require('passport')
 const auth = require('../../controller/authenticator.js')
 
+const api = require('../../controller/profiles_controller.js')
+
 router.get('/register', auth.checkAlreadyAuthenticated, async (req, res) =>{
     console.log("user is registering");
     try {
@@ -13,7 +15,9 @@ router.get('/register', auth.checkAlreadyAuthenticated, async (req, res) =>{
 });
 
 router.post('/register', async (req, res) => {
-    
+    api.registerUser(req.body);
+
+    res.redirect('/')
 });
 
 router.get('/login', auth.checkAlreadyAuthenticated, async (req, res) =>{
