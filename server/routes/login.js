@@ -12,6 +12,10 @@ router.get('/register', auth.checkAlreadyAuthenticated, async (req, res) =>{
     }
 });
 
+router.post('/register', async (req, res) => {
+    
+});
+
 router.get('/login', auth.checkAlreadyAuthenticated, async (req, res) =>{
     console.log("user is try to log in");
     try {
