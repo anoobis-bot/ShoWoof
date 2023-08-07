@@ -13,7 +13,7 @@ Description: An interest forum website that caters to anything dog related. Peop
 
 
 Packages to be installed:
-npm i express express-session dotenv bcrypt passport passport-local mongoose mongodb express-flash ejs method-override
+npm i express express-session dotenv bcrypt passport passport-local mongoose mongodb express-flash ejs method-override multer
 
 To run do:
 node server
